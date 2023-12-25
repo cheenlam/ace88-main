@@ -2418,8 +2418,6 @@ body {
 .promoPage .promoList ul {
   display: flex;
   flex-wrap: wrap;
-  -webkit-overflow-scrolling: touch;
-  scroll-snap-type: x mandatory;
 }
 @media screen and (max-width: 800px) {
   .promoPage .promoList ul {
@@ -2427,11 +2425,13 @@ body {
     margin: auto;
   }
 }
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 490px) {
   .promoPage .promoList ul {
     width: calc(100vw - 20px);
     overflow: auto;
     flex-wrap: nowrap;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
   }
 }
 .promoPage .promoList li {
@@ -2447,7 +2447,7 @@ body {
     width: 50%;
   }
 }
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 490px) {
   .promoPage .promoList li {
     min-width: 280px;
     scroll-snap-align: center;

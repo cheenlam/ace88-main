@@ -1584,14 +1584,13 @@ body {
                 max-width: 550px;
                 margin: auto;
             }
-            @include rwd(500){
+            @include rwd(490){
                 width: calc(100vw - 20px);
-            overflow: auto;
+                overflow: auto;
                 flex-wrap: nowrap;
-            }
-            
-            -webkit-overflow-scrolling: touch;
-            scroll-snap-type: x mandatory;
+                -webkit-overflow-scrolling: touch;
+                scroll-snap-type: x mandatory;
+            }   
         }
         li{
             width: calc(100% / 3);
@@ -1604,7 +1603,7 @@ body {
                 width: calc(100% / 2);
             }
 
-            @include rwd(500){
+            @include rwd(490){
                 min-width: 280px;
                 scroll-snap-align: center;
             }
