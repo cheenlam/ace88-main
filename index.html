@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACE88</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="js/jquery_3.6.0.js"></script>
+    <script src="js/swipeslider.js"></script>
+    <script src="js/marquee.js"></script>
+    <script src="js/router.js"></script>
+    <script src="js/vue_3.2.19.js"></script>
+    <link rel="stylesheet" href="scss/main.css">
+</head>
+
+<body>
+    <div class="mainLayout" id="main">
+        <!-- header start -->
+        <div class="header">
+            <div class="inner">
+                <div class="minBar" @click="sideSw = true">
+                    <span></span>
+                </div>
+                <a href="#/home" class="logo">
+                    <div class="momo">
+                        <img src="images/logo/momo.webp">
+                        <img src="images/logo/flash.webp" class="flash">
+                    </div>
+                    <img src="images/logo/txt.webp" class="txt">
+                </a>
+
+                <div class="hd_tool">
+                    <div class="item sel" @click="openLangSw()" :class="{'on' : lanSw}">
+                        <div class="icon earth"></div>
+                        <div class="txt">Language</div>
+
+                        <div class="langList">
+                            <ul>
+                                <li v-for="(item,index) in langList" :key="index" @click.stop="lanSw = false">
+                                    <div class="flag">
+                                        <img :src="item.src" :alt="item.alt">
+                                    </div>
+                                    <p>{{item.txt}}</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="item logout" v-if="islogin" @click="openlogout()">
+                        <div class="icon logout"></div>
+                        <div class="txt">Log Out</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- mainCnt  start -->
+        <div class="mainCnt" id="mainCnt"></div>
+
+        <!-- footer start -->
+        <div class="footer" id="footer">
+            <ul>
+                <li>
+                    <a href="#/home">
+                        <div class="icon home"></div>
+                        <p>home</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#/promotion">
+                        <div class="icon promotion"></div>
+                        <p>promotion</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#/deposit">
+                        <div class="deposit">
+                            <img src="images/icons/footer/deposit.webp">
+                            <p>deposit</p>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#/history">
+                        <div class="icon history"></div>
+                        <p>history</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#/chats">
+                        <div class="icon chats"></div>
+                        <p>chats</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- sideMenu start -->
+        <div class="sideMenu" :class="{'on' : sideSw}">
+            <div class="bgClose" @click="sideSw = false"></div>
+            <div class="sideCnt">
+                <div class="inner">
+                    <div class="tool">
+                        <div class="account" v-if="!islogin">
+                            <div class="btn login" @click="dialog.login = true,sideSw = false">log in</div>
+                            <div class="btn signout" @click="dialog.signout = true,sideSw = false">sign up</div>
+                        </div>
+    
+                        <div class="assets" v-if="islogin">
+                            <div class="balance">
+                                <p>Balance</p>
+                                <div class="num">RM<span>100.00</span></div>
+                            </div>
+                            <div class="operate">
+                                <ul @click="sideSw = false">
+                                    <li>
+                                        <a href="#/deposit">
+                                            <div class="icon deposit"></div>
+                                            <p>deposit</p>
+                                        </a>  
+                                    </li>
+                                    <li>
+                                        <a href="#/withdraw">
+                                            <div class="icon withdraw"></div>
+                                            <p>withdraw</p>
+                                        </a>   
+                                    </li>
+                                    <li>
+                                        <a href="#/history">
+                                            <div class="icon history"></div>
+                                            <p>history</p>
+                                        </a>    
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="menu" id="sideMenu">
+                        <ul>
+                            <li>
+                                <a href="#/home"  @click="sideSw = false">
+                                    <div class="icon home"></div>
+                                    <p>home</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#/promotion"  @click="sideSw = false">
+                                    <div class="icon promotion"></div>
+                                    <p>promotion</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#/vip"  @click="sideSw = false">
+                                    <div class="icon vip"></div>
+                                <p>vip</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#/refer"  @click="sideSw = false">
+                                    <div class="icon refer"></div>
+                                <p>refer</p>
+                                </a>
+                            </li>
+                            <li class="sel">
+                                <div class="icon language"></div>
+                                <!-- <p>language</p> -->
+                                <select @change="sideSw = false">
+                                    <option :value="item.txt" v-for="(item,index) in langList" :key="index">{{item.txt}}</option>
+                                </select>
+                            </li>
+                            <li>
+                                <a href="#/contact"  @click="sideSw = false">
+                                    <div class="icon contact"></div>
+                                    <p>contact</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="logout" v-if="islogin" @click="openlogout()">logout</div>
+                </div>
+                <div class="copyright">All Rights &#169; Ace88</div>
+            </div>
+        </div>
+
+        <!-- dialog(登入彈窗) -->
+        <div class="dialog" v-if="dialog.login">
+            <div class="inner">
+                <div class="close" @click="dialog.login = false"></div>
+                <div class="inpContent">
+                    <div class="item">
+                        <label>
+                            <div class="inpTitle">
+                                <div class="icon user"></div>
+                                <p>UserName</p>
+                            </div>
+                            <input type="text">
+                        </label>
+                        <label>
+                            <div class="inpTitle">
+                                <div class="icon lock"></div>
+                                <p>Password</p>
+                            </div>
+
+                            <div class="iptPwd" :class="{'on' : showPwd.login}">
+                                <input :type="showPwd.login? 'text' : 'password'">
+                                <div class="eye" @click="showPwd.login = !showPwd.login"></div>
+                            </div>  
+                        </label>
+                        <label>
+                            <div class="remember">
+                                <div class="clickDiv">
+                                    <input type="checkbox">
+                                    <div class="state"></div>
+                                    <p>Remember Me</p>
+                                </div>
+                            </div> 
+                        </label>
+                    </div>
+                    
+                    <div class="item">
+                        <div class="btn login" @click="tologin()">LOGIN</div>
+                        <div class="linkTip" @click="dialog.login = false,dialog.signout = true">
+                            <p>ADon’t have account yet?</p>
+                            <p>Click<span style="--color:#FFC123">here</span>to sign up.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- dialog(註冊彈窗) -->
+        <div class="dialog" v-if="dialog.signout">
+            <div class="inner">
+                <div class="close" @click="dialog.signout = false"></div>
+                <div class="inpContent">
+                    <div class="item">
+                        <label>
+                            <div class="inpTitle">
+                                <div class="icon user"></div>
+                                <p>UserName</p>
+                            </div>
+                            <input type="text">
+                        </label>
+                        <label>
+                            <div class="inpTitle">
+                                <div class="icon user"></div>
+                                <p>Full Name</p>
+                            </div>
+                            <input type="text">
+                        </label>
+                        <div class="tip" style="--color:#FFC123">Full name must be same as your bank account holder name for withdrawal, after register cannot be modified</div>
+                    </div>
+                    <div class="item">
+                        <label>
+                            <div class="inpTitle">
+                                <div class="icon lock"></div>
+                                <p>Password</p>
+                            </div>
+
+                            <div class="iptPwd" :class="{'on' : showPwd.signout01}">
+                                <input :type="showPwd.signout01? 'text' : 'password'">
+                                <div class="eye" @click="showPwd.signout01 = !showPwd.signout01"></div>
+                            </div>  
+                        </label>
+                        <label>
+                            <div class="inpTitle">
+                                <div class="icon lock"></div>
+                                <p>Confirm Password</p>
+                            </div>
+
+                            <div class="iptPwd" :class="{'on' : showPwd.signout02}">
+                                <input :type="showPwd.signout02? 'text' : 'password'">
+                                <div class="eye" @click="showPwd.signout02 = !showPwd.signout02"></div>
+                            </div>  
+                        </label>
+                    </div>
+                    <div class="item">
+                        <label>
+                            <div class="inpTitle">
+                                <div class="icon phone"></div>
+                                <p>Phone Number</p>
+                            </div>
+                            <input type="text">
+                        </label>
+                        <label>
+                            <div class="inpTitle">
+                                <div class="icon confirm"></div>
+                                <p>Verification Code</p>
+                            </div>
+                            <input type="text">
+                        </label>
+                    </div>
+                    <div class="item">
+                        <div class="btn signout" @click="tologin()">SIGN OUT</div>
+                        <div class="tip" style="--color:#ccc">By clicking the REGISTER button, I hereby acknowledge that I am above 18 years old and have read and accepted your Terms & Conditions</div>
+                        <div class="linkTip" @click="dialog.login = true,dialog.signout = false">Already have an account? 
+                            <span style="--color:#FFC123">LOGIN</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- dialog(登出提問) -->
+        <div class="dialog" v-if="dialog.logout">
+            <div class="inner">
+                <div class="selContent">
+                    <div class="ask">Do you sure to log out?</div>
+                    <div class="askSel">
+                        <div class="btn yes" @click="tologout()">Yes</div>
+                        <div class="btn no" @click="dialog.logout = false">No</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var indexVue = Vue.createApp({
+            data() {
+                return {
+                    langList: [{
+                        src: 'images/flag/MYS.webp',
+                        txt: 'MYS'
+                    }, {
+                        src: 'images/flag/SGP.webp',
+                        txt: 'SGP'
+                    }, {
+                        src: 'images/flag/THA.webp',
+                        txt: 'THA'
+                    }, {
+                        src: 'images/flag/VIE.webp',
+                        txt: 'VIE'
+                    }, {
+                        src: 'images/flag/AUS.webp',
+                        txt: 'AUS'
+                    }, {
+                        src: 'images/flag/PHL.webp',
+                        txt: 'PHL'
+                    }, {
+                        src: 'images/flag/IDN.webp',
+                        txt: 'IDN'
+                    }, {
+                        src: 'images/flag/USA.webp',
+                        txt: 'USA'
+                    }],
+
+                    selLan: 0,
+                    lanSw: false,
+                    sideSw:false,
+                    islogin:false,
+                    showPwd:{
+                        login:false,
+                        signout01:false,
+                        signout02:false
+                    },
+                    dialog:{
+                        login:false,
+                        signout:false,
+                        logout:false
+                    }
+                };
+            },
+            methods: {
+                isMobile() {
+                    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+                },
+                openLangSw(idx){
+                    if(this.isMobile() && this.lanSw == false){
+                        this.lanSw = true;
+                    }
+                },
+                tologin(){
+                    this.islogin = true;
+                    this.dialog.login = false;
+                    this.dialog.signout = false;   
+                    location.href='#/home';
+                },
+                openlogout(){
+                    this.sideSw = false;
+                    this.dialog.logout = true;
+                },
+                tologout(){
+                    this.islogin = false;
+                    this.dialog.logout = false;
+                    location.href='#/home';
+                }
+            },
+            mounted() {},
+        }).mount("#main");
+    </script>
+</body>
+
+</html>
