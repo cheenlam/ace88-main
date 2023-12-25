@@ -1,0 +1,363 @@
+<div id="page" class="homePage">
+    <!-- 輪播+跑馬燈 -->
+    <div class="carousel_group" id="carousel_group">
+        <div id="carouselHigh">
+            <!-- 大畫面輪播 -->
+            <div id="max_carousel" class="swipslider" v-show="!carousel.change">
+                <ul class="sw-slides">
+                    <template v-for="(item,index) in carousel.max">
+                        <li class="sw-slide">
+                            <img :src="item.img">
+                        </li>
+                    </template>
+                </ul>
+            </div>
+            <!-- 小畫面輪播(500px以下) -->
+            <div id="min_carousel" class="swipslider min" v-show="carousel.change">
+                <ul class="sw-slides">
+                    <template v-for="(item,index) in carousel.min">
+                        <li class="sw-slide">
+                            <img :src="item.img">
+                        </li>
+                    </template>
+                </ul>
+            </div>
+
+            <!-- marquee (跑馬燈) -->
+            <div class="marquee">
+                <div class="marqueeBox">
+                    <div>
+                        <ul id="marquee" class="marquee_body">
+                            <template v-for="(item,index) in marquee">
+                                <li>{{item.txt}}</li>
+                            </template>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 遊戲清單 -->
+    <div class="gameList" id="gameList">
+        <div class="selGame">
+            <ul>
+                <li v-for="(item,index) in selBtn" @click="gameSel = index">
+                    <div class="btn" :class="{'on' : gameSel == index}">
+                        <div class="frame">
+                            <div class="icon" :class="item.icon"></div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="list">
+            <div class="item" v-for="(item,index) in gameList[gameSel].num">
+                <div class="exhibit">
+                    <div class="frame">
+                        <span :style="rebgi(gameList[gameSel].bg)"></span>
+                    </div>
+                    <div class="role">
+                        <img :src="gameList[gameSel].role">
+                    </div>
+                    <div class="title">
+                        <div class="logo"></div>
+                    </div>
+                </div>
+                <div class="btn">
+                    <div class="frame">
+                        <p>Play</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 帳戶按鈕(登入/註冊) -->
+    <div class="accountBtn" v-if="!getlogin()">
+        <div class="btn login" @click="openDialog(1)">login</div>
+        <div class="btn signout" @click="openDialog(2)">sign up</div>
+    </div>
+
+    <!-- 資產 -->
+    <div class="assets">
+        <div class="userMsg">
+            <div class="main">
+                <div class="avatar">
+                    <div class="frame">
+                        <div class="pic">
+                            <img src="images/user/photo.webp" v-if="getlogin()">
+                            <img src="images/user/default.webp" v-if="!getlogin()">
+                        </div>  
+                    </div>
+                </div>
+                <div class="info">
+                    <div class="username" v-if="getlogin()">Senangkaya</div>
+                    <div class="balance">RM<span>{{!getlogin()? '0.00' : '100.00'}}</span></div>
+                </div>
+            </div>
+            <div class="minimum">
+                <div class="title">Minimum</div>
+                <div class="num">
+                    <table>
+                        <tr>
+                            <td class="type">Deposit：</td>
+                            <td>RM<span>10.00</span></td>
+                        </tr>
+                        <tr>
+                            <td class="type">Withdraw：</td>
+                            <td>RM<span>60.00</span></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="operate">
+            <a href="#/deposit" class="arrowBtn">
+                <div class="inner">
+                    <div class="icon">
+                        <img src="images/icons/assets/deposit.webp">
+                    </div>
+                    <p>deposit</p>
+                </div>
+            </a>
+            <a href="#/withdraw" class="arrowBtn">
+                <div class="inner">
+                    <div class="icon">
+                        <img src="images/icons/assets/withdraw.webp">
+                    </div>
+                    <p>withdraw</p>
+                </div>
+            </a>
+            <a href="#/history" class="arrowBtn">
+                <div class="inner">
+                    <div class="icon">
+                        <img src="images/icons/assets/history.webp">
+                    </div>
+                    <p>history</p>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <!-- 支付方式 -->
+    <div class="payList">
+        <img src="images/other/payList.webp">
+    </div>
+
+    <!-- 推廣 -->
+    <div class="promo">
+        <div class="banner">
+            <img src="../images/other/promoBg.webp">
+        </div>
+        <div class="btnList">
+            <a>
+                <div class="btn">
+                    <div class="frame">
+                        <div class="icon share"></div>
+                        <p>share</p>
+                    </div>
+                </div>
+            </a>
+            <a>
+                <div class="btn">
+                    <div class="frame">
+                        <div class="icon group"></div>
+                        <p>downline</p>
+                    </div>
+                </div>
+            </a>
+            <a>
+                <div class="btn">
+                    <div class="frame">
+                        <div class="icon refferal"></div>
+                        <p>refferal</p>
+                    </div>
+                </div>
+            </a>
+            <a>
+                <div class="btn">
+                    <div class="frame">
+                        <div class="icon info"></div>
+                        <p>info</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <!-- 推廣輪播 -->
+    <div class="promoCarousel">
+        <div class="frame">
+            <div id="promo_carousel" class="swipslider promoSlider">
+                <ul class="sw-slides">
+                    <template v-for="(item,index) in carousel.promo">
+                        <li class="sw-slide">
+                            <img :src="item.img">
+                        </li>
+                    </template>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- 交易 -->
+    <div class="txn">
+        <div class="title">
+            <img src="images/other/txn.webp">
+        </div>
+        <div class="list">
+            <table>
+                <tr>
+                    <th width="25px">#</th>
+                    <th>MUMBER</th>
+                    <th width="30%" class="rm">RM</th>
+                </tr>
+                <tr v-for="(item,index) in 10">
+                    <td>{{index +1}}</td>
+                    <td>60*****932</td>
+                    <td class="rm">RN15000.00</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- 賽季 -->
+    <div class="season">
+        <div class="title">
+            <img src="images/other/season.webp">
+        </div>
+        <div class="list"></div>
+    </div>
+
+    <!-- 宣言 -->
+    <div class="declaration">
+        <div class="main">
+            <p>@Ace88. All Rights Reserved.</p>
+            <p>Gambling Can Be Addictive, Please Play Responsibly Trusted Online Casiono Malaysia 2023</p>
+        </div>
+        <div class="second">
+            <p>If you're new to online gambling and online casinos in general, you need yo know a trusted online casino Malaysia 2023. This way, you'll be able to differentiate between real, top-quality casinos and fake casinos that just want to scam you.</p>
+            <p>The online casino Malaysia you choose should have very good security measures in place to keep you and your money safe. It should also have lots of games too, so you're never bored. Ace88 is a trusted online casino in Malaysia with lots of great games you'll enjoy. Our players are constantly cashing out. Register for Ace88 today to get the most out of our online casino!</p>
+            <p>Gambling Can Be Addictive. Please Play Responsibly.</p>
+        </div>
+
+        <div class="iconList">
+            <div class="icon age18"></div>
+            <div class="icon aware"></div>
+            <div class="icon gamcare"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var homeVue = Vue.createApp({
+        data() {
+            return {
+                gameSel: 1,
+                carousel: {
+                    change: false,
+                    max: [{
+                        img: 'images/carousel/max_01.webp'
+                    }, {
+                        img: 'images/carousel/max_02.webp'
+                    }, {
+                        img: 'images/carousel/max_03.webp'
+                    }],
+                    min: [{
+                        img: 'images/carousel/min_01.webp'
+                    }, {
+                        img: 'images/carousel/min_02.webp'
+                    }, {
+                        img: 'images/carousel/min_03.webp'
+                    }],
+                    promo: [{
+                        img: 'images/carousel/promo_01.webp'
+                    }, {
+                        img: 'images/carousel/promo_02.webp'
+                    }, {
+                        img: 'images/carousel/promo_03.webp'
+                    }, {
+                        img: 'images/carousel/promo_04.webp'
+                    }, {
+                        img: 'images/carousel/promo_05.webp'
+                    }, {
+                        img: 'images/carousel/promo_06.webp'
+                    }, {
+                        img: 'images/carousel/promo_07.webp'
+                    }, {
+                        img: 'images/carousel/promo_08.webp'
+                    }, ]
+                },
+                marquee: [{
+                    txt: 'Here is the first set of copywriting to test the marquee text.'
+                }, {
+                    txt: 'Welcome to ACE88.'
+                }, {
+                    txt: 'Test whether the marquee function is functioning properly.'
+                }],  
+                selBtn:[
+                    {icon:'casino'},
+                    {icon:'sport'},
+                    {icon:'slot'},
+                    {icon:'game4d'}
+                ],    
+                gameList:[
+                    {bg:'images/game/bg.webp',role:'images/game/girl.webp',num:10},
+                    {bg:'images/game/bg02.webp',role:'images/game/player.webp',num:5},
+                    {bg:'images/game/bg03.webp',role:'images/game/bear.webp',num:20},
+                    {bg:'images/game/bg.webp',role:'images/game/girl.webp',num:8}
+                ]
+            };
+        },
+        methods: {
+            // ==== 變更輪播顯示 ====
+            chCarousel() {
+                let winW = document.body.clientWidth;
+                this.carousel.change = winW <= 600 ? true : false;
+            },
+            winResize() {
+                this.chCarousel();
+                this.reGamesHigh();
+            },
+            openDialog(style) {
+                switch (style) {
+                    case 1:
+                        indexVue.dialog.login = true;
+                        break;
+                    case 2:
+                        indexVue.dialog.signout = true;
+                        break;
+                }
+            },
+            getlogin() {
+                return indexVue.islogin;
+            },
+            reGamesHigh() {
+                let boxH = document.querySelector('#carouselHigh').offsetHeight;
+                let winW = document.body.clientWidth;
+                document.querySelector('#gameList').style.paddingTop = winW <= 600 ? '' : `${boxH + 5}px`;
+            },
+            rebgi(img){
+                return `background-image: url(${img})`;
+            }
+        },
+        mounted() {
+            // 啟動輪播
+            $('#max_carousel').swipeslider();
+
+            $('#min_carousel').swipeslider();
+            $('#promo_carousel').swipeslider();
+
+            // 啟動跑馬燈
+            $("#marquee").marquee({
+                pauseOnHover: true
+            });
+
+            this.chCarousel();
+            this.reGamesHigh();
+            window.addEventListener('resize', this.winResize);
+        },
+    }).mount("#page");
+</script>

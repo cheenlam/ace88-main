@@ -1,0 +1,236 @@
+// ===== 靜態按鈕 =====
+/* ===== html結構 =====
+    <div class="btn">Sumit</div>
+*/
+@mixin static_btn($style, $radius: 45px) {
+    height: 45px;
+    padding: 0 10px;
+    color: #fff;
+    border-radius: $radius;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: capitalize;
+    font-style: italic;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+    cursor: pointer;
+    &:active {
+        transform: translateY(2px);
+    }
+
+    @if $style == 1 {
+        background: radial-gradient(circle at 50% -50%, #8b1818, #b75959, #891c1c, #770e0e);
+        box-shadow:
+            0px -2px 3px #e593aa inset,
+            0 2px 2px #610707;
+    } @else if $style == 2 {
+        background: radial-gradient(circle at 50% -50%, #527c97, #588bab, #361ab9, #110a31);
+        box-shadow:
+            0px -2px 3px #88bcdd inset,
+            0 2px 2px #301999;
+    } @else if $style == 3 {
+        background: radial-gradient(circle at 50% -50%, #a33e29, #af7a65, #755d0f, #5d2e0d);
+        box-shadow:
+            0px -2px 3px #ff739a inset,
+            0 2px 2px #610707;
+    } @else if $style == 4 {
+        background: radial-gradient(circle at 50% -50%, #5e1071, #8f45a3, #641c77, #360b41);
+        box-shadow:
+            0px -2px 3px #ac3ec7 inset,
+            0 2px 2px #0a020c;
+    }
+}
+
+// ===== 箭頭按鈕 =====
+/* ===== html結構 =====
+    <div class="arrowBtn">
+        <div class="inner">
+            <div class="icon">
+                <img src="xxx.png">
+            </div>
+            <p>deposit</p>
+        </div>
+    </div>
+*/
+@mixin arrow_btn($reverse) {
+    width: 100%;
+    padding: 2px;
+    display: block;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    .inner {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        display: flex;
+        align-items: center;
+        z-index: 2;
+        color: #fff;
+    }
+    .icon {
+        width: 25px;
+        border-radius: 50%;
+        animation: ripple .8s infinite linear;
+    }
+    p {
+        text-transform: uppercase;
+        font-size: 12px;
+    }
+
+    @if  $reverse == 0 {
+        clip-path: polygon(20% 0%, 100% 0%, 100% 100%, 20% 100%, 8% 50%);
+        background-image: linear-gradient(90deg, #eee, #8d671d, #bd9a3b, transparent 80%);
+        .inner {
+            padding: 8px 5px 8px 22%;
+            justify-content: left;
+            clip-path: polygon(20% 0%, 100% 0%, 100% 100%, 20% 100%, 9% 50%);
+            background: linear-gradient(90deg, #5544bd, #221554 80%, transparent);
+        }
+        .icon {
+            margin: 0 6px 0 0;
+        }
+
+    } @else if  $reverse == 1 {
+        clip-path: polygon(0% 0%, 88% 0%, 100% 50%, 88% 100%, 0% 100%);
+        background-image: linear-gradient(-90deg, #eee, #8d671d, #bd9a3b, transparent 80%);
+        .inner {
+            padding: 8px 14% 8px 5px;
+            justify-content: right;
+            clip-path: polygon(0% 0%, 88% 0%, 99% 50%, 88% 100%, 0% 100%);
+            background: linear-gradient(-90deg, #5544bd, #221554 80%, transparent);
+        }
+        .icon {
+            order: 1;
+            margin: 0 0 0 6px;
+        }
+    } 
+}
+
+// ===== 光線按鈕 =====
+/* ===== html結構 (添加icon要自訂大小)=====
+    <div class="btn">
+        <div class="frame">
+            <div class="icon"></div>
+            <p>refferal</p>
+        </div>
+    </div>
+*/
+@mixin light_btn($style, $radius: 8px){
+    padding: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    border-radius: $radius;
+    transition: 0.3s;
+    cursor: pointer;
+    &:active {
+        transform: translateY(2px);
+    }
+    &::before {
+        content: "";
+        width: 200%;
+        height: 0;
+        padding-bottom: 300%;
+        margin: auto;
+        position: absolute;
+        background-image: conic-gradient(transparent, #fff, #999, transparent 30%);
+        animation: rotateReverse 2s linear infinite;
+    }
+    .frame {
+        width: 100%;
+        padding: 10px;
+        border-radius: $radius;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        transition: 0.3s;
+        position: relative;
+    }
+    p {
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    @if $style == 1 {
+        &::before {
+            background-color: #8a521a;
+        }
+        .frame {
+            background: radial-gradient(circle at 50% -57%, #af6d2c 12%, #ebb37c, #b8702a, #2a1704);
+            box-shadow:
+                0px -2px 3px #ebb37c inset,
+                0 2px 2px #2a1704;
+        }
+    } @else if $style == 2 {
+        &::before {
+            background-color: #71256f;
+        }
+        .frame {
+            background: radial-gradient(circle at 50% -57%, #811a80 12%, #be63bc, #7e2b7c, #180117);
+            box-shadow:
+                0px -2px 3px #7f287c inset,
+                0 2px 2px #51134f;
+        }
+    } @else if $style == 3 {
+        &::before {
+            background-color: #322ca4;
+        }
+        .frame {
+            background: radial-gradient(circle at 50% -57%, #2a2594 12%, #716dce, #342ea9, #080447);
+            box-shadow:
+                0px -2px 3px #4a44bd inset,
+                0 2px 2px #0f0c4d;
+        }
+    } @else if $style == 4 {
+        &::before {
+            background-color: #1d5766;
+        }
+        .frame {
+            background: radial-gradient(circle at 50% -57%, #0b5262 12%, #419aaf, #12687c, #031f26);
+            box-shadow:
+                0px -2px 3px #43a0b5 inset,
+                0 2px 2px #093944;
+        }
+    }
+}
+
+
+
+
+
+// ===============================================
+// ╠                   動畫特效                   ╣
+// ===============================================
+@keyframes ripple{
+    0%{
+        box-shadow: 
+        0 0 0 0 rgba(255, 255, 255, 0.1), 
+        0 0 0 10px rgba(255, 255, 255, 0.1), 
+        0 0 0 20px rgba(255, 255, 255, 0.1),
+        0 0 0 30px rgba(255, 255, 255, 0.1);
+    }
+    100%{
+        box-shadow:
+        0 0 0 10px rgba(255, 255, 255, 0.1),
+        0 0 0 20px rgba(255, 255, 255, 0.1), 
+        0 0 0 30px rgba(255, 255, 255, 0.1), 
+        0 0 0 40px rgba(255, 255, 255, 0);
+    }
+}
+
+@keyframes rotate {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes rotateReverse {
+    100% {
+        transform: rotate(-360deg);
+    }
+}

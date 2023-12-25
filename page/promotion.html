@@ -1,0 +1,62 @@
+<div id="page" class="promoPage">
+    <div class="promoList">
+        <ul>
+            <template v-for="(item,index) in 5">
+                <li v-for="(item,index) in promoList">
+                    <div class="circle">
+                        <div class="card">
+                            <div class="title">
+                                <div class="theme">{{item.theme}}</div>
+                                <div class="depiction">
+                                    <p v-for="txt in item.depiction">{{txt}}</p>
+                                </div>
+                            </div>
+        
+                            <div class="tip">
+                                <p v-for="txt in item.tip">{{txt}}</p>
+                            </div>
+                            
+                            <div class="btn">
+                                <div class="frame">
+                                    <p>Apply Now</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>    
+                </li>
+            </template>       
+        </ul>
+    </div>
+</div>
+
+<script>
+    Vue.createApp({
+        data() {
+            return {
+                promoList:[
+                    {
+                        theme:'100%',
+                        depiction:['SenangKaya','Welcome Bonus'],
+                        tip:['Waiting You To Claim','Right Now']
+                    },
+                    {
+                        theme:'Share & Earn',
+                        depiction:['SenangKaya','Welcome Bonus','add one more line'],
+                        tip:['Waiting You To Claim','Right Now','add one more line']
+                    },
+                    {
+                        theme:'120%',
+                        depiction:['Welcome Bonus'],
+                        tip:['Waiting You To Claim','Right Now']
+                    }
+                ]
+            };
+        },
+        methods: {
+
+        },
+        mounted() {
+            
+        },
+    }).mount("#page");
+</script>
