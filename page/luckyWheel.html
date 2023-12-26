@@ -1,0 +1,68 @@
+<div id="page" class="luckyWheel">
+   <div class="fullBg"></div>
+    <div class="inner">
+        <!-- 轉盤 -->
+        <div class="turntable start" id="turntable">
+            <img src="images/other/lucky_base.webp" class="base">
+            <div class="wheel">
+                <img src="images/other/lucky_wheel.webp">
+            </div>
+            <div class="light" style="--t:4.3%;--l:58.9%;--dl:0s"></div>
+            <div class="light" style="--t:7.6%;--l:66.4%;--dl:.1s"></div>
+            <div class="light" style="--t:13.3%;--l:71.9%;--dl:.2s"></div>
+            <div class="light" style="--t:20.5%;--l:77.8%;--dl:.3s"></div>
+            <div class="light" style="--t:29.3%;--l:79.9%;--dl:.4s"></div>
+            <div class="light" style="--t:37.3%;--l:80.9%;--dl:.5s"></div>
+            <div class="light" style="--t:45.4%;--l:78.8%;--dl:.6s"></div>
+            <div class="light" style="--t:53.2%;--l:75.7%;--dl:.7s"></div>
+            <div class="light" style="--t:59.4%;--l:69.9%;--dl:.8s"></div>
+            <div class="light" style="--t:64.2%;--l:63.8%;--dl:.9s"></div>
+            <div class="light" style="--t:67.2%;--l:54.9%;--dl:1s"></div>
+            <div class="light" style="--t:67.5%;--l:47.0%;--dl:1.1s"></div>
+            <div class="light" style="--t:67.3%;--l:39.0%;--dl:1.2s"></div>
+            <div class="light" style="--t:64.8%;--l:31.8%;--dl:1.3s"></div>
+            <div class="light" style="--t:59.9%;--l:25.1%;--dl:1.4s"></div>
+            <div class="light" style="--t:54.0%;--l:19.8%;--dl:1.5s"></div>
+            <div class="light" style="--t:46.0%;--l:15.8%;--dl:1.6s"></div>
+            <div class="light" style="--t:36.6%;--l:13.3%;--dl:1.7s"></div>
+            <div class="light" style="--t:28.4%;--l:14.3%;--dl:1.8s"></div>
+            <div class="light" style="--t:20.6%;--l:16.9%;--dl:1.9s"></div>
+            <div class="light" style="--t:14.3%;--l:21.7%;--dl:2s"></div>
+            <div class="light" style="--t:8.1%;--l:27.0%;--dl:2.1s"></div>
+            <div class="light" style="--t:4.4%;--l:35.3%;--dl:2.2s"></div>
+        </div>
+
+        <div class="btn">SPIN</div>
+    </div>
+</div>
+
+<script>
+    Vue.createApp({
+        data() {
+            return {
+                
+            };
+        },
+        methods: {
+            winResize(){
+                this.reWheelHigh();
+            },
+            reWheelHigh(){
+                if((location.href).includes('chats')){
+                    let winW = document.body.clientWidth;
+                    let winH = document.body.clientHeight;
+                    if(winW + 200 >= winH){
+                        document.querySelector('#turntable').style.width = `${winW <= 750 ? winH - 200 : winH - 220}px`;
+                    }else{
+                        document.querySelector('#turntable').style.width = `${winW}px`;
+                    }
+                }  
+            }
+
+        },
+        mounted() {
+            window.addEventListener('resize', this.winResize);
+            this.reWheelHigh();
+        },
+    }).mount("#page");
+</script>

@@ -60,7 +60,7 @@ Router.route('/history', function() {
 });
 
 Router.route('/chats', function() {
-    mainInclude('/page/chats.html');
+    mainInclude('/page/luckyWheel.html');
     menuList_on(4,99);
     document.title = "ACE88｜Chats";
 });

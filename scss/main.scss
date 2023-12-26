@@ -110,7 +110,7 @@ body {
             position: relative;
             cursor: pointer;
             display: none;
-            @include rwd(600) {
+            @include rwd(750) {
                 display: flex;
                 align-items: center;
             }
@@ -149,7 +149,7 @@ body {
                 align-items: center;
                 position: relative;
                 cursor: pointer;
-                &+.item {
+                & + .item {
                     margin-left: 25px;
                 }
                 @include hover {
@@ -197,7 +197,7 @@ body {
                     }
                 }
                 &.logout {
-                    @include rwd(600) {
+                    @include rwd(750) {
                         display: none;
                     }
                 }
@@ -213,7 +213,7 @@ body {
                 &.logout {
                     background-image: url(../images/icons/header/logout.webp);
                 }
-                @include rwd(600) {
+                @include rwd(750) {
                     margin-right: 0;
                 }
             }
@@ -224,7 +224,7 @@ body {
                 text-transform: capitalize;
                 opacity: 0.5;
                 transition: 0.5s;
-                @include rwd(600) {
+                @include rwd(750) {
                     display: none;
                 }
             }
@@ -309,7 +309,11 @@ body {
                 }
                 .deposit p {
                     color: #000;
-                    text-shadow: 0 1px 2px #fadf5a, 0 -1px 2px #fadf5a, 1px 0 2px #fadf5a, -1px 0 2px #fadf5a;
+                    text-shadow:
+                        0 1px 2px #fadf5a,
+                        0 -1px 2px #fadf5a,
+                        1px 0 2px #fadf5a,
+                        -1px 0 2px #fadf5a;
                 }
             }
         }
@@ -321,7 +325,7 @@ body {
             flex-direction: column;
             align-items: center;
             cursor: pointer;
-            @include rwd(600) {
+            @include rwd(750) {
                 padding: 10px 5px;
             }
         }
@@ -351,7 +355,7 @@ body {
             font-weight: bold;
             font-style: italic;
             transition: 0.3s;
-            @include rwd(600) {
+            @include rwd(750) {
                 display: none;
             }
         }
@@ -369,7 +373,11 @@ body {
             }
             p {
                 color: #fadf5a;
-                text-shadow: 0 1px 2px #360146, 0 -1px 2px #360146, 1px 0 2px #360146, -1px 0 2px #360146;
+                text-shadow:
+                    0 1px 2px #360146,
+                    0 -1px 2px #360146,
+                    1px 0 2px #360146,
+                    -1px 0 2px #360146;
                 font-size: 13px;
                 font-weight: bold;
                 text-align: center;
@@ -445,7 +453,7 @@ body {
             .btn {
                 width: 150px;
                 margin: auto;
-                &+.btn {
+                & + .btn {
                     margin-top: 10px;
                 }
                 &.login {
@@ -706,14 +714,14 @@ body {
                 display: flex;
                 .btn {
                     width: 100%;
-                    &+.btn {
+                    & + .btn {
                         margin-left: 8px;
                     }
                 }
             }
         }
         .item {
-            &+.item {
+            & + .item {
                 margin-top: 35px;
             }
         }
@@ -797,7 +805,7 @@ body {
                 @include pos(tl, 0);
                 display: none;
             }
-            input:checked+.state::before {
+            input:checked + .state::before {
                 display: block;
             }
             .state {
@@ -881,13 +889,13 @@ body {
     display: grid;
     grid-template-columns: 1.3fr 1fr;
     position: relative;
-    @include rwd(600) {
+    @include rwd(750) {
         grid-template-columns: 1fr;
     }
     // 跑馬燈
     .marquee {
         background: linear-gradient(0deg, #281e99 40%, #6d61ed);
-        @include rwd(600) {
+        @include rwd(750) {
             background: linear-gradient(0deg, #710801 40%, #ff0f00);
         }
         .marqueeBox {
@@ -910,7 +918,10 @@ body {
                 top: -999em;
                 left: 0;
                 white-space: nowrap;
-                font: 12px Arial, Helvetica, sans-serif;
+                font:
+                    12px Arial,
+                    Helvetica,
+                    sans-serif;
                 display: flex;
                 align-items: center;
             }
@@ -923,7 +934,7 @@ body {
         grid-row-start: 1;
         grid-row-end: 7;
         border-right: 2px solid #494949;
-        @include rwd(600) {
+        @include rwd(750) {
             grid-row-start: 2;
             grid-row-end: 3;
             border: none;
@@ -943,7 +954,7 @@ body {
         position: absolute;
         pointer-events: none;
         @include pos(tl, 0);
-        @include rwd(600) {
+        @include rwd(750) {
             grid-row-start: 6;
             grid-row-end: 7;
             position: relative;
@@ -972,7 +983,7 @@ body {
                 overflow: hidden;
                 position: relative;
                 cursor: pointer;
-                transition: transform .3s;
+                transition: transform 0.3s;
                 &:active {
                     transform: translateY(2px);
                 }
@@ -991,10 +1002,12 @@ body {
                         background-image: conic-gradient(transparent, #ffeaa5, #d7a501, transparent 15%);
                     }
                     .frame {
-                        box-shadow: 0 0 8px #FEC200 inset;
+                        box-shadow: 0 0 8px #fec200 inset;
                         &::before {
-                            border: 2px solid #FEC200;
-                            box-shadow: 0 0 15px #ffeaa5 inset, 0 0 4px #FEC200;
+                            border: 2px solid #fec200;
+                            box-shadow:
+                                0 0 15px #ffeaa5 inset,
+                                0 0 4px #fec200;
                         }
                     }
                 }
@@ -1058,7 +1071,7 @@ body {
                 @include rwd(850) {
                     width: calc(100% / 2);
                 }
-                @include rwd(600) {
+                @include rwd(750) {
                     width: calc(100% / 3);
                 }
                 @include rwd(450) {
@@ -1116,7 +1129,7 @@ body {
                     height: 25%;
                     margin: auto;
                     border-radius: 8px;
-                    background: linear-gradient(30deg, #000, #444345 25%, #130F14 50%);
+                    background: linear-gradient(30deg, #000, #444345 25%, #130f14 50%);
                     box-shadow: 0 2px 2px #a173a9;
                     position: absolute;
                     left: 0;
@@ -1128,7 +1141,7 @@ body {
                     width: 100%;
                     height: 100%;
                     background: url(../images/game/logo.webp) no-repeat center / 50%;
-                    opacity: .8;
+                    opacity: 0.8;
                 }
             }
             .btn {
@@ -1141,14 +1154,14 @@ body {
     .accountBtn {
         padding: 5px 5px;
         display: flex;
-        @include rwd(600) {
+        @include rwd(750) {
             grid-column-start: 1;
             grid-row-start: 1;
             grid-row-end: 2;
         }
         .btn {
             width: calc(100% / 2);
-            &+.btn {
+            & + .btn {
                 margin-left: 5px;
             }
             &.login {
@@ -1169,7 +1182,7 @@ body {
         @include rwd(850) {
             flex-direction: column;
         }
-        @include rwd(600) {
+        @include rwd(750) {
             flex-direction: row;
             grid-column-start: 1;
             grid-row-start: 4;
@@ -1179,7 +1192,8 @@ body {
             flex-direction: column;
         }
         .userMsg {
-            width: 50%;
+            padding: 0 8px;
+            flex: 1;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -1203,8 +1217,8 @@ body {
                     display: block;
                 }
             }
-            @include rwd(600) {
-                width: 50%;
+            @include rwd(750) {
+                flex: 1;
                 padding-bottom: 0;
                 margin-bottom: 0;
                 &::before {
@@ -1311,7 +1325,7 @@ body {
             @include rwd(850) {
                 width: 100%;
             }
-            @include rwd(600) {
+            @include rwd(750) {
                 width: 50%;
             }
             @include rwd(380) {
@@ -1326,7 +1340,7 @@ body {
                 &:nth-child(even) {
                     @include arrow_btn(1);
                 }
-                &+.arrowBtn {
+                & + .arrowBtn {
                     margin-top: 5px;
                 }
             }
@@ -1334,7 +1348,7 @@ body {
     }
     // 支付方式
     .payList {
-        @include rwd(600) {
+        @include rwd(750) {
             grid-column-start: 1;
             grid-row-start: 3;
             grid-row-end: 4;
@@ -1345,7 +1359,7 @@ body {
         padding: 0 5px;
         display: flex;
         flex-direction: column;
-        @include rwd(600) {
+        @include rwd(750) {
             grid-column-start: 1;
             grid-row-start: 5;
             grid-row-end: 6;
@@ -1372,14 +1386,14 @@ body {
             @include rwd(1100) {
                 width: calc(100% / 2);
             }
-            @include rwd(600) {
+            @include rwd(750) {
                 width: calc(100% / 4);
             }
             @include rwd(480) {
                 width: calc(100% / 2);
             }
             @for $i from 1 through 4 {
-                &:nth-child(4n+#{$i}) {
+                &:nth-child(4n + #{$i}) {
                     .btn {
                         @include light_btn($i);
                     }
@@ -1408,7 +1422,7 @@ body {
     // 推廣輪播
     .promoCarousel {
         padding: 10px;
-        @include rwd(600) {
+        @include rwd(750) {
             grid-column-start: 1;
             grid-row-start: 8;
             grid-row-end: 9;
@@ -1454,7 +1468,7 @@ body {
     // 交易
     .txn {
         padding: 10px 10px;
-        @include rwd(600) {
+        @include rwd(750) {
             flex-direction: row;
             grid-column-start: 1;
             grid-row-start: 9;
@@ -1468,8 +1482,10 @@ body {
             max-width: 400px;
             margin: auto;
             padding: 15px 10px;
-            border: 4px solid #B950EA;
-            box-shadow: 0 0 10px #fff, 0 0 10px #d689fa inset;
+            border: 4px solid #b950ea;
+            box-shadow:
+                0 0 10px #fff,
+                0 0 10px #d689fa inset;
             border-radius: 8px;
             table {
                 width: 100%;
@@ -1485,7 +1501,7 @@ body {
                 color: #ccc;
             }
             .rm {
-                color: #FF5FAC;
+                color: #ff5fac;
             }
         }
     }
@@ -1495,7 +1511,7 @@ body {
         border-top: 2px solid #494949;
         grid-column-start: 1;
         grid-column-end: 3;
-        @include rwd(600) {
+        @include rwd(750) {
             padding: 0px 10px 10px;
             flex-direction: row;
             grid-column-start: 1;
@@ -1518,7 +1534,7 @@ body {
         padding: 30px 20px 15px;
         grid-column-start: 1;
         grid-column-end: 3;
-        @include rwd(600) {
+        @include rwd(750) {
             grid-column-start: 1;
             grid-row-start: 11;
             grid-row-end: 12;
@@ -1529,7 +1545,7 @@ body {
                 line-height: 20px;
                 font-size: 14px;
                 font-weight: bold;
-                &+p {
+                & + p {
                     margin-top: 5px;
                 }
             }
@@ -1539,7 +1555,7 @@ body {
                 line-height: 18px;
                 font-size: 12px;
                 color: #ccc;
-                &+p {
+                & + p {
                     margin-top: 15px;
                 }
             }
@@ -1567,83 +1583,85 @@ body {
 }
 
 // promoPage(推廣頁)
-.promoPage{
-    .promoList{
+.promoPage {
+    .promoList {
         max-width: 800px;
         padding: 400px 5px 0;
         margin: auto;
         background: url(../images/other/promoBanner.webp) no-repeat center top / 100% auto;
-        @include rwd(800){
+        @include rwd(800) {
             padding-top: 50vw;
         }
-        
-        ul{
+
+        ul {
             display: flex;
             flex-wrap: wrap;
-            @include rwd(800){
+            @include rwd(800) {
                 max-width: 550px;
                 margin: auto;
             }
-            @include rwd(490){
+            @include rwd(490) {
                 width: calc(100vw - 20px);
                 overflow: auto;
                 flex-wrap: nowrap;
                 -webkit-overflow-scrolling: touch;
                 scroll-snap-type: x mandatory;
-            }   
+            }
         }
-        li{
+        li {
             width: calc(100% / 3);
             height: auto;
             padding: 5px;
             filter: hue-rotate(90deg);
             cursor: pointer;
-            transition: transform .5s,filter .5s;
-            @include rwd(800){
+            transition:
+                transform 0.5s,
+                filter 0.5s;
+            @include rwd(800) {
                 width: calc(100% / 2);
             }
 
-            @include rwd(490){
+            @include rwd(490) {
                 min-width: 280px;
                 scroll-snap-align: center;
             }
-           
-            @include hover{
-                &:hover{
+
+            @include hover {
+                &:hover {
                     filter: hue-rotate(0);
                     transform: translateY(-4px);
-                    .circle{
-                        &::before{
+                    .circle {
+                        &::before {
                             animation: rotate 2s linear infinite;
                         }
                     }
-                    .card{
-                        .btn{
-                            &::before{
+                    .card {
+                        .btn {
+                            &::before {
                                 animation: rotateReverse 2s linear infinite;
                             }
                         }
                     }
                 }
             }
-            @include phone{
+            @include phone {
                 filter: hue-rotate(0);
                 transform: translateY(-4px);
-                .circle{
-                    &::before{
+                .circle {
+                    &::before {
                         animation: rotate 2s linear infinite;
                     }
                 }
-                .card{
-                    .btn{
-                        &::before{
+                .card {
+                    .btn {
+                        &::before {
                             animation: rotateReverse 2s linear infinite;
                         }
                     }
                 }
             }
         }
-    }  
+    }
 
     .circle {
         height: 100%;
@@ -1661,12 +1679,12 @@ body {
             padding-bottom: 300%;
             margin: auto;
             position: absolute;
-            background-color: #CF4CF6;
+            background-color: #cf4cf6;
             background-image: conic-gradient(transparent, #faeaff, #9525b7, transparent 15%);
             pointer-events: none;
         }
     }
-    .card{
+    .card {
         width: 100%;
         height: 100%;
         padding: 30px 20px;
@@ -1678,28 +1696,119 @@ body {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        .title{
+        .title {
             font-weight: bold;
             color: #eecf69;
         }
-        .theme{
+        .theme {
             margin-bottom: 4px;
             font-size: 22px;
-            color: #FF5FAC
+            color: #ff5fac;
         }
-        .tip{
+        .tip {
             margin: 35px 0;
             font-size: 13px;
         }
-        p+p{
+        p + p {
             margin-top: 2px;
         }
 
-        .btn{
-            @include light_btn(3,40px);
-            &::before{
+        .btn {
+            @include light_btn(3, 40px);
+            &::before {
                 animation: unset;
             }
+        }
+    }
+}
+
+// luckyWheel(幸運輪盤頁)
+.luckyWheel {
+    height: 100%;
+    position: relative;
+    .fullBg {
+        width: 100%;
+        max-width: 1450px;
+        height: 100%;
+        margin: auto;
+        position: fixed;
+        @include pos(tlr, 0);
+        background: url(../images/other/luckyBg.webp) no-repeat center top / 95% auto;
+        opacity: 0.6;
+        @include rwd(1450) {
+            background-size: cover;
+        }
+        z-index: -1;
+    }
+
+    .inner{
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    // 轉盤
+    .turntable {
+        position: relative;
+        &.start {
+            .light {
+                animation: light 2.3s var(--dl) infinite;
+            }
+        }
+        &.end {
+            .light {
+                animation: light2 2s forwards;
+            }
+        }
+        .base {
+            position: relative;
+            z-index: 1;
+        }
+        .wheel {
+            width: 63%;
+            position: absolute;
+            top: 9%;
+            left: 20%;
+            transform: rotate(0deg);
+            animation: rotate 1.5s infinite linear;
+        }
+        .light {
+            width: 8%;
+            height: 8%;
+            background: url(../images/other/lucky_light.webp) no-repeat center / cover;
+            position: absolute;
+            top: var(--t);
+            left: var(--l);
+            z-index: 1;
+            opacity: 0;
+        }
+    }
+
+    .btn{
+        @include static_btn(2);
+        width: 180px;
+    }
+
+    @keyframes light{
+        0%,100%{
+            opacity: 0;
+        }
+        20%{
+            opacity: 1;
+        }
+        45%{
+            opacity: .3;
+        }
+    }
+    
+    @keyframes light2{
+        0%,33.3%,66.4%,100%{
+            opacity: 0;
+        }
+        16.6%,49.8%,83%{
+            opacity: 1;
         }
     }
 }

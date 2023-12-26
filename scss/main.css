@@ -457,7 +457,7 @@ body {
   cursor: pointer;
   display: none;
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 750px) {
   .header .minBar {
     display: flex;
     align-items: center;
@@ -543,7 +543,7 @@ body {
     transform: scaleY(1);
   }
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 750px) {
   .header .hd_tool .item.logout {
     display: none;
   }
@@ -560,7 +560,7 @@ body {
 .header .hd_tool .icon.logout {
   background-image: url(../images/icons/header/logout.webp);
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 750px) {
   .header .hd_tool .icon {
     margin-right: 0;
   }
@@ -573,7 +573,7 @@ body {
   opacity: 0.5;
   transition: 0.5s;
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 750px) {
   .header .hd_tool .txt {
     display: none;
   }
@@ -670,7 +670,7 @@ body {
   align-items: center;
   cursor: pointer;
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 750px) {
   .footer a {
     padding: 10px 5px;
   }
@@ -702,7 +702,7 @@ body {
   font-style: italic;
   transition: 0.3s;
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 750px) {
   .footer p {
     display: none;
   }
@@ -1354,7 +1354,7 @@ body {
   grid-template-columns: 1.3fr 1fr;
   position: relative;
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 750px) {
   .homePage {
     grid-template-columns: 1fr;
   }
@@ -1362,7 +1362,7 @@ body {
 .homePage .marquee {
   background: linear-gradient(0deg, #281e99 40%, #6d61ed);
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 750px) {
   .homePage .marquee {
     background: linear-gradient(0deg, #710801 40%, #ff0f00);
   }
@@ -1399,7 +1399,7 @@ body {
   grid-row-end: 7;
   border-right: 2px solid #494949;
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 750px) {
   .homePage .carousel_group {
     grid-row-start: 2;
     grid-row-end: 3;
@@ -1421,7 +1421,7 @@ body {
   top: 0;
   left: 0;
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 750px) {
   .homePage .gameList {
     grid-row-start: 6;
     grid-row-end: 7;
@@ -1474,11 +1474,11 @@ body {
   background-image: conic-gradient(transparent, #ffeaa5, #d7a501, transparent 15%);
 }
 .homePage .gameList .selGame .btn.on .frame {
-  box-shadow: 0 0 8px #FEC200 inset;
+  box-shadow: 0 0 8px #fec200 inset;
 }
 .homePage .gameList .selGame .btn.on .frame::before {
-  border: 2px solid #FEC200;
-  box-shadow: 0 0 15px #ffeaa5 inset, 0 0 4px #FEC200;
+  border: 2px solid #fec200;
+  box-shadow: 0 0 15px #ffeaa5 inset, 0 0 4px #fec200;
 }
 .homePage .gameList .selGame .btn .frame {
   width: 100%;
@@ -1545,7 +1545,7 @@ body {
     width: 50%;
   }
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 750px) {
   .homePage .gameList .list .item {
     width: 33.3333333333%;
   }
@@ -1607,7 +1607,7 @@ body {
   height: 25%;
   margin: auto;
   border-radius: 8px;
-  background: linear-gradient(30deg, #000, #444345 25%, #130F14 50%);
+  background: linear-gradient(30deg, #000, #444345 25%, #130f14 50%);
   box-shadow: 0 2px 2px #a173a9;
   position: absolute;
   left: 0;
@@ -1671,7 +1671,7 @@ body {
   padding: 5px 5px;
   display: flex;
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 750px) {
   .homePage .accountBtn {
     grid-column-start: 1;
     grid-row-start: 1;
@@ -1736,7 +1736,7 @@ body {
     flex-direction: column;
   }
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 750px) {
   .homePage .assets {
     flex-direction: row;
     grid-column-start: 1;
@@ -1750,7 +1750,8 @@ body {
   }
 }
 .homePage .assets .userMsg {
-  width: 50%;
+  padding: 0 8px;
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1779,9 +1780,9 @@ body {
     display: block;
   }
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 750px) {
   .homePage .assets .userMsg {
-    width: 50%;
+    flex: 1;
     padding-bottom: 0;
     margin-bottom: 0;
   }
@@ -1893,7 +1894,7 @@ body {
     width: 100%;
   }
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 750px) {
   .homePage .assets .operate {
     width: 50%;
   }
@@ -1985,7 +1986,7 @@ body {
 .homePage .assets .operate .arrowBtn + .arrowBtn {
   margin-top: 5px;
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 750px) {
   .homePage .payList {
     grid-column-start: 1;
     grid-row-start: 3;
@@ -1997,7 +1998,7 @@ body {
   display: flex;
   flex-direction: column;
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 750px) {
   .homePage .promo {
     grid-column-start: 1;
     grid-row-start: 5;
@@ -2031,7 +2032,7 @@ body {
     width: 50%;
   }
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 750px) {
   .homePage .promo a {
     width: 25%;
   }
@@ -2242,7 +2243,7 @@ body {
 .homePage .promoCarousel {
   padding: 10px;
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 750px) {
   .homePage .promoCarousel {
     grid-column-start: 1;
     grid-row-start: 8;
@@ -2292,7 +2293,7 @@ body {
 .homePage .txn {
   padding: 10px 10px;
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 750px) {
   .homePage .txn {
     flex-direction: row;
     grid-column-start: 1;
@@ -2308,7 +2309,7 @@ body {
   max-width: 400px;
   margin: auto;
   padding: 15px 10px;
-  border: 4px solid #B950EA;
+  border: 4px solid #b950ea;
   box-shadow: 0 0 10px #fff, 0 0 10px #d689fa inset;
   border-radius: 8px;
 }
@@ -2326,7 +2327,7 @@ body {
   color: #ccc;
 }
 .homePage .txn .list .rm {
-  color: #FF5FAC;
+  color: #ff5fac;
 }
 .homePage .season {
   padding: 30px 10px;
@@ -2334,7 +2335,7 @@ body {
   grid-column-start: 1;
   grid-column-end: 3;
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 750px) {
   .homePage .season {
     padding: 0px 10px 10px;
     flex-direction: row;
@@ -2358,7 +2359,7 @@ body {
   grid-column-start: 1;
   grid-column-end: 3;
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 750px) {
   .homePage .declaration {
     grid-column-start: 1;
     grid-row-start: 11;
@@ -2494,7 +2495,7 @@ body {
   padding-bottom: 300%;
   margin: auto;
   position: absolute;
-  background-color: #CF4CF6;
+  background-color: #cf4cf6;
   background-image: conic-gradient(transparent, #faeaff, #9525b7, transparent 15%);
   pointer-events: none;
 }
@@ -2518,7 +2519,7 @@ body {
 .promoPage .card .theme {
   margin-bottom: 4px;
   font-size: 22px;
-  color: #FF5FAC;
+  color: #ff5fac;
 }
 .promoPage .card .tip {
   margin: 35px 0;
@@ -2574,4 +2575,105 @@ body {
 }
 .promoPage .card .btn::before {
   animation: unset;
+}
+
+.luckyWheel {
+  height: 100%;
+  position: relative;
+}
+.luckyWheel .fullBg {
+  width: 100%;
+  max-width: 1450px;
+  height: 100%;
+  margin: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: url(../images/other/luckyBg.webp) no-repeat center top/95% auto;
+  opacity: 0.6;
+  z-index: -1;
+}
+@media screen and (max-width: 1450px) {
+  .luckyWheel .fullBg {
+    background-size: cover;
+  }
+}
+.luckyWheel .inner {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.luckyWheel .turntable {
+  position: relative;
+}
+.luckyWheel .turntable.start .light {
+  animation: light 2.3s var(--dl) infinite;
+}
+.luckyWheel .turntable.end .light {
+  animation: light2 2s forwards;
+}
+.luckyWheel .turntable .base {
+  position: relative;
+  z-index: 1;
+}
+.luckyWheel .turntable .wheel {
+  width: 63%;
+  position: absolute;
+  top: 9%;
+  left: 20%;
+  transform: rotate(0deg);
+  animation: rotate 1.5s infinite linear;
+}
+.luckyWheel .turntable .light {
+  width: 8%;
+  height: 8%;
+  background: url(../images/other/lucky_light.webp) no-repeat center/cover;
+  position: absolute;
+  top: var(--t);
+  left: var(--l);
+  z-index: 1;
+  opacity: 0;
+}
+.luckyWheel .btn {
+  height: 45px;
+  padding: 0 10px;
+  color: #fff;
+  border-radius: 45px;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: capitalize;
+  font-style: italic;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s;
+  cursor: pointer;
+  background: radial-gradient(circle at 50% -50%, #527c97, #588bab, #361ab9, #110a31);
+  box-shadow: 0px -2px 3px #88bcdd inset, 0 2px 2px #301999;
+  width: 180px;
+}
+.luckyWheel .btn:active {
+  transform: translateY(2px);
+}
+@keyframes light {
+  0%, 100% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  45% {
+    opacity: 0.3;
+  }
+}
+@keyframes light2 {
+  0%, 33.3%, 66.4%, 100% {
+    opacity: 0;
+  }
+  16.6%, 49.8%, 83% {
+    opacity: 1;
+  }
 }/*# sourceMappingURL=main.css.map */

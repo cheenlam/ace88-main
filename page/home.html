@@ -94,7 +94,7 @@
                 </div>
                 <div class="info">
                     <div class="username" v-if="getlogin()">Senangkaya</div>
-                    <div class="balance">RM<span>{{!getlogin()? '0.00' : '100.00'}}</span></div>
+                    <div class="balance">RM<span>{{!getlogin()? '0.00' : '1000.00'}}</span></div>
                 </div>
             </div>
             <div class="minimum">
@@ -335,9 +335,11 @@
                 return indexVue.islogin;
             },
             reGamesHigh() {
-                let boxH = document.querySelector('#carouselHigh').offsetHeight;
-                let winW = document.body.clientWidth;
-                document.querySelector('#gameList').style.paddingTop = winW <= 600 ? '' : `${boxH + 5}px`;
+                if((location.href).includes('home')){
+                    let boxH = document.querySelector('#carouselHigh').offsetHeight;
+                    let winW = document.body.clientWidth;
+                    document.querySelector('#gameList').style.paddingTop = winW <= 750 ? '' : `${boxH + 5}px`;
+                }  
             },
             rebgi(img){
                 return `background-image: url(${img})`;
