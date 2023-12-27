@@ -11,13 +11,24 @@ Router.prototype.refresh = function() {
     // 路由清單
     let routerList = ['home','promotion','refer','vip','chats','withdraw'];
 
+    let urlString = window.location.hash.slice(1);
+    let url = new URL(urlString, window.location.origin);
+    let path = url.pathname;
+    // let searchParams = url.search;
+
+    // console.log('Path:', path.slice(1));
+    // console.log('Search Params:', searchParams.slice(1));
+    
+
     //获取到相应的hash值
-    let index = routerList.indexOf(location.hash.slice(2))
+    // let index = routerList.indexOf(location.hash.slice(2))
+    let index = routerList.indexOf(path.slice(1));
+    
     if (index == -1) {
         this.currentUrl = '/home'
         location.href = "#/home"
     } else {
-        this.currentUrl = location.hash.slice(1) || '/home';
+        this.currentUrl = `/${path.slice(1)}` || '/home';
     }
 
     if (this.currentUrl && this.currentUrl != '/') {

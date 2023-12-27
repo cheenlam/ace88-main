@@ -270,6 +270,15 @@
             }
         },
         mounted() {
+            let urlString = window.location.hash.slice(1);
+            let url = new URL(urlString, window.location.origin);
+            let queryString  = url.search.slice(1);
+            let searchParams = new URLSearchParams(queryString);
+            let queryParams = {};
+            searchParams.forEach((value, key) => {
+                queryParams[key] = value;
+            });
+            this.topNum = Number(queryParams['type']);
         },
     }).mount("#page");
 </script>
