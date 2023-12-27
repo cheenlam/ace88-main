@@ -1,18 +1,18 @@
-<div id="page" class="referPage">
+<div id="page" class="referEarn">
     <div class="topMenu">
-        <ul :style="{'--type':topNum + 1}">
+        <ul :style="{'--type':topNum + 1}" :class="{'full' : topNum == 3}">
             <li v-for="(item,index) in topMenu" :key="index" 
             @click="topNum = index">{{item.txt}}</li>
         </ul>
     </div>
     <div class="referContent">
-        <div class="menu">
+        <div class="referMenu">
             <ul>
                 <li v-for="(item,index) in sideMenu" :key="index" 
                 @click="sideNum = index,clearBank()" :class="{'on':sideNum == index}">{{item.txt}}</li>
             </ul>
         </div>
-        <div class="show">
+        <div class="referShow">
             <!-- userMsg -->
             <div class="userMsg">
                 <div class="inner">
@@ -86,10 +86,10 @@
                 <div class="list">
                     <table>
                         <tr>
-                            <th>BANK NAME</th>
-                            <th>ACCOUNT</th>
-                            <th>PERSONAL NAME</th>
-                            <th>DATE</th>
+                            <th width="25%">BANK NAME</th>
+                            <th width="25%">ACCOUNT</th>
+                            <th width="25%">PERSONAL NAME</th>
+                            <th width="25%">DATE</th>
                         </tr>  
     
                         <!-- no data -->
@@ -107,6 +107,112 @@
                 </div>
             </div>
  
+            <!-- referral -->
+            <div class="referral" v-if="sideNum == 2">
+                <div class="item">
+                    <div class="title">Your Referral Status</div>
+                    <div class="tip">
+                        <p><span>Share your favorite offers to your friends!</span> Both of you get Bonus when your friend sign up using your code below.</p>
+                    </div>
+
+                    <div class="iptShare">
+                        <input type="text">
+                        <div class="btn">Share</div>
+                    </div>
+
+                    <div class="tip">
+                        <p>Share your favorite offers to your friends!</p>
+                        <p>Mission Completed : <span>0</span></p>
+                        <p>Invitation Accepted : <span>0</span></p>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="title">Friend Deposit Rewards</div>
+                    <div class="friendList">
+                        <table>
+                            <tr>
+                                <th>#</th>  
+                                <th width="25%">MEMBER</th>
+                                <th width="25%">DATE</th>
+                                <th width="25%">TOTAL</th>
+                                <th width="25%">DEPOSIT</th>
+                                <th></th>   
+                            </tr>
+                            <!-- no data -->
+                            <tr class="noData">
+                                <td colspan="6">NO RESULT FOUND</td>
+                            </tr>
+                            <!-- list -->
+                            <tr>
+                                <td><span class="num">1</span></td>
+                                <td>Michael Chang</td>
+                                <td>05/17/2023</td>
+                                <td>150.00</td>
+                                <td>132.00</td>
+                                <td><div class="btn">Claim</div></td>
+                            </tr>
+                            <tr>
+                                <td><span class="num">2</span></td>
+                                <td>Michael Chang</td>
+                                <td>05/17/2023</td>
+                                <td>150.00</td>
+                                <td>132.00</td>
+                                <td><div class="btn">Claim</div></td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="title">Transaction Date</div>
+                    <div class="articles">
+                        <ul class="main">
+                            <li>Share your Refer QR Code or Refer Link to your friends to register as our member and earn rewards when they play in ZUES.</li>
+                            <li>
+                                Refer and Earn rewards as below:
+                                <div class="second">
+                                    <div class="bold">Downline Deposit Reward</div>
+                                    <p>You are entitled to claim rewards as below when your downline reached deposit requirements as below:</p>
+
+                                    <div class="rewardList">
+                                        <table>
+                                            <tr>
+                                                <th>Total Demand</th>
+                                                <th>MYR 100</th>
+                                                <th>MYR 300</th>
+                                                <th>MYR 600</th>
+                                            </tr>
+                                            <tr>
+                                                <td>Reward</td>
+                                                <td>MYR 5</td>
+                                                <td>MYR 10</td>
+                                                <td>MYR 15</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+
+                                    <p>Members are required to self-claim these rewards in ZUES Refer and Earn page.</p>
+                                </div>
+                                <div class="second">
+                                    <div class="bold">Downline Profit Sharing</div>
+                                    <p>You are entitled to lifetime profit sharing of 5% from all your downline total losses.</p>
+                                    <p>Members are required to self-claim these rewards in ZUES Refer and Earn page.</p>
+                                    <p>Profit sharing system will automatically update daily at 4.00 pm.</p>
+                                    <p>In situation if your daily Downline Win/Loss resulted in Win, the negative (-) amount of Daily Profit Sharing will be carried forward to the next day.</p>
+                                    <p>Profit sharing system will automatically payout the profit if the Up-To-Date Profit reached minimum of positive (+) MYR 5.</p>
+                                    <p>The Daily Win/Lose will be deducted out all bonuses, rebates, cashbacks taken by downlines before the system calculate the profit sharing.</p>
+                                    <p>This profit sharing is capped at maximum winning of MYR 3,000 at any games. Extra balance will be forfeited after withdrawal.</p>
+                                </div>
+                            </li>
+                            <li>This promotion is restricted to only ONE single free account per individual, household address, email address, telephone number, bank account and IP address.</li>
+                            <li>We reserve the right to amend or terminate this promotion at any time, either for all players or a group/syndicate member at any time and at our sole and absolute discretion.</li>
+                            <li>All ZUES General Term & Condition apply.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -154,7 +260,7 @@
                     bank:this.bankSel[parseInt(Math.random()*this.bankSel.length)],
                     name:name[parseInt(Math.random()*name.length)],
                     number:number,
-                    time:`${yy}-${mm}-${dd}`,
+                    time:`${mm}/${dd}/${yy}`,
                 }
 
                 this.bankList.push(data);
@@ -164,7 +270,6 @@
             }
         },
         mounted() {
-
         },
     }).mount("#page");
 </script>

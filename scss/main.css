@@ -29,6 +29,7 @@ a, a:hover {
 
 * {
   font-family: Open, Tahoma, Arial, Helvetica, sans-serif;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   -webkit-touch-callout: none;
   -webkit-text-size-adjust: none;
@@ -58,6 +59,7 @@ textarea {
   font-family: "Helvetica", sans-serif;
   -webkit-appearance: none;
   -moz-appearance: none;
+  -ms-appearance: none;
   appearance: none;
 }
 
@@ -154,6 +156,7 @@ img {
   display: block;
   -webkit-user-select: none;
   -moz-user-select: none;
+  -ms-user-select: none;
   user-select: none;
 }
 .swipslider.min {
@@ -172,6 +175,7 @@ img {
   height: 100%;
   white-space: nowrap;
   font-size: 0;
+  -webkit-transform: translateX(0);
   transform: translateX(0);
   position: absolute;
   bottom: 0;
@@ -196,6 +200,7 @@ img {
   position: absolute;
   top: 50%;
   left: 50%;
+  -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   max-height: 100%;
   max-width: 100%;
@@ -203,6 +208,7 @@ img {
   margin-right: auto;
   -webkit-user-select: none;
   -moz-user-select: none;
+  -ms-user-select: none;
   user-select: none;
 }
 
@@ -218,6 +224,7 @@ img {
   font-weight: bolder;
   color: rgba(160, 160, 160, 0.53);
   top: 50%;
+  -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
   background-color: rgba(255, 255, 255, 0);
   border-radius: 50%;
@@ -226,6 +233,7 @@ img {
   cursor: pointer;
   -webkit-user-select: none;
   -moz-user-select: none;
+  -ms-user-select: none;
   user-select: none;
   display: none;
 }
@@ -297,6 +305,7 @@ img {
   display: block;
   -webkit-user-select: none;
   -moz-user-select: none;
+  -ms-user-select: none;
   user-select: none;
 }
 @media screen and (max-width: 1050px) {
@@ -348,9 +357,7 @@ img {
 }
 
 body {
-  -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
+  user-select: none;
   background: linear-gradient(90deg, #000, #1b062e, #000, #000 75%, #1c0c34, #000);
   color: #fff;
 }
@@ -594,7 +601,7 @@ body {
   opacity: 0.4;
   transition: 0.5s;
 }
-@media (pointer: coarse), (-moz-touch-enabled: 1), screen and (pointer: fine) and (-webkit-min-device-pixel-ratio: 2) and (max-width: 1023px), screen and (pointer: fine) and (min-resolution: 2dppx) and (max-width: 1023px) {
+@media (pointer: coarse), (-moz-touch-enabled: 1), screen and (pointer: fine) and (min-resolution: 2dppx) and (max-width: 1023px) {
   .header .hd_tool .langList li {
     opacity: 1;
   }
@@ -1466,7 +1473,7 @@ body {
   padding-bottom: 300%;
   margin: auto;
   position: absolute;
-  background-image: conic-gradient(transparent, #ccc, #999, transparent 15%);
+  background-image: conic-gradient(transparent, #c377e6, #882eb1, transparent 15%);
   animation: rotate 2s linear infinite;
 }
 .homePage .gameList .selGame .btn.on::before {
@@ -1499,7 +1506,7 @@ body {
   bottom: 0;
   right: 0;
   left: 0;
-  border: 2px solid #fff;
+  border: 2px solid #ddb1f1;
   box-shadow: 0 0 15px #fff inset;
 }
 .homePage .gameList .selGame .btn .icon {
@@ -1849,16 +1856,14 @@ body {
   font-size: 12px;
   font-weight: bold;
   background: linear-gradient(25deg, #6954bf, #c5b7ff, #6954bf);
-  -webkit-background-clip: text;
-          background-clip: text;
+  background-clip: text;
   color: transparent;
 }
 .homePage .assets .userMsg .balance {
   font-size: 24px;
   font-weight: bold;
   background: linear-gradient(25deg, #ffff8a, #ba5733 40%, #fafab1);
-  -webkit-background-clip: text;
-          background-clip: text;
+  background-clip: text;
   color: transparent;
 }
 .homePage .assets .userMsg .balance span {
@@ -1916,8 +1921,7 @@ body {
   position: relative;
   overflow: hidden;
   cursor: pointer;
-  -webkit-clip-path: polygon(20% 0%, 100% 0%, 100% 100%, 20% 100%, 8% 50%);
-          clip-path: polygon(20% 0%, 100% 0%, 100% 100%, 20% 100%, 8% 50%);
+  clip-path: polygon(20% 0%, 100% 0%, 100% 100%, 20% 100%, 8% 50%);
   background-image: linear-gradient(90deg, #eee, #8d671d, #bd9a3b, transparent 80%);
 }
 .homePage .assets .operate .arrowBtn:nth-child(odd) .inner {
@@ -1941,8 +1945,7 @@ body {
 .homePage .assets .operate .arrowBtn:nth-child(odd) .inner {
   padding: 8px 5px 8px 22%;
   justify-content: left;
-  -webkit-clip-path: polygon(20% 0%, 100% 0%, 100% 100%, 20% 100%, 9% 50%);
-          clip-path: polygon(20% 0%, 100% 0%, 100% 100%, 20% 100%, 9% 50%);
+  clip-path: polygon(20% 0%, 100% 0%, 100% 100%, 20% 100%, 9% 50%);
   background: linear-gradient(90deg, #5544bd, #221554 80%, transparent);
 }
 .homePage .assets .operate .arrowBtn:nth-child(odd) .icon {
@@ -1955,8 +1958,7 @@ body {
   position: relative;
   overflow: hidden;
   cursor: pointer;
-  -webkit-clip-path: polygon(0% 0%, 88% 0%, 100% 50%, 88% 100%, 0% 100%);
-          clip-path: polygon(0% 0%, 88% 0%, 100% 50%, 88% 100%, 0% 100%);
+  clip-path: polygon(0% 0%, 88% 0%, 100% 50%, 88% 100%, 0% 100%);
   background-image: linear-gradient(-90deg, #eee, #8d671d, #bd9a3b, transparent 80%);
 }
 .homePage .assets .operate .arrowBtn:nth-child(even) .inner {
@@ -1980,8 +1982,7 @@ body {
 .homePage .assets .operate .arrowBtn:nth-child(even) .inner {
   padding: 8px 14% 8px 5px;
   justify-content: right;
-  -webkit-clip-path: polygon(0% 0%, 88% 0%, 99% 50%, 88% 100%, 0% 100%);
-          clip-path: polygon(0% 0%, 88% 0%, 99% 50%, 88% 100%, 0% 100%);
+  clip-path: polygon(0% 0%, 88% 0%, 99% 50%, 88% 100%, 0% 100%);
   background: linear-gradient(-90deg, #5544bd, #221554 80%, transparent);
 }
 .homePage .assets .operate .arrowBtn:nth-child(even) .icon {
@@ -2447,7 +2448,7 @@ body {
   width: 33.3333333333%;
   height: auto;
   padding: 5px;
-  filter: hue-rotate(90deg);
+  filter: grayscale(1);
   cursor: pointer;
   transition: transform 0.5s, filter 0.5s;
 }
@@ -2474,9 +2475,10 @@ body {
     animation: rotateReverse 2s linear infinite;
   }
 }
-@media (pointer: coarse), (-moz-touch-enabled: 1), screen and (pointer: fine) and (-webkit-min-device-pixel-ratio: 2) and (max-width: 1023px), screen and (pointer: fine) and (min-resolution: 2dppx) and (max-width: 1023px) {
+@media (pointer: coarse), (-moz-touch-enabled: 1), screen and (pointer: fine) and (min-resolution: 2dppx) and (max-width: 1023px) {
   .promoPage .promoList li {
     filter: hue-rotate(0);
+    filter: grayscale(0);
     transform: translateY(-4px);
   }
   .promoPage .promoList li .circle::before {
@@ -2737,10 +2739,10 @@ body {
   }
 }
 
-.referPage {
+.referEarn {
   padding: 10px;
 }
-.referPage .topMenu {
+.referEarn .topMenu {
   margin-bottom: 20px;
   border-radius: 5px;
   background: linear-gradient(45deg, #505050, #1f1f1f);
@@ -2748,16 +2750,19 @@ body {
   overflow: hidden;
 }
 @media screen and (max-width: 750px) {
-  .referPage .topMenu {
+  .referEarn .topMenu {
     margin-bottom: 10px;
   }
 }
-.referPage .topMenu ul {
+.referEarn .topMenu ul {
   display: flex;
   background: linear-gradient(90deg, #63066b, #a007ae 80%, transparent) no-repeat center left/calc(var(--type) * 25%);
   transition: 0.5s;
 }
-.referPage .topMenu li {
+.referEarn .topMenu ul.full {
+  background: linear-gradient(90deg, #63066b, #a007ae 80%, #47034d) no-repeat center left/calc(var(--type) * 25%);
+}
+.referEarn .topMenu li {
   width: 25%;
   height: 45px;
   padding: 0 10px;
@@ -2767,48 +2772,48 @@ body {
   cursor: pointer;
   font-size: 14px;
 }
-.referPage .referContent {
+.referContent {
   display: flex;
   justify-content: center;
 }
 @media screen and (max-width: 750px) {
-  .referPage .referContent {
+  .referContent {
     flex-direction: column;
   }
 }
-.referPage .referContent .menu {
+.referMenu {
   margin-right: 10px;
   padding: 10px;
   flex-shrink: 0;
 }
 @media screen and (max-width: 750px) {
-  .referPage .referContent .menu {
+  .referMenu {
     padding: 0;
     margin-right: 0;
   }
 }
-@media screen and (max-width: 750px) and (pointer: coarse), screen and (max-width: 750px) and (-moz-touch-enabled: 1), screen and (max-width: 750px) and (pointer: fine) and (-webkit-min-device-pixel-ratio: 2) and (max-width: 1023px), screen and (max-width: 750px) and (pointer: fine) and (min-resolution: 2dppx) and (max-width: 1023px) {
-  .referPage .referContent .menu {
+@media screen and (max-width: 750px) and (pointer: coarse), screen and (max-width: 750px) and (-moz-touch-enabled: 1), screen and (max-width: 750px) and (pointer: fine) and (min-resolution: 2dppx) and (max-width: 1023px) {
+  .referMenu {
     width: calc(100vw - 20px);
     overflow: scroll;
   }
 }
-.referPage .referContent .menu ul {
+.referMenu ul {
   padding-bottom: 10px;
 }
 @media screen and (max-width: 750px) {
-  .referPage .referContent .menu ul {
+  .referMenu ul {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
   }
 }
-@media screen and (max-width: 750px) and (pointer: coarse), screen and (max-width: 750px) and (-moz-touch-enabled: 1), screen and (max-width: 750px) and (pointer: fine) and (-webkit-min-device-pixel-ratio: 2) and (max-width: 1023px), screen and (max-width: 750px) and (pointer: fine) and (min-resolution: 2dppx) and (max-width: 1023px) {
-  .referPage .referContent .menu ul {
+@media screen and (max-width: 750px) and (pointer: coarse), screen and (max-width: 750px) and (-moz-touch-enabled: 1), screen and (max-width: 750px) and (pointer: fine) and (min-resolution: 2dppx) and (max-width: 1023px) {
+  .referMenu ul {
     flex-wrap: nowrap;
   }
 }
-.referPage .referContent .menu li {
+.referMenu li {
   height: 40px;
   padding: 0 10px;
   display: flex;
@@ -2819,48 +2824,49 @@ body {
   transition: 0.5s;
 }
 @media (any-hover: hover) {
-  .referPage .referContent .menu li:hover {
+  .referMenu li:hover {
     color: #fff;
   }
 }
-.referPage .referContent .menu li.on {
+.referMenu li.on {
   color: #fff;
 }
 @media screen and (max-width: 750px) {
-  .referPage .referContent .menu li {
+  .referMenu li {
     width: calc(50% - 4px);
     justify-content: center;
   }
-  .referPage .referContent .menu li.on {
+  .referMenu li.on {
     border-radius: 3px;
     background: linear-gradient(0deg, #51116e, #7e31ca 70%, transparent) no-repeat center left/cover;
     box-shadow: 0 -2px 2px #a05ae6 inset;
   }
 }
-@media screen and (max-width: 750px) and (pointer: coarse), screen and (max-width: 750px) and (-moz-touch-enabled: 1), screen and (max-width: 750px) and (pointer: fine) and (-webkit-min-device-pixel-ratio: 2) and (max-width: 1023px), screen and (max-width: 750px) and (pointer: fine) and (min-resolution: 2dppx) and (max-width: 1023px) {
-  .referPage .referContent .menu li {
+@media screen and (max-width: 750px) and (pointer: coarse), screen and (max-width: 750px) and (-moz-touch-enabled: 1), screen and (max-width: 750px) and (pointer: fine) and (min-resolution: 2dppx) and (max-width: 1023px) {
+  .referMenu li {
     padding: 0 25px;
     white-space: nowrap;
   }
 }
-.referPage .referContent .show {
+
+.referShow {
   width: 100%;
   max-width: 700px;
   margin: 0 auto;
   padding: 10px;
 }
-.referPage .referContent .show .userMsg {
+.referShow .userMsg {
   margin-bottom: 25px;
   display: flex;
 }
-.referPage .referContent .show .userMsg .inner {
+.referShow .userMsg .inner {
   padding-right: 50px;
   border-radius: 55px 0 0 55px;
   display: flex;
   align-items: center;
   background: linear-gradient(90deg, #2d0241, #7807ae, transparent);
 }
-.referPage .referContent .show .userMsg .avatar {
+.referShow .userMsg .avatar {
   width: 55px;
   height: 55px;
   padding: 1px;
@@ -2868,7 +2874,7 @@ body {
   border-radius: 50%;
   box-shadow: 0 0 5px #fff;
 }
-.referPage .referContent .show .userMsg .avatar .frame {
+.referShow .userMsg .avatar .frame {
   width: 100%;
   height: 100%;
   border-radius: 50%;
@@ -2880,7 +2886,7 @@ body {
   position: relative;
   box-shadow: 0 0 8px #d9b3e0;
 }
-.referPage .referContent .show .userMsg .avatar .frame::before {
+.referShow .userMsg .avatar .frame::before {
   content: "";
   width: 200%;
   height: 0;
@@ -2891,46 +2897,45 @@ body {
   background-image: conic-gradient(transparent, #fff, #999, transparent 30%);
   animation: rotate 1.5s linear infinite;
 }
-.referPage .referContent .show .userMsg .avatar .frame .pic {
+.referShow .userMsg .avatar .frame .pic {
   width: 100%;
   position: relative;
   border-radius: 50%;
   z-index: 1;
   overflow: hidden;
 }
-.referPage .referContent .show .userMsg .info {
+.referShow .userMsg .info {
   padding-left: 10px;
   font-style: italic;
   font-weight: bold;
 }
-.referPage .referContent .show .userMsg .name {
+.referShow .userMsg .name {
   margin-bottom: 2px;
   font-size: 14px;
 }
-.referPage .referContent .show .userMsg .grade {
+.referShow .userMsg .grade {
   font-size: 12px;
   background: linear-gradient(25deg, #ffff8a, #ba5733 40%, #fafab1);
-  -webkit-background-clip: text;
-          background-clip: text;
+  background-clip: text;
   color: transparent;
 }
-.referPage .referContent .show .intBox {
+.referShow .intBox {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 15px 10px;
 }
-.referPage .referContent .show .intBox label {
+.referShow .intBox label {
   width: calc(50% - 5px);
 }
-.referPage .referContent .show .intBox label.full {
+.referShow .intBox label.full {
   width: 100%;
 }
-.referPage .referContent .show .intBox p {
+.referShow .intBox p {
   padding-bottom: 2px;
   font-size: 14px;
 }
-.referPage .referContent .show .intBox input, .referPage .referContent .show .intBox select {
+.referShow .intBox input, .referShow .intBox select {
   background: transparent;
   outline: none;
   border: none;
@@ -2942,10 +2947,10 @@ body {
   opacity: 0.5;
   transition: 0.5s;
 }
-.referPage .referContent .show .intBox input:focus, .referPage .referContent .show .intBox select:focus {
+.referShow .intBox input:focus, .referShow .intBox select:focus {
   opacity: 1;
 }
-.referPage .referContent .show .intBox .btn {
+.referShow .intBox .btn {
   height: 45px;
   padding: 0 10px;
   color: #fff;
@@ -2965,19 +2970,19 @@ body {
   max-width: 180px;
   margin: 40px auto 0;
 }
-.referPage .referContent .show .intBox .btn:active {
+.referShow .intBox .btn:active {
   transform: translateY(2px);
 }
-.referPage .referContent .show .bankOptions {
+.referShow .bankOptions {
   padding-top: 30px;
 }
-.referPage .referContent .show .bankOptions .title {
+.referShow .bankOptions .title {
   margin-bottom: 10px;
   font-size: 14px;
   font-weight: bold;
 }
 @media screen and (max-width: 550px) {
-  .referPage .referContent .show .bankOptions .title {
+  .referShow .bankOptions .title {
     padding: 10px;
     margin-bottom: 0;
     border-radius: 5px 5px 0 0;
@@ -2986,47 +2991,47 @@ body {
     font-size: 13px;
   }
 }
-.referPage .referContent .show .bankOptions table {
+.referShow .bankOptions table {
   width: 100%;
   border-radius: 5px;
   overflow: hidden;
   font-size: 12px;
 }
 @media screen and (max-width: 550px) {
-  .referPage .referContent .show .bankOptions table {
+  .referShow .bankOptions table {
     border-radius: 0 0 5px 5px;
   }
 }
-.referPage .referContent .show .bankOptions tr:nth-child(even) {
+.referShow .bankOptions tr:nth-child(even) {
   background-color: #fff;
 }
-.referPage .referContent .show .bankOptions tr:nth-child(odd) {
+.referShow .bankOptions tr:nth-child(odd) {
   background-color: #ddd;
 }
 @media screen and (max-width: 550px) {
-  .referPage .referContent .show .bankOptions tr {
+  .referShow .bankOptions tr {
     display: block;
     margin-bottom: 4px;
   }
 }
-.referPage .referContent .show .bankOptions th {
+.referShow .bankOptions th {
   padding: 15px 5px;
   background-color: #4839F7;
   background: linear-gradient(0deg, #09006b, #5f53eb);
   font-weight: bold;
 }
 @media screen and (max-width: 550px) {
-  .referPage .referContent .show .bankOptions th {
+  .referShow .bankOptions th {
     display: none;
   }
 }
-.referPage .referContent .show .bankOptions td {
+.referShow .bankOptions td {
   padding: 15px 5px;
   text-align: center;
   color: #333;
 }
 @media screen and (max-width: 550px) {
-  .referPage .referContent .show .bankOptions td {
+  .referShow .bankOptions td {
     width: 100%;
     display: flex;
     align-items: center;
@@ -3035,15 +3040,15 @@ body {
     text-align: right;
     border-bottom: 1px solid #aaa;
   }
-  .referPage .referContent .show .bankOptions td + td {
+  .referShow .bankOptions td + td {
     border-top: 1px solid #aaa;
   }
 }
-.referPage .referContent .show .bankOptions td span {
+.referShow .bankOptions td span {
   display: none;
 }
 @media screen and (max-width: 550px) {
-  .referPage .referContent .show .bankOptions td span {
+  .referShow .bankOptions td span {
     width: 140px;
     height: 100%;
     padding: 10px 5px;
@@ -3051,18 +3056,168 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(0deg, #09006b, #5f53eb);
+    background: linear-gradient(0deg, #000, #5f53eb);
     color: #fff;
     flex-shrink: 0;
   }
 }
 @media screen and (max-width: 550px) {
-  .referPage .referContent .show .bankOptions .noData {
+  .referShow .bankOptions .noData {
     height: 40px;
   }
 }
-.referPage .referContent .show .bankOptions .noData td {
+.referShow .bankOptions .noData td {
   height: 100%;
   border: none;
   justify-content: center;
+}
+.referShow .referral .item {
+  padding-bottom: 30px;
+}
+.referShow .referral .title {
+  padding-bottom: 8px;
+  font-size: 16px;
+  font-weight: bold;
+}
+.referShow .referral .tip {
+  font-size: 14px;
+}
+.referShow .referral .tip p {
+  line-height: 18px;
+}
+.referShow .referral .tip p + p {
+  margin-top: 4px;
+}
+.referShow .referral .tip span {
+  color: #FFC123;
+}
+.referShow .referral .iptShare {
+  margin: 20px 0;
+  display: flex;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 5px 35px 35px 5px;
+}
+.referShow .referral .iptShare input {
+  background: transparent;
+  outline: none;
+  border: none;
+  width: 100%;
+  padding: 0 10px;
+}
+.referShow .referral .iptShare .btn {
+  height: 45px;
+  padding: 0 10px;
+  color: #fff;
+  border-radius: 45px;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: capitalize;
+  font-style: italic;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s;
+  cursor: pointer;
+  background: radial-gradient(circle at 50% -50%, #8b1818, #b75959, #891c1c, #770e0e);
+  box-shadow: 0px -2px 3px #e593aa inset, 0 2px 2px #610707;
+  padding: 0 30px;
+  flex-shrink: 0;
+}
+.referShow .referral .iptShare .btn:active {
+  transform: translateY(2px);
+}
+.referShow .referral .articles .main {
+  padding-left: 18px;
+}
+.referShow .referral .articles .main > li {
+  list-style: decimal;
+  font-size: 14px;
+  line-height: 20px;
+}
+.referShow .referral .articles .main > li + li {
+  margin-top: 5px;
+}
+.referShow .referral .articles .second {
+  padding-bottom: 20px;
+  font-size: 12px;
+}
+.referShow .referral .articles .second p::before {
+  content: "-";
+  padding-right: 5px;
+}
+.referShow .referral .articles .bold {
+  font-weight: bold;
+}
+.referShow .referral .friendList table {
+  width: 100%;
+  font-size: 12px;
+  border-radius: 3px;
+  overflow: hidden;
+}
+.referShow .referral .friendList tr:nth-child(even) {
+  background-color: #fff;
+}
+.referShow .referral .friendList tr:nth-child(odd) {
+  background-color: #ddd;
+}
+.referShow .referral .friendList th {
+  padding: 10px 5px;
+  background: linear-gradient(0deg, #09006b, #5f53eb);
+  font-weight: bold;
+}
+.referShow .referral .friendList td {
+  padding: 8px 5px;
+  text-align: center;
+  color: #333;
+}
+.referShow .referral .friendList .num {
+  width: 25px;
+  display: inline-block;
+  flex-shrink: 0;
+}
+.referShow .referral .friendList .btn {
+  height: 45px;
+  padding: 0 10px;
+  color: #fff;
+  border-radius: 35px;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: capitalize;
+  font-style: italic;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s;
+  cursor: pointer;
+  background: radial-gradient(circle at 50% -50%, #527c97, #588bab, #361ab9, #110a31);
+  box-shadow: 0px -2px 3px #88bcdd inset, 0 2px 2px #301999;
+  height: 35px;
+  margin: 0 8px;
+  padding: 0 20px;
+  font-size: 12px;
+  flex-shrink: 0;
+}
+.referShow .referral .friendList .btn:active {
+  transform: translateY(2px);
+}
+.referShow .referral .rewardList {
+  margin: 20px 0;
+}
+.referShow .referral .rewardList table {
+  width: 100%;
+  color: #fff;
+  border-radius: 3px;
+  overflow: hidden;
+}
+.referShow .referral .rewardList th, .referShow .referral .rewardList td {
+  padding: 10px 5px;
+  text-align: center;
+}
+.referShow .referral .rewardList th {
+  background: linear-gradient(0deg, #5b0808, #b54a4a);
+  font-weight: bold;
+}
+.referShow .referral .rewardList td {
+  background-color: #fff;
+  color: #333;
 }/*# sourceMappingURL=main.css.map */
