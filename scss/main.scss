@@ -1742,6 +1742,7 @@ body {
     }
 
     .inner{
+        padding-top: 20px;
         height: 100%;
         display: flex;
         flex-direction: column;
@@ -1752,12 +1753,12 @@ body {
     // 轉盤
     .turntable {
         position: relative;
-        &.start {
+        &.turn {
             .light {
                 animation: light 2.3s var(--dl) infinite;
             }
         }
-        &.end {
+        &.flash {
             .light {
                 animation: light2 2s forwards;
             }
@@ -1767,12 +1768,10 @@ body {
             z-index: 1;
         }
         .wheel {
-            width: 63%;
+            width: 81%;
             position: absolute;
-            top: 9%;
-            left: 20%;
-            transform: rotate(0deg);
-            animation: rotate 1.5s infinite linear;
+            top: 4.3%;
+            left: 11.4%;
         }
         .light {
             width: 8%;
@@ -1786,10 +1785,39 @@ body {
         }
     }
 
-    .btn{
-        @include static_btn(2);
-        width: 180px;
+    .spinBtn{
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .btn{
+            @include light_btn(5,45px);
+            min-width: 180px;
+            height: 45px;
+            opacity: .3;
+            
+            &::before{
+                animation: unset;
+            }
+            &.canturn{
+                opacity: 1;
+                &::before{
+                    animation: rotateReverse 2s linear infinite;
+                } 
+            }
+        }
+        .tip{
+            padding-top: 4px;
+            font-size: 13px;
+            span{
+                padding-right: 3px;
+                font-size: 15px;
+                color: #fec200;
+                font-weight: bold;
+            }
+        }
     }
+   
 
     @keyframes light{
         0%,100%{

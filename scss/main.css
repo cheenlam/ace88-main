@@ -29,7 +29,6 @@ a, a:hover {
 
 * {
   font-family: Open, Tahoma, Arial, Helvetica, sans-serif;
-  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   -webkit-touch-callout: none;
   -webkit-text-size-adjust: none;
@@ -59,7 +58,6 @@ textarea {
   font-family: "Helvetica", sans-serif;
   -webkit-appearance: none;
   -moz-appearance: none;
-  -ms-appearance: none;
   appearance: none;
 }
 
@@ -156,7 +154,6 @@ img {
   display: block;
   -webkit-user-select: none;
   -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
 }
 .swipslider.min {
@@ -175,7 +172,6 @@ img {
   height: 100%;
   white-space: nowrap;
   font-size: 0;
-  -webkit-transform: translateX(0);
   transform: translateX(0);
   position: absolute;
   bottom: 0;
@@ -200,7 +196,6 @@ img {
   position: absolute;
   top: 50%;
   left: 50%;
-  -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   max-height: 100%;
   max-width: 100%;
@@ -208,7 +203,6 @@ img {
   margin-right: auto;
   -webkit-user-select: none;
   -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
 }
 
@@ -224,7 +218,6 @@ img {
   font-weight: bolder;
   color: rgba(160, 160, 160, 0.53);
   top: 50%;
-  -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
   background-color: rgba(255, 255, 255, 0);
   border-radius: 50%;
@@ -233,7 +226,6 @@ img {
   cursor: pointer;
   -webkit-user-select: none;
   -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   display: none;
 }
@@ -305,7 +297,6 @@ img {
   display: block;
   -webkit-user-select: none;
   -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
 }
 @media screen and (max-width: 1050px) {
@@ -357,7 +348,9 @@ img {
 }
 
 body {
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
   background: linear-gradient(90deg, #000, #1b062e, #000, #000 75%, #1c0c34, #000);
   color: #fff;
 }
@@ -601,7 +594,7 @@ body {
   opacity: 0.4;
   transition: 0.5s;
 }
-@media (pointer: coarse), (-moz-touch-enabled: 1), screen and (pointer: fine) and (min-resolution: 2dppx) and (max-width: 1023px) {
+@media (pointer: coarse), (-moz-touch-enabled: 1), screen and (pointer: fine) and (-webkit-min-device-pixel-ratio: 2) and (max-width: 1023px), screen and (pointer: fine) and (min-resolution: 2dppx) and (max-width: 1023px) {
   .header .hd_tool .langList li {
     opacity: 1;
   }
@@ -1850,14 +1843,16 @@ body {
   font-size: 12px;
   font-weight: bold;
   background: linear-gradient(25deg, #6954bf, #c5b7ff, #6954bf);
-  background-clip: text;
+  -webkit-background-clip: text;
+          background-clip: text;
   color: transparent;
 }
 .homePage .assets .userMsg .balance {
   font-size: 24px;
   font-weight: bold;
   background: linear-gradient(25deg, #ffff8a, #ba5733 40%, #fafab1);
-  background-clip: text;
+  -webkit-background-clip: text;
+          background-clip: text;
   color: transparent;
 }
 .homePage .assets .userMsg .balance span {
@@ -1915,7 +1910,8 @@ body {
   position: relative;
   overflow: hidden;
   cursor: pointer;
-  clip-path: polygon(20% 0%, 100% 0%, 100% 100%, 20% 100%, 8% 50%);
+  -webkit-clip-path: polygon(20% 0%, 100% 0%, 100% 100%, 20% 100%, 8% 50%);
+          clip-path: polygon(20% 0%, 100% 0%, 100% 100%, 20% 100%, 8% 50%);
   background-image: linear-gradient(90deg, #eee, #8d671d, #bd9a3b, transparent 80%);
 }
 .homePage .assets .operate .arrowBtn:nth-child(odd) .inner {
@@ -1939,7 +1935,8 @@ body {
 .homePage .assets .operate .arrowBtn:nth-child(odd) .inner {
   padding: 8px 5px 8px 22%;
   justify-content: left;
-  clip-path: polygon(20% 0%, 100% 0%, 100% 100%, 20% 100%, 9% 50%);
+  -webkit-clip-path: polygon(20% 0%, 100% 0%, 100% 100%, 20% 100%, 9% 50%);
+          clip-path: polygon(20% 0%, 100% 0%, 100% 100%, 20% 100%, 9% 50%);
   background: linear-gradient(90deg, #5544bd, #221554 80%, transparent);
 }
 .homePage .assets .operate .arrowBtn:nth-child(odd) .icon {
@@ -1952,7 +1949,8 @@ body {
   position: relative;
   overflow: hidden;
   cursor: pointer;
-  clip-path: polygon(0% 0%, 88% 0%, 100% 50%, 88% 100%, 0% 100%);
+  -webkit-clip-path: polygon(0% 0%, 88% 0%, 100% 50%, 88% 100%, 0% 100%);
+          clip-path: polygon(0% 0%, 88% 0%, 100% 50%, 88% 100%, 0% 100%);
   background-image: linear-gradient(-90deg, #eee, #8d671d, #bd9a3b, transparent 80%);
 }
 .homePage .assets .operate .arrowBtn:nth-child(even) .inner {
@@ -1976,7 +1974,8 @@ body {
 .homePage .assets .operate .arrowBtn:nth-child(even) .inner {
   padding: 8px 14% 8px 5px;
   justify-content: right;
-  clip-path: polygon(0% 0%, 88% 0%, 99% 50%, 88% 100%, 0% 100%);
+  -webkit-clip-path: polygon(0% 0%, 88% 0%, 99% 50%, 88% 100%, 0% 100%);
+          clip-path: polygon(0% 0%, 88% 0%, 99% 50%, 88% 100%, 0% 100%);
   background: linear-gradient(-90deg, #5544bd, #221554 80%, transparent);
 }
 .homePage .assets .operate .arrowBtn:nth-child(even) .icon {
@@ -2466,7 +2465,7 @@ body {
     animation: rotateReverse 2s linear infinite;
   }
 }
-@media (pointer: coarse), (-moz-touch-enabled: 1), screen and (pointer: fine) and (min-resolution: 2dppx) and (max-width: 1023px) {
+@media (pointer: coarse), (-moz-touch-enabled: 1), screen and (pointer: fine) and (-webkit-min-device-pixel-ratio: 2) and (max-width: 1023px), screen and (pointer: fine) and (min-resolution: 2dppx) and (max-width: 1023px) {
   .promoPage .promoList li {
     filter: hue-rotate(0);
     transform: translateY(-4px);
@@ -2600,6 +2599,7 @@ body {
   }
 }
 .luckyWheel .inner {
+  padding-top: 20px;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -2609,10 +2609,10 @@ body {
 .luckyWheel .turntable {
   position: relative;
 }
-.luckyWheel .turntable.start .light {
+.luckyWheel .turntable.turn .light {
   animation: light 2.3s var(--dl) infinite;
 }
-.luckyWheel .turntable.end .light {
+.luckyWheel .turntable.flash .light {
   animation: light2 2s forwards;
 }
 .luckyWheel .turntable .base {
@@ -2620,12 +2620,10 @@ body {
   z-index: 1;
 }
 .luckyWheel .turntable .wheel {
-  width: 63%;
+  width: 81%;
   position: absolute;
-  top: 9%;
-  left: 20%;
-  transform: rotate(0deg);
-  animation: rotate 1.5s infinite linear;
+  top: 4.3%;
+  left: 11.4%;
 }
 .luckyWheel .turntable .light {
   width: 8%;
@@ -2637,26 +2635,78 @@ body {
   z-index: 1;
   opacity: 0;
 }
-.luckyWheel .btn {
-  height: 45px;
-  padding: 0 10px;
-  color: #fff;
-  border-radius: 45px;
-  font-size: 14px;
-  font-weight: 600;
-  text-transform: capitalize;
-  font-style: italic;
+.luckyWheel .spinBtn {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.luckyWheel .spinBtn .btn {
+  padding: 3px;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+  position: relative;
+  border-radius: 45px;
   transition: 0.3s;
   cursor: pointer;
-  background: radial-gradient(circle at 50% -50%, #527c97, #588bab, #361ab9, #110a31);
-  box-shadow: 0px -2px 3px #88bcdd inset, 0 2px 2px #301999;
-  width: 180px;
+  min-width: 180px;
+  height: 45px;
+  opacity: 0.3;
 }
-.luckyWheel .btn:active {
+.luckyWheel .spinBtn .btn:active {
   transform: translateY(2px);
+}
+.luckyWheel .spinBtn .btn::before {
+  content: "";
+  width: 200%;
+  height: 0;
+  padding-bottom: 300%;
+  margin: auto;
+  position: absolute;
+  background-image: conic-gradient(transparent, #fff, #999, transparent 30%);
+  animation: rotateReverse 2s linear infinite;
+}
+.luckyWheel .spinBtn .btn .frame {
+  width: 100%;
+  padding: 10px;
+  border-radius: 45px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: 0.3s;
+  position: relative;
+}
+.luckyWheel .spinBtn .btn p {
+  font-size: 14px;
+  font-weight: bold;
+}
+.luckyWheel .spinBtn .btn::before {
+  background-color: #762689;
+}
+.luckyWheel .spinBtn .btn .frame {
+  background: radial-gradient(circle at 50% -57%, #46168b 12%, #854dd5, #631fc3, #270853);
+  box-shadow: 0px -2px 3px #a15ffd inset, 0 2px 2px #360d71;
+}
+.luckyWheel .spinBtn .btn::before {
+  animation: unset;
+}
+.luckyWheel .spinBtn .btn.canturn {
+  opacity: 1;
+}
+.luckyWheel .spinBtn .btn.canturn::before {
+  animation: rotateReverse 2s linear infinite;
+}
+.luckyWheel .spinBtn .tip {
+  padding-top: 4px;
+  font-size: 13px;
+}
+.luckyWheel .spinBtn .tip span {
+  padding-right: 3px;
+  font-size: 15px;
+  color: #fec200;
+  font-weight: bold;
 }
 @keyframes light {
   0%, 100% {
