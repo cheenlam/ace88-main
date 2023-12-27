@@ -2343,9 +2343,12 @@ body {
     grid-row-end: 8;
     border: none;
   }
+  .homePage .season .title {
+    max-width: 400px;
+  }
 }
 .homePage .season .title {
-  width: 80%;
+  width: 100%;
   max-width: 500px;
   margin: 0 auto 10px;
 }
