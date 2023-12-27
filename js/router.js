@@ -9,7 +9,7 @@ Router.prototype.route = function(path, callback) {
 };
 Router.prototype.refresh = function() {
     // 路由清單
-    let routerList = ['home','promotion','deposit','history','chats','withdraw'];
+    let routerList = ['home','promotion','refer','vip','chats','withdraw'];
 
     //获取到相应的hash值
     let index = routerList.indexOf(location.hash.slice(2))
@@ -47,21 +47,21 @@ Router.route('/promotion', function() {
     document.title = "ACE88｜Promotion";
 });
 
-Router.route('/deposit', function() {
-    mainInclude('/page/deposit.html');
+Router.route('/refer', function() {
+    mainInclude('/page/refer.html');
     menuList_on(2,99);
-    document.title = "ACE88｜Deposit";
+    document.title = "ACE88｜Refer";
 });
 
-Router.route('/history', function() {
-    mainInclude('/page/history.html');
-    menuList_on(3,99);
-    document.title = "ACE88｜History";
+Router.route('/vip', function() {
+    mainInclude('/page/vip.html');
+    menuList_on(3,3);
+    document.title = "ACE88｜Vip";
 });
 
 Router.route('/chats', function() {
     mainInclude('/page/luckyWheel.html');
-    menuList_on(4,99);
+    menuList_on(4,5);
     document.title = "ACE88｜Chats";
 });
 
@@ -89,6 +89,8 @@ function mainInclude(src) {
 }
 
 function menuList_on(idx01,idx02) {
+    indexVue.toTop();
+
     $('#footer li').removeClass('on');
     $(`#footer li:eq(${idx01})`).addClass('on');
 

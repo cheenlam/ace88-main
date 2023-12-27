@@ -1,0 +1,170 @@
+<div id="page" class="referPage">
+    <div class="topMenu">
+        <ul :style="{'--type':topNum + 1}">
+            <li v-for="(item,index) in topMenu" :key="index" 
+            @click="topNum = index">{{item.txt}}</li>
+        </ul>
+    </div>
+    <div class="referContent">
+        <div class="menu">
+            <ul>
+                <li v-for="(item,index) in sideMenu" :key="index" 
+                @click="sideNum = index,clearBank()" :class="{'on':sideNum == index}">{{item.txt}}</li>
+            </ul>
+        </div>
+        <div class="show">
+            <!-- userMsg -->
+            <div class="userMsg">
+                <div class="inner">
+                    <div class="avatar">
+                        <div class="frame">
+                            <div class="pic">
+                                <img src="images/user/photo.webp" v-if="getlogin()">
+                                <img src="images/user/default.webp" v-if="!getlogin()">
+                            </div>  
+                        </div>
+                    </div>
+                    <div class="info">
+                        <div class="name">{{!getlogin()? 'Visitor' : 'Senangkaya'}}</div>
+                        <div class="grade" v-if="getlogin()">VIP</div>
+                    </div>
+                </div>    
+            </div>
+            
+            <!-- intBox >>Profile Details -->
+            <div class="intBox" v-if="sideNum == 0">
+                <label>
+                    <p>Full Name</p>
+                    <input type="text">
+                </label>
+                <label>
+                    <p>Date of Birth</p>
+                    <input type="text">
+                </label>
+                <label>
+                    <p>Email</p>
+                    <input type="email">
+                </label>
+                <label>
+                    <p>Contact Number</p>
+                    <input type="text">
+                </label>
+                <label class="full">
+                    <p>Address</p>
+                    <input type="text">
+                </label>
+                
+                <div class="btn">Sumit</div>
+            </div>
+            <!-- intBox >> Bank Details -->
+            <div class="intBox" v-if="sideNum == 1">
+                <label>
+                    <p>Bank Name</p>
+                    <select>
+                        <option v-for="(item,index) in bankSel" :key="index" value="index">{{item}}</option>
+                    </select>
+                </label>
+                <label>
+                    <p>Date</p>
+                    <input type="text">
+                </label>
+                <label>
+                    <p>Account Name</p>
+                    <input type="text">
+                </label>
+                <label>
+                    <p>Account Number</p>
+                    <input type="text">
+                </label>
+              
+                <div class="btn" @click="addBank()">Add</div>
+            </div>
+
+            <!-- bankOptions -->
+            <div class="bankOptions"  v-if="sideNum == 1">
+                <div class="title">Bank Options</div>
+                <div class="list">
+                    <table>
+                        <tr>
+                            <th>BANK NAME</th>
+                            <th>ACCOUNT</th>
+                            <th>PERSONAL NAME</th>
+                            <th>DATE</th>
+                        </tr>  
+    
+                        <!-- no data -->
+                        <tr v-if="bankList.length == 0" class="noData">
+                            <td colspan="4">NO RESULT FOUND</td>
+                        </tr>
+                        <!-- list -->
+                        <tr v-for="(item,index) in bankList" :key="index">
+                            <td><span>ANK NAME</span>{{item.bank}}</td>
+                            <td><span>ACCOUNT</span>{{item.number}}</td>
+                            <td><span>PERSONAL NAME</span>{{item.name}}</td>
+                            <td><span>DATE</span>{{item.time}}</td>
+                        </tr>                       
+                    </table>
+                </div>
+            </div>
+ 
+        </div>
+    </div>
+</div>
+
+<script>
+    Vue.createApp({
+        data() {
+            return {
+                topNum:0,
+                topMenu:[
+                    {txt:'My Profile'},
+                    {txt:'Deposit'},
+                    {txt:'Withdraw'},
+                    {txt:'History'}
+                ],
+                sideNum:0,
+                sideMenu:[
+                    {txt:'Profile Details'},
+                    {txt:'Bank Details'},
+                    {txt:'Referral'},
+                    {txt:'Profit Sharing'},
+                    {txt:'Change Password'},
+                ],
+                bankList:[],
+                bankSel:['CHUNG SHING','COSMOS','SINO-PAC','E.SUN','GRAND COMMERCIAL']
+            };
+        },
+        methods: {
+            getlogin() {
+                return indexVue.islogin;
+            },
+            addBank(){
+                let name = ['Tony','Eric','Jack','Kenny','Roy'];
+                let number = '';
+                for(let i = 0 ;i <= 10 ; i++){
+                    number += parseInt(Math.random()*10);
+                }
+
+                let time = new Date();
+                let yy = time.getFullYear();
+                let mm = String(time.getMonth() + 1).padStart(2,"0");
+                let dd = String(time.getDate()).padStart(2,"0");
+
+                let data = {
+                    bank:this.bankSel[parseInt(Math.random()*this.bankSel.length)],
+                    name:name[parseInt(Math.random()*name.length)],
+                    number:number,
+                    time:`${yy}-${mm}-${dd}`,
+                }
+
+                this.bankList.push(data);
+            },
+            clearBank(){
+                this.bankList = [];
+            }
+        },
+        mounted() {
+
+        },
+    }).mount("#page");
+</script>

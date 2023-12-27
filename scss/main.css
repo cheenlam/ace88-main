@@ -647,6 +647,9 @@ body {
 .footer li.on .icon.chats, .footer li:hover .icon.chats {
   background-image: url(../images/icons/footer/chats_on.webp);
 }
+.footer li.on .icon.vip, .footer li:hover .icon.vip {
+  background-image: url(../images/icons/footer/vip_on.webp);
+}
 .footer li.on p, .footer li:hover p {
   color: #ffc123;
 }
@@ -686,6 +689,9 @@ body {
 }
 .footer .icon.chats {
   background-image: url(../images/icons/footer/chats.webp);
+}
+.footer .icon.vip {
+  background-image: url(../images/icons/footer/vip.webp);
 }
 .footer p {
   color: #c303f2;
@@ -2729,4 +2735,334 @@ body {
   16.6%, 49.8%, 83% {
     opacity: 1;
   }
+}
+
+.referPage {
+  padding: 10px;
+}
+.referPage .topMenu {
+  margin-bottom: 20px;
+  border-radius: 5px;
+  background: linear-gradient(45deg, #505050, #1f1f1f);
+  box-shadow: -2px -2px 2px #535353 inset;
+  overflow: hidden;
+}
+@media screen and (max-width: 750px) {
+  .referPage .topMenu {
+    margin-bottom: 10px;
+  }
+}
+.referPage .topMenu ul {
+  display: flex;
+  background: linear-gradient(90deg, #63066b, #a007ae 80%, transparent) no-repeat center left/calc(var(--type) * 25%);
+  transition: 0.5s;
+}
+.referPage .topMenu li {
+  width: 25%;
+  height: 45px;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 14px;
+}
+.referPage .referContent {
+  display: flex;
+  justify-content: center;
+}
+@media screen and (max-width: 750px) {
+  .referPage .referContent {
+    flex-direction: column;
+  }
+}
+.referPage .referContent .menu {
+  margin-right: 10px;
+  padding: 10px;
+  flex-shrink: 0;
+}
+@media screen and (max-width: 750px) {
+  .referPage .referContent .menu {
+    padding: 0;
+    margin-right: 0;
+  }
+}
+@media screen and (max-width: 750px) and (pointer: coarse), screen and (max-width: 750px) and (-moz-touch-enabled: 1), screen and (max-width: 750px) and (pointer: fine) and (-webkit-min-device-pixel-ratio: 2) and (max-width: 1023px), screen and (max-width: 750px) and (pointer: fine) and (min-resolution: 2dppx) and (max-width: 1023px) {
+  .referPage .referContent .menu {
+    width: calc(100vw - 20px);
+    overflow: scroll;
+  }
+}
+.referPage .referContent .menu ul {
+  padding-bottom: 10px;
+}
+@media screen and (max-width: 750px) {
+  .referPage .referContent .menu ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+}
+@media screen and (max-width: 750px) and (pointer: coarse), screen and (max-width: 750px) and (-moz-touch-enabled: 1), screen and (max-width: 750px) and (pointer: fine) and (-webkit-min-device-pixel-ratio: 2) and (max-width: 1023px), screen and (max-width: 750px) and (pointer: fine) and (min-resolution: 2dppx) and (max-width: 1023px) {
+  .referPage .referContent .menu ul {
+    flex-wrap: nowrap;
+  }
+}
+.referPage .referContent .menu li {
+  height: 40px;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 14px;
+  color: #999;
+  transition: 0.5s;
+}
+@media (any-hover: hover) {
+  .referPage .referContent .menu li:hover {
+    color: #fff;
+  }
+}
+.referPage .referContent .menu li.on {
+  color: #fff;
+}
+@media screen and (max-width: 750px) {
+  .referPage .referContent .menu li {
+    width: calc(50% - 4px);
+    justify-content: center;
+  }
+  .referPage .referContent .menu li.on {
+    border-radius: 3px;
+    background: linear-gradient(0deg, #51116e, #7e31ca 70%, transparent) no-repeat center left/cover;
+    box-shadow: 0 -2px 2px #a05ae6 inset;
+  }
+}
+@media screen and (max-width: 750px) and (pointer: coarse), screen and (max-width: 750px) and (-moz-touch-enabled: 1), screen and (max-width: 750px) and (pointer: fine) and (-webkit-min-device-pixel-ratio: 2) and (max-width: 1023px), screen and (max-width: 750px) and (pointer: fine) and (min-resolution: 2dppx) and (max-width: 1023px) {
+  .referPage .referContent .menu li {
+    padding: 0 25px;
+    white-space: nowrap;
+  }
+}
+.referPage .referContent .show {
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 10px;
+}
+.referPage .referContent .show .userMsg {
+  margin-bottom: 25px;
+  display: flex;
+}
+.referPage .referContent .show .userMsg .inner {
+  padding-right: 50px;
+  border-radius: 55px 0 0 55px;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(90deg, #2d0241, #7807ae, transparent);
+}
+.referPage .referContent .show .userMsg .avatar {
+  width: 55px;
+  height: 55px;
+  padding: 1px;
+  background-color: #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 5px #fff;
+}
+.referPage .referContent .show .userMsg .avatar .frame {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  padding: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 0 8px #d9b3e0;
+}
+.referPage .referContent .show .userMsg .avatar .frame::before {
+  content: "";
+  width: 200%;
+  height: 0;
+  padding-bottom: 300%;
+  margin: auto;
+  position: absolute;
+  background-color: #542b89;
+  background-image: conic-gradient(transparent, #fff, #999, transparent 30%);
+  animation: rotate 1.5s linear infinite;
+}
+.referPage .referContent .show .userMsg .avatar .frame .pic {
+  width: 100%;
+  position: relative;
+  border-radius: 50%;
+  z-index: 1;
+  overflow: hidden;
+}
+.referPage .referContent .show .userMsg .info {
+  padding-left: 10px;
+  font-style: italic;
+  font-weight: bold;
+}
+.referPage .referContent .show .userMsg .name {
+  margin-bottom: 2px;
+  font-size: 14px;
+}
+.referPage .referContent .show .userMsg .grade {
+  font-size: 12px;
+  background: linear-gradient(25deg, #ffff8a, #ba5733 40%, #fafab1);
+  -webkit-background-clip: text;
+          background-clip: text;
+  color: transparent;
+}
+.referPage .referContent .show .intBox {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 15px 10px;
+}
+.referPage .referContent .show .intBox label {
+  width: calc(50% - 5px);
+}
+.referPage .referContent .show .intBox label.full {
+  width: 100%;
+}
+.referPage .referContent .show .intBox p {
+  padding-bottom: 2px;
+  font-size: 14px;
+}
+.referPage .referContent .show .intBox input, .referPage .referContent .show .intBox select {
+  background: transparent;
+  outline: none;
+  border: none;
+  width: 100%;
+  height: 35px;
+  padding: 0 5px;
+  background-color: #fff;
+  border-radius: 3px;
+  opacity: 0.5;
+  transition: 0.5s;
+}
+.referPage .referContent .show .intBox input:focus, .referPage .referContent .show .intBox select:focus {
+  opacity: 1;
+}
+.referPage .referContent .show .intBox .btn {
+  height: 45px;
+  padding: 0 10px;
+  color: #fff;
+  border-radius: 45px;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: capitalize;
+  font-style: italic;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s;
+  cursor: pointer;
+  background: radial-gradient(circle at 50% -50%, #527c97, #588bab, #361ab9, #110a31);
+  box-shadow: 0px -2px 3px #88bcdd inset, 0 2px 2px #301999;
+  width: 100%;
+  max-width: 180px;
+  margin: 40px auto 0;
+}
+.referPage .referContent .show .intBox .btn:active {
+  transform: translateY(2px);
+}
+.referPage .referContent .show .bankOptions {
+  padding-top: 30px;
+}
+.referPage .referContent .show .bankOptions .title {
+  margin-bottom: 10px;
+  font-size: 14px;
+  font-weight: bold;
+}
+@media screen and (max-width: 550px) {
+  .referPage .referContent .show .bankOptions .title {
+    padding: 10px;
+    margin-bottom: 0;
+    border-radius: 5px 5px 0 0;
+    background: linear-gradient(0deg, #09006b, #5f53eb);
+    text-align: center;
+    font-size: 13px;
+  }
+}
+.referPage .referContent .show .bankOptions table {
+  width: 100%;
+  border-radius: 5px;
+  overflow: hidden;
+  font-size: 12px;
+}
+@media screen and (max-width: 550px) {
+  .referPage .referContent .show .bankOptions table {
+    border-radius: 0 0 5px 5px;
+  }
+}
+.referPage .referContent .show .bankOptions tr:nth-child(even) {
+  background-color: #fff;
+}
+.referPage .referContent .show .bankOptions tr:nth-child(odd) {
+  background-color: #ddd;
+}
+@media screen and (max-width: 550px) {
+  .referPage .referContent .show .bankOptions tr {
+    display: block;
+    margin-bottom: 4px;
+  }
+}
+.referPage .referContent .show .bankOptions th {
+  padding: 15px 5px;
+  background-color: #4839F7;
+  background: linear-gradient(0deg, #09006b, #5f53eb);
+  font-weight: bold;
+}
+@media screen and (max-width: 550px) {
+  .referPage .referContent .show .bankOptions th {
+    display: none;
+  }
+}
+.referPage .referContent .show .bankOptions td {
+  padding: 15px 5px;
+  text-align: center;
+  color: #333;
+}
+@media screen and (max-width: 550px) {
+  .referPage .referContent .show .bankOptions td {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5px 0 0;
+    text-align: right;
+    border-bottom: 1px solid #aaa;
+  }
+  .referPage .referContent .show .bankOptions td + td {
+    border-top: 1px solid #aaa;
+  }
+}
+.referPage .referContent .show .bankOptions td span {
+  display: none;
+}
+@media screen and (max-width: 550px) {
+  .referPage .referContent .show .bankOptions td span {
+    width: 140px;
+    height: 100%;
+    padding: 10px 5px;
+    margin-right: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(0deg, #09006b, #5f53eb);
+    color: #fff;
+    flex-shrink: 0;
+  }
+}
+@media screen and (max-width: 550px) {
+  .referPage .referContent .show .bankOptions .noData {
+    height: 40px;
+  }
+}
+.referPage .referContent .show .bankOptions .noData td {
+  height: 100%;
+  border: none;
+  justify-content: center;
 }/*# sourceMappingURL=main.css.map */
