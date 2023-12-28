@@ -1,6 +1,6 @@
 <div id="page" class="homePage">
     <!-- 輪播+跑馬燈 -->
-    <div class="carousel_group" id="carousel_group">
+    <div class="h_clGroup">
         <div id="carouselHigh">
             <!-- 大畫面輪播 -->
             <div id="max_carousel" class="swipslider" v-show="!carousel.change">
@@ -39,7 +39,7 @@
     </div>
 
     <!-- 遊戲清單 -->
-    <div class="gameList" id="gameList">
+    <div class="h_gameList" id="gameList">
         <div class="selGame">
             <ul>
                 <li v-for="(item,index) in selBtn" @click="gameSel = index">
@@ -52,7 +52,7 @@
             </ul>
         </div>
 
-        <div class="list">
+        <div class="roundList" v-if="gameSel != 3">
             <div class="item" v-for="(item,index) in gameList[gameSel].num">
                 <div class="exhibit">
                     <div class="frame">
@@ -72,16 +72,55 @@
                 </div>
             </div>
         </div>
+        <div class="squareList" v-if="gameSel == 3">
+            <template v-for="(list,i) in 5">
+                <div class="item" v-for="(item,index) in sheetList" :id="index">
+                    <div class="top">
+                        <div class="typeLogo" :style="{'--bgc':item.bgc,'--bc':item.bc}">
+                            <img :src="item.img">
+                        </div>
+                        <div class="txt">
+                            <div class="name">{{item.name}}</div>
+                            <p>{{item.time}}</p>
+                        </div>
+                    </div>
+                    <div class="sheet">
+                        <table>
+                            <tr>
+                                <th>1st</th>
+                                <th>2st</th>
+                                <th>3st</th>
+                            </tr>
+                            <tr>
+                                <td v-for="num in item.win">{{num}}</td>
+                            </tr>
+                            <tr>
+                                <th colspan="3">Special</th>
+                            </tr>
+                            <tr v-for="(group,idx) in item.special">
+                                <td v-for="num in group">{{num}}</td>
+                            </tr>
+                            <tr>
+                                <th colspan="3">Consolation</th>
+                            </tr>
+                            <tr v-for="(group,idx) in item.consolation">
+                                <td v-for="num in group">{{num}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </template>
+        </div>
     </div>
 
     <!-- 帳戶按鈕(登入/註冊) -->
-    <div class="accountBtn" v-if="!getlogin()">
+    <div class="h_accountBtn" v-if="!getlogin()">
         <div class="btn login" @click="openDialog(1)">login</div>
         <div class="btn signout" @click="openDialog(2)">sign up</div>
     </div>
 
     <!-- 資產 -->
-    <div class="assets">
+    <div class="h_assets">
         <div class="userMsg">
             <div class="main">
                 <div class="avatar">
@@ -142,12 +181,12 @@
     </div>
 
     <!-- 支付方式 -->
-    <div class="payList">
+    <div class="h_payList">
         <img src="images/other/payList.webp">
     </div>
 
     <!-- 推廣 -->
-    <div class="promo">
+    <div class="h_promo">
         <div class="banner">
             <img src="../images/other/promoBg.webp">
         </div>
@@ -188,7 +227,7 @@
     </div>
 
     <!-- 推廣輪播 -->
-    <div class="promoCarousel">
+    <div class="h_promoCarousel">
         <div class="frame">
             <div id="promo_carousel" class="swipslider promoSlider">
                 <ul class="sw-slides">
@@ -203,7 +242,7 @@
     </div>
 
     <!-- 交易 -->
-    <div class="txn">
+    <div class="h_txn">
         <div class="title">
             <img src="images/other/txn.webp">
         </div>
@@ -239,15 +278,20 @@
     </div>
 
     <!-- 賽季 -->
-    <div class="season">
+    <div class="h_season">
         <div class="title">
             <img src="images/other/season.webp">
         </div>
-        <div class="list"></div>
+        <div class="list">
+            <div class="item">
+                <div class="name">Live Matches</div>
+                <div class="team"></div>
+            </div>
+        </div>
     </div>
 
     <!-- 宣言 -->
-    <div class="declaration">
+    <div class="h_declaration">
         <div class="main">
             <p>@Ace88. All Rights Reserved.</p>
             <p>Gambling Can Be Addictive, Please Play Responsibly Trusted Online Casiono Malaysia 2023</p>
@@ -276,7 +320,7 @@
     var homeVue = Vue.createApp({
         data() {
             return {
-                gameSel: 1,
+                gameSel: 0,
                 carousel: {
                     change: false,
                     max: [{
@@ -335,6 +379,108 @@
                     {munber:'60*****932',num:'15000.00'},
                     {munber:'77*****123',num:'999.99'},
                     {munber:'88*****999',num:'1234.10'}
+                ],
+                sheetList:[
+                    {
+                        bgc:'#6C2AD9',
+                        bc:'#333',
+                        img:'images/game/Singapore-4d.png',
+                        name:'SINGAOIRW 4D',
+                        time:'2023-03-29(wed)',
+                        win:['3887','9410','5785'],
+                        special:[
+                            ['7843','1221','9307'],
+                            ['9031','7036','9641'],
+                            ['5553','2998','9915'],
+                            ['','3810','']
+                        ],
+                        consolation:[
+                            ['7190','1660','8871'],
+                            ['8653','1355','5396'],
+                            ['3552','6604','5640'],
+                            ['','6065','']
+                        ]
+                    },
+                    {
+                        bgc:'#531795',
+                        bc:'#333',
+                        img:'images/game/Sabah-4d.png',
+                        name:'SABAH 4D',
+                        time:'2023-03-29(wed)',
+                        win:['3887','9410','5785'],
+                        special:[
+                            ['7843','1221','9307'],
+                            ['9031','7036','9641'],
+                            ['5553','2998','9915'],
+                            ['','3810','']
+                        ],
+                        consolation:[
+                            ['7190','1660','8871'],
+                            ['8653','1355','5396'],
+                            ['3552','6604','5640'],
+                            ['','6065','']
+                        ]
+                    },
+                    {
+                        bgc:'#FAA7C8',
+                        bc:'#333',
+                        img:'images/game/Sandakan-4d.png',
+                        name:'SANDAKAN 4D',
+                        time:'2023-03-29(wed)',
+                        win:['3887','9410','5785'],
+                        special:[
+                            ['7843','1221','9307'],
+                            ['9031','7036','9641'],
+                            ['5553','2998','9915'],
+                            ['','3810','']
+                        ],
+                        consolation:[
+                            ['7190','1660','8871'],
+                            ['8653','1355','5396'],
+                            ['3552','6604','5640'],
+                            ['','6065','']
+                        ]
+                    },
+                    {
+                        bgc:'#521795',
+                        bc:'#333',
+                        img:'images/game/Sarawak-4d.png',
+                        name:'SARAWAK 4D',
+                        time:'2023-03-29(wed)',
+                        win:['3887','9410','5785'],
+                        special:[
+                            ['7843','1221','9307'],
+                            ['9031','7036','9641'],
+                            ['5553','2998','9915'],
+                            ['','3810','']
+                        ],
+                        consolation:[
+                            ['7190','1660','8871'],
+                            ['8653','1355','5396'],
+                            ['3552','6604','5640'],
+                            ['','6065','']
+                        ]
+                    },
+                    {
+                        bgc:'#A031E5',
+                        bc:'#333',
+                        img:'images/game/Grand-Dragon.png',
+                        name:'GRAND DRAGON',
+                        time:'2023-03-29(wed)',
+                        win:['3887','9410','5785'],
+                        special:[
+                            ['7843','1221','9307'],
+                            ['9031','7036','9641'],
+                            ['5553','2998','9915'],
+                            ['','3810','']
+                        ],
+                        consolation:[
+                            ['7190','1660','8871'],
+                            ['8653','1355','5396'],
+                            ['3552','6604','5640'],
+                            ['','6065','']
+                        ]
+                    },
                 ]
             };
         },

@@ -99,6 +99,7 @@ body {
     position: relative;
     display: grid;
     grid-template-rows: 1fr auto;
+    overflow-y: scroll;
     // header start
     @at-root .header {
         background: linear-gradient(90deg, #000, #1b062e, #000, #000 75%, #1c0c34, #000);
@@ -905,6 +906,7 @@ body {
     // 浮動按鈕
     @at-root .floatBtn {
         width: 60px;
+        margin: auto;
         position: fixed;
         right: 10px;
         bottom: 80px;
@@ -913,7 +915,6 @@ body {
             position: relative;
             display: flex;
         }
-  
     }
 }
 
@@ -961,7 +962,7 @@ body {
         }
     }
     // 輪播+跑馬燈區塊
-    .carousel_group {
+    @at-root .h_clGroup {
         grid-column-start: 1;
         grid-column-end: 2;
         grid-row-start: 1;
@@ -974,7 +975,7 @@ body {
         }
     }
     // 遊戲清單
-    .gameList {
+    @at-root .h_gameList {
         width: 100%;
         height: 100%;
         padding: 5px;
@@ -1085,7 +1086,7 @@ body {
                 }
             }
         }
-        .list {
+        .roundList {
             width: 100%;
             padding: 10px;
             margin: 10px auto;
@@ -1098,6 +1099,17 @@ body {
             }
             scrollbar-width: none;
             -ms-overflow-style: none;
+            @include rwd(750) {
+                height: 60vh;
+            }
+            @include rwd(490) {
+                width: calc(100vw - 25px);
+                height: auto;
+                flex-wrap: nowrap;
+                -webkit-overflow-scrolling: touch;
+                scroll-snap-type: x mandatory;
+            }
+
             .item {
                 width: calc(100% / 3);
                 padding: 2.5% 2.5% 5%;
@@ -1107,8 +1119,9 @@ body {
                 @include rwd(750) {
                     width: calc(100% / 3);
                 }
-                @include rwd(450) {
-                    width: calc(100% / 2);
+                @include rwd(490) {
+                    min-width: 60vw;
+                    scroll-snap-align: center;
                 }
             }
             .exhibit {
@@ -1182,9 +1195,152 @@ body {
                 margin: 6% auto 0;
             }
         }
+        .squareList {
+            width: 100%;
+            padding: 10px;
+            margin: 10px auto;
+            display: flex;
+            flex-wrap: wrap;
+            pointer-events: auto;
+            overflow: auto;
+            &::-webkit-scrollbar {
+                display: none;
+            }
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            @include rwd(750) {
+                height: 60vh;
+            }
+
+            @include rwd(490) {
+                width: calc(100vw - 25px);
+                height: auto;
+                flex-wrap: nowrap;
+                -webkit-overflow-scrolling: touch;
+                scroll-snap-type: x mandatory;
+            }
+
+            .item {
+                width: calc(100% / 3);
+                padding: 5px 8px 10px;
+                height: auto;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                &:nth-child(even) {
+                    .top {
+                        background: linear-gradient(134deg, #b873db, #6e0ba3);
+                        box-shadow: 0 -4px 2px #8c12cc inset;
+                        &::before {
+                            border-color: #8c12cc transparent transparent transparent;
+                        }
+                    }
+                    .sheet {
+                        background: linear-gradient(90deg, #461967, #6225a8);
+                        th {
+                            background-color: #9d1dd8;
+                        }
+                    }
+                }
+                @include rwd(1250) {
+                    width: calc(100% / 2);
+                }
+                @include rwd(980) {
+                    width: 100%;
+                }
+                @include rwd(750) {
+                    width: calc(100% / 2);
+                }
+                @include rwd(490) {
+                    min-width: 85vw;
+                    scroll-snap-align: start;
+                }
+            }
+            .top {
+                height: 100%;
+                padding: 20px 15px 20px 0;
+                border-radius: 5px;
+                display: flex;
+                align-items: center;
+                background: linear-gradient(134deg, #9962d4, #491381);
+                box-shadow: 0 -4px 2px #491381 inset;
+                position: relative;
+                z-index: 1;
+                &::before {
+                    content: "";
+                    width: 0;
+                    height: 0;
+                    margin: auto;
+                    border-style: solid;
+                    border-width: 17.3px 10px 0 10px;
+                    border-color: #491381 transparent transparent transparent;
+                    position: absolute;
+                    @include pos(blr, -16px, 0, 0);
+                }
+            }
+            .typeLogo {
+                width: 50px;
+                padding: 0 5px;
+                margin-right: 5px;
+                background-color: var(--bgc);
+                border-radius: 0 5px 0 0;
+                position: relative;
+                border-bottom: 1px solid var(--bc);
+                flex-shrink: 0;
+                &::after {
+                    content: "";
+                    width: 20px;
+                    height: 100%;
+                    position: absolute;
+                    @include pos(tl, 0, -10px);
+                    background-color: var(--bgc);
+                    transform: skew(-5deg);
+                    border-bottom: 1px solid var(--bc);
+                }
+                &::before {
+                    content: "";
+                    width: 0;
+                    height: 0;
+                    border-style: solid;
+                    border-width: 0 12px 12px 0;
+                    border-color: transparent var(--bgc) transparent transparent;
+                    position: absolute;
+                    @include pos(bl, -12px);
+                }
+            }
+            .txt {
+                width: 100%;
+                text-align: center;
+                font-size: 12px;
+            }
+            .name {
+                padding-bottom: 5px;
+                font-size: 18px;
+                font-weight: bold;
+            }
+            .sheet {
+                padding: 25px 0 5px;
+                border-radius: 8px;
+                border: 3px solid #fff;
+                background: linear-gradient(90deg, #6929d8, #933fc2);
+                table {
+                    width: 100%;
+                    font-size: 12px;
+                }
+                th {
+                    padding: 5px;
+                    text-align: center;
+                    background-color: #491381;
+                }
+                td {
+                    padding: 8px 5px;
+                    text-align: center;
+                }
+            }
+        }
     }
     // 帳戶按鈕(登入/註冊)
-    .accountBtn {
+    @at-root .h_accountBtn {
         padding: 5px 5px;
         display: flex;
         @include rwd(750) {
@@ -1208,7 +1364,7 @@ body {
         }
     }
     // 資產
-    .assets {
+    @at-root .h_assets {
         padding: 20px 0;
         display: flex;
         align-items: center;
@@ -1380,7 +1536,7 @@ body {
         }
     }
     // 支付方式
-    .payList {
+    @at-root .h_payList {
         @include rwd(750) {
             grid-column-start: 1;
             grid-row-start: 3;
@@ -1388,7 +1544,7 @@ body {
         }
     }
     // 推廣
-    .promo {
+    @at-root .h_promo {
         padding: 0 5px;
         display: flex;
         flex-direction: column;
@@ -1453,7 +1609,7 @@ body {
         }
     }
     // 推廣輪播
-    .promoCarousel {
+    @at-root .h_promoCarousel {
         padding: 10px;
         @include rwd(750) {
             grid-column-start: 1;
@@ -1500,10 +1656,13 @@ body {
         }
     }
     // 交易
-    .txn {
+    @at-root .h_txn {
         padding: 10px 0 15px;
-        // overflow: hidden;
+        @include rwd(1400) {
+            max-width: 40vw;
+        }
         @include rwd(750) {
+            max-width: 100%;
             flex-direction: row;
             grid-column-start: 1;
             grid-row-start: 9;
@@ -1668,7 +1827,7 @@ body {
         }
     }
     // 賽季
-    .season {
+    @at-root .h_season {
         padding: 30px 10px;
         border-top: 2px solid #494949;
         grid-column-start: 1;
@@ -1690,12 +1849,27 @@ body {
             margin: 0 auto 10px;
         }
         .list {
-            height: 400px;
-            background-color: #2c0a3d;
+            display: flex;
+            justify-content: center;
+        }
+        .item{
+            width: calc(100% / 2);
+            padding-top: 24px;
+            background: url(../images/other/betFrame_left.webp) no-repeat left center / calc(50% - 89px) 100%,
+                        url(../images/other/betFrame_center.webp) no-repeat center / 180px 100%,
+                        url(../images/other/betFrame_right.webp) no-repeat right center / calc(50% - 89px) 100%;
+        }
+        .name{
+            text-align: center;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .team{
+            height: 300px;
         }
     }
     // 宣言
-    .declaration {
+    @at-root .h_declaration {
         padding: 30px 20px 15px;
         grid-column-start: 1;
         grid-column-end: 3;
@@ -1829,7 +2003,6 @@ body {
             }
         }
     }
-
     .circle {
         height: 100%;
         padding: 4px;
@@ -2193,6 +2366,9 @@ body {
                     &.full {
                         width: 100%;
                     }
+                    @include rwd(430) {
+                        width: 100%;
+                    }
                 }
                 p {
                     padding-bottom: 2px;
@@ -2327,13 +2503,15 @@ body {
                     margin-bottom: 10px;
                     font-size: 14px;
                     font-weight: bold;
-                    @include rwd(600) {
-                        padding: 10px;
-                        margin-bottom: 0;
-                        border-radius: 5px 5px 0 0;
-                        background: linear-gradient(0deg, #09006b, #5f53eb);
-                        text-align: center;
-                        font-size: 13px;
+                    &.tb {
+                        @include rwd(600) {
+                            padding: 10px;
+                            margin-bottom: 0;
+                            border-radius: 5px 5px 0 0;
+                            background: linear-gradient(0deg, #09006b, #5f53eb);
+                            text-align: center;
+                            font-size: 13px;
+                        }
                     }
                 }
                 .tip {
