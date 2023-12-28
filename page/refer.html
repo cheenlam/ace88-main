@@ -9,7 +9,7 @@
         <div class="referMenu">
             <ul>
                 <li v-for="(item,index) in sideMenu" :key="index" 
-                @click="sideNum = index,clearBank()" :class="{'on':sideNum == index}">{{item.txt}}</li>
+                @click="sideNum = index,clearList()" :class="{'on':sideNum == index}">{{item.txt}}</li>
             </ul>
         </div>
         <div class="referShow">
@@ -91,7 +91,6 @@
                             <th width="25%">PERSONAL NAME</th>
                             <th width="25%">DATE</th>
                         </tr>  
-    
                         <!-- no data -->
                         <tr v-if="bankList.length == 0" class="noData">
                             <td colspan="4">NO RESULT FOUND</td>
@@ -117,7 +116,7 @@
 
                     <div class="iptShare">
                         <input type="text">
-                        <div class="btn">Share</div>
+                        <div class="btn" @click="addFriend()">Share</div>
                     </div>
 
                     <div class="tip">
@@ -132,7 +131,7 @@
                     <div class="friendList">
                         <table>
                             <tr>
-                                <th>#</th>  
+                                <th class="num">#</th>  
                                 <th width="25%">MEMBER</th>
                                 <th width="25%">DATE</th>
                                 <th width="25%">TOTAL</th>
@@ -140,27 +139,18 @@
                                 <th></th>   
                             </tr>
                             <!-- no data -->
-                            <tr class="noData">
+                            <tr class="noData" v-if="friendList.length == 0">
                                 <td colspan="6">NO RESULT FOUND</td>
                             </tr>
                             <!-- list -->
-                            <tr>
-                                <td><span class="num">1</span></td>
-                                <td>Michael Chang</td>
-                                <td>05/17/2023</td>
-                                <td>150.00</td>
-                                <td>132.00</td>
+                            <tr v-for="(item,index) in friendList" :key="index">
+                                <td>{{index + 1}}</td>
+                                <td><span>MEMBER</span>{{item.name}}</td>
+                                <td><span>DATE</span>{{item.time}}</td>
+                                <td><span>TOTAL</span>{{item.total}}</td>
+                                <td><span>DEPOSIT</span>{{item.deposit}}</td>
                                 <td><div class="btn">Claim</div></td>
-                            </tr>
-                            <tr>
-                                <td><span class="num">2</span></td>
-                                <td>Michael Chang</td>
-                                <td>05/17/2023</td>
-                                <td>150.00</td>
-                                <td>132.00</td>
-                                <td><div class="btn">Claim</div></td>
-                            </tr>
-                            
+                            </tr>   
                         </table>
                     </div>
                 </div>
@@ -228,7 +218,7 @@
                     {txt:'Withdraw'},
                     {txt:'History'}
                 ],
-                sideNum:0,
+                sideNum:2,
                 sideMenu:[
                     {txt:'Profile Details'},
                     {txt:'Bank Details'},
@@ -237,15 +227,20 @@
                     {txt:'Change Password'},
                 ],
                 bankList:[],
-                bankSel:['CHUNG SHING','COSMOS','SINO-PAC','E.SUN','GRAND COMMERCIAL']
+                name: ['Tony','Eric','Jack','Kenny','Roy'],
+                bankSel:['CHUNG SHING','COSMOS','SINO-PAC','E.SUN','GRAND COMMERCIAL'],
+                friendList:[]
             };
         },
         methods: {
             getlogin() {
                 return indexVue.islogin;
             },
+            clearList(){
+                this.bankList = [];
+                this.friendList = [];
+            },
             addBank(){
-                let name = ['Tony','Eric','Jack','Kenny','Roy'];
                 let number = '';
                 for(let i = 0 ;i <= 10 ; i++){
                     number += parseInt(Math.random()*10);
@@ -258,15 +253,30 @@
 
                 let data = {
                     bank:this.bankSel[parseInt(Math.random()*this.bankSel.length)],
-                    name:name[parseInt(Math.random()*name.length)],
+                    name:this.name[parseInt(Math.random()*this.name.length)],
                     number:number,
                     time:`${mm}/${dd}/${yy}`,
                 }
 
                 this.bankList.push(data);
-            },
-            clearBank(){
-                this.bankList = [];
+            },   
+            addFriend(){
+                let time = new Date();
+                let yy = time.getFullYear();
+                let mm = String(time.getMonth() + 1).padStart(2,"0");
+                let dd = String(time.getDate()).padStart(2,"0");
+
+                let total = (Math.random()*1000 + 200).toFixed(2);
+                let deposit = (Math.random()*100 + 100).toFixed(2);
+        
+                let data = {
+                    name:this.name[parseInt(Math.random()*this.name.length)],
+                    time:`${mm}/${dd}/${yy}`,
+                    total: total,
+                    deposit: deposit
+                }
+
+                this.friendList.push(data);
             }
         },
         mounted() {

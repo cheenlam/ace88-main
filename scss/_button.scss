@@ -137,7 +137,6 @@
         padding-bottom: 300%;
         margin: auto;
         position: absolute;
-        background-image: conic-gradient(transparent, #fff, #999, transparent 30%);
         animation: rotateReverse 2s linear infinite;
     }
     .frame {
@@ -158,6 +157,7 @@
     @if $style == 1 {
         &::before {
             background-color: #8a521a;
+            background-image: conic-gradient(transparent, #f1c89f, #5d1606, transparent 30%);
         }
         .frame {
             background: radial-gradient(circle at 50% -57%, #af6d2c 12%, #ebb37c, #b8702a, #2a1704);
@@ -168,6 +168,7 @@
     } @else if $style == 2 {
         &::before {
             background-color: #71256f;
+            background-image: conic-gradient(transparent, #d570d3, #3d093b, transparent 30%);
         }
         .frame {
             background: radial-gradient(circle at 50% -57%, #811a80 12%, #be63bc, #7e2b7c, #180117);
@@ -178,6 +179,7 @@
     } @else if $style == 3 {
         &::before {
             background-color: #322ca4;
+            background-image: conic-gradient(transparent, #9c98ed, #2c2781, transparent 30%);
         }
         .frame {
             background: radial-gradient(circle at 50% -57%, #2a2594 12%, #716dce, #342ea9, #080447);
@@ -188,6 +190,7 @@
     } @else if $style == 4 {
         &::before {
             background-color: #1d5766;
+            background-image: conic-gradient(transparent, #5aafc5, #0e4553, transparent 30%);
         }
         .frame {
             background: radial-gradient(circle at 50% -57%, #0b5262 12%, #419aaf, #12687c, #031f26);
@@ -198,6 +201,7 @@
     } @else if $style == 5 {
         &::before {
             background-color: #762689;
+            background-image: conic-gradient(transparent, #b46bc5, #450b53, transparent 30%);
         }
         .frame {
             background: radial-gradient(circle at 50% -57%, #46168b 12%, #854dd5, #631fc3, #270853);
@@ -227,6 +231,7 @@
             0 0 0 40px rgba(255, 255, 255, 0);
     }
 }
+
 
 @keyframes rotate {
     100% {

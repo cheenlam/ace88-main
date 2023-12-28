@@ -29,7 +29,6 @@ a, a:hover {
 
 * {
   font-family: Open, Tahoma, Arial, Helvetica, sans-serif;
-  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   -webkit-touch-callout: none;
   -webkit-text-size-adjust: none;
@@ -59,7 +58,6 @@ textarea {
   font-family: "Helvetica", sans-serif;
   -webkit-appearance: none;
   -moz-appearance: none;
-  -ms-appearance: none;
   appearance: none;
 }
 
@@ -156,7 +154,6 @@ img {
   display: block;
   -webkit-user-select: none;
   -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
 }
 .swipslider.min {
@@ -175,7 +172,6 @@ img {
   height: 100%;
   white-space: nowrap;
   font-size: 0;
-  -webkit-transform: translateX(0);
   transform: translateX(0);
   position: absolute;
   bottom: 0;
@@ -200,7 +196,6 @@ img {
   position: absolute;
   top: 50%;
   left: 50%;
-  -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   max-height: 100%;
   max-width: 100%;
@@ -208,7 +203,6 @@ img {
   margin-right: auto;
   -webkit-user-select: none;
   -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
 }
 
@@ -224,7 +218,6 @@ img {
   font-weight: bolder;
   color: rgba(160, 160, 160, 0.53);
   top: 50%;
-  -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
   background-color: rgba(255, 255, 255, 0);
   border-radius: 50%;
@@ -233,7 +226,6 @@ img {
   cursor: pointer;
   -webkit-user-select: none;
   -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   display: none;
 }
@@ -305,7 +297,6 @@ img {
   display: block;
   -webkit-user-select: none;
   -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
 }
 @media screen and (max-width: 1050px) {
@@ -357,7 +348,9 @@ img {
 }
 
 body {
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
   background: linear-gradient(90deg, #000, #1b062e, #000, #000 75%, #1c0c34, #000);
   color: #fff;
 }
@@ -424,6 +417,18 @@ body {
     opacity: 0;
     transform: rotate(360deg) scale(0.5);
   }
+}
+
+.onConstr {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.onConstr .constr {
+  max-width: 100px;
+  opacity: 0.6;
 }
 
 .mainLayout {
@@ -601,7 +606,7 @@ body {
   opacity: 0.4;
   transition: 0.5s;
 }
-@media (pointer: coarse), (-moz-touch-enabled: 1), screen and (pointer: fine) and (min-resolution: 2dppx) and (max-width: 1023px) {
+@media (pointer: coarse), (-moz-touch-enabled: 1), screen and (pointer: fine) and (-webkit-min-device-pixel-ratio: 2) and (max-width: 1023px), screen and (pointer: fine) and (min-resolution: 2dppx) and (max-width: 1023px) {
   .header .hd_tool .langList li {
     opacity: 1;
   }
@@ -748,7 +753,7 @@ body {
   width: 100%;
   height: 100vh;
   position: fixed;
-  z-index: 10;
+  z-index: 30;
   transform: translateX(-100%) rotate(0);
 }
 .sideMenu.on {
@@ -1042,7 +1047,7 @@ body {
   height: 100vh;
   padding: 25px;
   position: fixed;
-  z-index: 10;
+  z-index: 30;
   display: flex;
   align-items: center;
 }
@@ -1355,6 +1360,18 @@ body {
   }
 }
 
+.floatBtn {
+  width: 60px;
+  position: fixed;
+  right: 10px;
+  bottom: 80px;
+  z-index: 20;
+}
+.floatBtn .service {
+  position: relative;
+  display: flex;
+}
+
 .homePage {
   display: grid;
   grid-template-columns: 1.3fr 1fr;
@@ -1477,13 +1494,13 @@ body {
   animation: rotate 2s linear infinite;
 }
 .homePage .gameList .selGame .btn.on::before {
-  background-image: conic-gradient(transparent, #ffeaa5, #d7a501, transparent 15%);
+  background-image: conic-gradient(transparent, #9fad3e, #7d6f0c, transparent 15%);
 }
 .homePage .gameList .selGame .btn.on .frame {
   box-shadow: 0 0 8px #fec200 inset;
 }
 .homePage .gameList .selGame .btn.on .frame::before {
-  border: 2px solid #fec200;
+  border: 2px solid #c5a22e;
   box-shadow: 0 0 15px #ffeaa5 inset, 0 0 4px #fec200;
 }
 .homePage .gameList .selGame .btn .frame {
@@ -1649,7 +1666,6 @@ body {
   padding-bottom: 300%;
   margin: auto;
   position: absolute;
-  background-image: conic-gradient(transparent, #fff, #999, transparent 30%);
   animation: rotateReverse 2s linear infinite;
 }
 .homePage .gameList .list .btn .frame {
@@ -1668,6 +1684,7 @@ body {
 }
 .homePage .gameList .list .btn::before {
   background-color: #322ca4;
+  background-image: conic-gradient(transparent, #9c98ed, #2c2781, transparent 30%);
 }
 .homePage .gameList .list .btn .frame {
   background: radial-gradient(circle at 50% -57%, #2a2594 12%, #716dce, #342ea9, #080447);
@@ -1856,14 +1873,16 @@ body {
   font-size: 12px;
   font-weight: bold;
   background: linear-gradient(25deg, #6954bf, #c5b7ff, #6954bf);
-  background-clip: text;
+  -webkit-background-clip: text;
+          background-clip: text;
   color: transparent;
 }
 .homePage .assets .userMsg .balance {
   font-size: 24px;
   font-weight: bold;
   background: linear-gradient(25deg, #ffff8a, #ba5733 40%, #fafab1);
-  background-clip: text;
+  -webkit-background-clip: text;
+          background-clip: text;
   color: transparent;
 }
 .homePage .assets .userMsg .balance span {
@@ -1921,7 +1940,8 @@ body {
   position: relative;
   overflow: hidden;
   cursor: pointer;
-  clip-path: polygon(20% 0%, 100% 0%, 100% 100%, 20% 100%, 8% 50%);
+  -webkit-clip-path: polygon(20% 0%, 100% 0%, 100% 100%, 20% 100%, 8% 50%);
+          clip-path: polygon(20% 0%, 100% 0%, 100% 100%, 20% 100%, 8% 50%);
   background-image: linear-gradient(90deg, #eee, #8d671d, #bd9a3b, transparent 80%);
 }
 .homePage .assets .operate .arrowBtn:nth-child(odd) .inner {
@@ -1945,7 +1965,8 @@ body {
 .homePage .assets .operate .arrowBtn:nth-child(odd) .inner {
   padding: 8px 5px 8px 22%;
   justify-content: left;
-  clip-path: polygon(20% 0%, 100% 0%, 100% 100%, 20% 100%, 9% 50%);
+  -webkit-clip-path: polygon(20% 0%, 100% 0%, 100% 100%, 20% 100%, 9% 50%);
+          clip-path: polygon(20% 0%, 100% 0%, 100% 100%, 20% 100%, 9% 50%);
   background: linear-gradient(90deg, #5544bd, #221554 80%, transparent);
 }
 .homePage .assets .operate .arrowBtn:nth-child(odd) .icon {
@@ -1958,7 +1979,8 @@ body {
   position: relative;
   overflow: hidden;
   cursor: pointer;
-  clip-path: polygon(0% 0%, 88% 0%, 100% 50%, 88% 100%, 0% 100%);
+  -webkit-clip-path: polygon(0% 0%, 88% 0%, 100% 50%, 88% 100%, 0% 100%);
+          clip-path: polygon(0% 0%, 88% 0%, 100% 50%, 88% 100%, 0% 100%);
   background-image: linear-gradient(-90deg, #eee, #8d671d, #bd9a3b, transparent 80%);
 }
 .homePage .assets .operate .arrowBtn:nth-child(even) .inner {
@@ -1982,7 +2004,8 @@ body {
 .homePage .assets .operate .arrowBtn:nth-child(even) .inner {
   padding: 8px 14% 8px 5px;
   justify-content: right;
-  clip-path: polygon(0% 0%, 88% 0%, 99% 50%, 88% 100%, 0% 100%);
+  -webkit-clip-path: polygon(0% 0%, 88% 0%, 99% 50%, 88% 100%, 0% 100%);
+          clip-path: polygon(0% 0%, 88% 0%, 99% 50%, 88% 100%, 0% 100%);
   background: linear-gradient(-90deg, #5544bd, #221554 80%, transparent);
 }
 .homePage .assets .operate .arrowBtn:nth-child(even) .icon {
@@ -2069,7 +2092,6 @@ body {
   padding-bottom: 300%;
   margin: auto;
   position: absolute;
-  background-image: conic-gradient(transparent, #fff, #999, transparent 30%);
   animation: rotateReverse 2s linear infinite;
 }
 .homePage .promo a:nth-child(4n+1) .btn .frame {
@@ -2088,6 +2110,7 @@ body {
 }
 .homePage .promo a:nth-child(4n+1) .btn::before {
   background-color: #8a521a;
+  background-image: conic-gradient(transparent, #f1c89f, #5d1606, transparent 30%);
 }
 .homePage .promo a:nth-child(4n+1) .btn .frame {
   background: radial-gradient(circle at 50% -57%, #af6d2c 12%, #ebb37c, #b8702a, #2a1704);
@@ -2114,7 +2137,6 @@ body {
   padding-bottom: 300%;
   margin: auto;
   position: absolute;
-  background-image: conic-gradient(transparent, #fff, #999, transparent 30%);
   animation: rotateReverse 2s linear infinite;
 }
 .homePage .promo a:nth-child(4n+2) .btn .frame {
@@ -2133,6 +2155,7 @@ body {
 }
 .homePage .promo a:nth-child(4n+2) .btn::before {
   background-color: #71256f;
+  background-image: conic-gradient(transparent, #d570d3, #3d093b, transparent 30%);
 }
 .homePage .promo a:nth-child(4n+2) .btn .frame {
   background: radial-gradient(circle at 50% -57%, #811a80 12%, #be63bc, #7e2b7c, #180117);
@@ -2159,7 +2182,6 @@ body {
   padding-bottom: 300%;
   margin: auto;
   position: absolute;
-  background-image: conic-gradient(transparent, #fff, #999, transparent 30%);
   animation: rotateReverse 2s linear infinite;
 }
 .homePage .promo a:nth-child(4n+3) .btn .frame {
@@ -2178,6 +2200,7 @@ body {
 }
 .homePage .promo a:nth-child(4n+3) .btn::before {
   background-color: #322ca4;
+  background-image: conic-gradient(transparent, #9c98ed, #2c2781, transparent 30%);
 }
 .homePage .promo a:nth-child(4n+3) .btn .frame {
   background: radial-gradient(circle at 50% -57%, #2a2594 12%, #716dce, #342ea9, #080447);
@@ -2204,7 +2227,6 @@ body {
   padding-bottom: 300%;
   margin: auto;
   position: absolute;
-  background-image: conic-gradient(transparent, #fff, #999, transparent 30%);
   animation: rotateReverse 2s linear infinite;
 }
 .homePage .promo a:nth-child(4n+4) .btn .frame {
@@ -2223,6 +2245,7 @@ body {
 }
 .homePage .promo a:nth-child(4n+4) .btn::before {
   background-color: #1d5766;
+  background-image: conic-gradient(transparent, #5aafc5, #0e4553, transparent 30%);
 }
 .homePage .promo a:nth-child(4n+4) .btn .frame {
   background: radial-gradient(circle at 50% -57%, #0b5262 12%, #419aaf, #12687c, #031f26);
@@ -2264,7 +2287,7 @@ body {
   justify-content: center;
   overflow: hidden;
   position: relative;
-  outline: 3px solid #fff;
+  outline: 3px solid rgba(255, 255, 255, 0.4);
 }
 .homePage .promoCarousel .frame::before {
   content: "";
@@ -2273,8 +2296,8 @@ body {
   padding-bottom: 300%;
   margin: auto;
   position: absolute;
-  background-color: #0d2466;
-  background-image: conic-gradient(transparent, #faffe7, #193789, transparent 15%);
+  background-color: #571a5f;
+  background-image: conic-gradient(transparent, #ccbcd3, #581975, transparent 15%);
   animation: rotate 2s linear infinite;
   pointer-events: none;
 }
@@ -2291,13 +2314,14 @@ body {
   border-radius: 8px;
   box-shadow: 0 0 15px #fff inset;
   pointer-events: none;
+  outline: 3px solid #917395;
 }
 .homePage .promoCarousel .promoSlider {
   border-radius: 20px;
   overflow: hidden;
 }
 .homePage .txn {
-  padding: 10px 10px;
+  padding: 10px 0 15px;
 }
 @media screen and (max-width: 750px) {
   .homePage .txn {
@@ -2311,28 +2335,144 @@ body {
   max-width: 400px;
   margin: 0 auto 12px;
 }
-.homePage .txn .list {
-  max-width: 400px;
-  margin: auto;
-  padding: 15px 10px;
-  border: 4px solid #b950ea;
-  box-shadow: 0 0 10px #fff, 0 0 10px #d689fa inset;
-  border-radius: 8px;
-}
-.homePage .txn .list table {
+.homePage .txn .txnDiv {
   width: 100%;
-  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.homePage .txn .list th {
+.homePage .txn .arrow {
+  width: 35px;
+  height: 35px;
+  background: url(../images/icons/arrow_w.svg) no-repeat center/45%;
+  flex-shrink: 0;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.homePage .txn .arrow.on {
+  opacity: 1;
+}
+.homePage .txn .arrow.left {
+  transform: scale(-1);
+}
+.homePage .txn .txnlist {
+  width: 100%;
+  max-width: 400px;
+  overflow: hidden;
+}
+@media screen and (max-width: 490px) {
+  .homePage .txn .txnlist {
+    max-width: calc(100vw - 70px);
+  }
+}
+.homePage .txn ul {
+  width: calc(var(--length) * 100%);
+  display: flex;
+}
+.homePage .txn li {
+  width: 100%;
+  padding: 6px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 5px #ca7dee inset;
+  border-radius: 3px;
+  transition: transform 0.5s;
+  transform: translateX(0%);
+}
+.homePage .txn li span {
+  box-shadow: 0 0 10px #dc90ff;
+}
+.homePage .txn li span:nth-child(1) {
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #ce80f1, #792c9c);
+  animation: btnFlash_01 1s infinite linear;
+  position: absolute;
+  top: 0;
+  left: -100%;
+}
+.homePage .txn li span:nth-child(2) {
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(180deg, transparent, #ce80f1, #792c9c);
+  animation: btnFlash_02 1s 0.25s infinite linear;
+  position: absolute;
+  top: -100%;
+  right: 0;
+}
+.homePage .txn li span:nth-child(3) {
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(270deg, transparent, #ce80f1, #792c9c);
+  animation: btnFlash_03 1s 0.5s infinite linear;
+  position: absolute;
+  bottom: 0;
+  right: -100%;
+}
+.homePage .txn li span:nth-child(4) {
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(360deg, transparent, #ce80f1, #792c9c);
+  animation: btnFlash_04 1s 0.75s infinite linear;
+  position: absolute;
+  bottom: -100%;
+  left: 0;
+}
+@keyframes btnFlash_01 {
+  0% {
+    left: -100%;
+  }
+  50%, 100% {
+    left: 100%;
+  }
+}
+@keyframes btnFlash_02 {
+  0% {
+    top: -100%;
+  }
+  50%, 100% {
+    top: 100%;
+  }
+}
+@keyframes btnFlash_03 {
+  0% {
+    right: -100%;
+  }
+  50%, 100% {
+    right: 100%;
+  }
+}
+@keyframes btnFlash_04 {
+  0% {
+    bottom: -100%;
+  }
+  50%, 100% {
+    bottom: 100%;
+  }
+}
+.homePage .txn .frame {
+  width: 100%;
+  padding: 15px 10px;
+  border-radius: 3px;
+  border: 2px solid #541870;
+  box-shadow: 0 0 15px #b46ed4 inset;
+}
+.homePage .txn table {
+  width: 100%;
+  font-size: 13px;
+}
+.homePage .txn th {
+  text-align: center;
   padding: 10px 5px;
   font-weight: bold;
 }
-.homePage .txn .list td {
+.homePage .txn td {
   padding: 10px 5px;
   text-align: center;
   color: #ccc;
 }
-.homePage .txn .list .rm {
+.homePage .txn .rm {
   color: #ff5fac;
 }
 .homePage .season {
@@ -2448,7 +2588,8 @@ body {
   width: 33.3333333333%;
   height: auto;
   padding: 5px;
-  filter: grayscale(1);
+  filter: grayscale(50%);
+  opacity: 0.8;
   cursor: pointer;
   transition: transform 0.5s, filter 0.5s;
 }
@@ -2465,7 +2606,8 @@ body {
 }
 @media (any-hover: hover) {
   .promoPage .promoList li:hover {
-    filter: hue-rotate(0);
+    filter: grayscale(0%);
+    opacity: 1;
     transform: translateY(-4px);
   }
   .promoPage .promoList li:hover .circle::before {
@@ -2475,11 +2617,10 @@ body {
     animation: rotateReverse 2s linear infinite;
   }
 }
-@media (pointer: coarse), (-moz-touch-enabled: 1), screen and (pointer: fine) and (min-resolution: 2dppx) and (max-width: 1023px) {
+@media (pointer: coarse), (-moz-touch-enabled: 1), screen and (pointer: fine) and (-webkit-min-device-pixel-ratio: 2) and (max-width: 1023px), screen and (pointer: fine) and (min-resolution: 2dppx) and (max-width: 1023px) {
   .promoPage .promoList li {
-    filter: hue-rotate(0);
-    filter: grayscale(0);
-    transform: translateY(-4px);
+    filter: grayscale(0%);
+    opacity: 1;
   }
   .promoPage .promoList li .circle::before {
     animation: rotate 2s linear infinite;
@@ -2559,7 +2700,6 @@ body {
   padding-bottom: 300%;
   margin: auto;
   position: absolute;
-  background-image: conic-gradient(transparent, #fff, #999, transparent 30%);
   animation: rotateReverse 2s linear infinite;
 }
 .promoPage .card .btn .frame {
@@ -2578,6 +2718,7 @@ body {
 }
 .promoPage .card .btn::before {
   background-color: #322ca4;
+  background-image: conic-gradient(transparent, #9c98ed, #2c2781, transparent 30%);
 }
 .promoPage .card .btn .frame {
   background: radial-gradient(circle at 50% -57%, #2a2594 12%, #716dce, #342ea9, #080447);
@@ -2676,7 +2817,6 @@ body {
   padding-bottom: 300%;
   margin: auto;
   position: absolute;
-  background-image: conic-gradient(transparent, #fff, #999, transparent 30%);
   animation: rotateReverse 2s linear infinite;
 }
 .luckyWheel .spinBtn .btn .frame {
@@ -2695,6 +2835,7 @@ body {
 }
 .luckyWheel .spinBtn .btn::before {
   background-color: #762689;
+  background-image: conic-gradient(transparent, #b46bc5, #450b53, transparent 30%);
 }
 .luckyWheel .spinBtn .btn .frame {
   background: radial-gradient(circle at 50% -57%, #46168b 12%, #854dd5, #631fc3, #270853);
@@ -2792,7 +2933,7 @@ body {
     margin-right: 0;
   }
 }
-@media screen and (max-width: 750px) and (pointer: coarse), screen and (max-width: 750px) and (-moz-touch-enabled: 1), screen and (max-width: 750px) and (pointer: fine) and (min-resolution: 2dppx) and (max-width: 1023px) {
+@media screen and (max-width: 750px) and (pointer: coarse), screen and (max-width: 750px) and (-moz-touch-enabled: 1), screen and (max-width: 750px) and (pointer: fine) and (-webkit-min-device-pixel-ratio: 2) and (max-width: 1023px), screen and (max-width: 750px) and (pointer: fine) and (min-resolution: 2dppx) and (max-width: 1023px) {
   .referMenu {
     width: calc(100vw - 20px);
     overflow: scroll;
@@ -2808,7 +2949,7 @@ body {
     gap: 8px;
   }
 }
-@media screen and (max-width: 750px) and (pointer: coarse), screen and (max-width: 750px) and (-moz-touch-enabled: 1), screen and (max-width: 750px) and (pointer: fine) and (min-resolution: 2dppx) and (max-width: 1023px) {
+@media screen and (max-width: 750px) and (pointer: coarse), screen and (max-width: 750px) and (-moz-touch-enabled: 1), screen and (max-width: 750px) and (pointer: fine) and (-webkit-min-device-pixel-ratio: 2) and (max-width: 1023px), screen and (max-width: 750px) and (pointer: fine) and (min-resolution: 2dppx) and (max-width: 1023px) {
   .referMenu ul {
     flex-wrap: nowrap;
   }
@@ -2842,7 +2983,7 @@ body {
     box-shadow: 0 -2px 2px #a05ae6 inset;
   }
 }
-@media screen and (max-width: 750px) and (pointer: coarse), screen and (max-width: 750px) and (-moz-touch-enabled: 1), screen and (max-width: 750px) and (pointer: fine) and (min-resolution: 2dppx) and (max-width: 1023px) {
+@media screen and (max-width: 750px) and (pointer: coarse), screen and (max-width: 750px) and (-moz-touch-enabled: 1), screen and (max-width: 750px) and (pointer: fine) and (-webkit-min-device-pixel-ratio: 2) and (max-width: 1023px), screen and (max-width: 750px) and (pointer: fine) and (min-resolution: 2dppx) and (max-width: 1023px) {
   .referMenu li {
     padding: 0 25px;
     white-space: nowrap;
@@ -2916,7 +3057,8 @@ body {
 .referShow .userMsg .grade {
   font-size: 12px;
   background: linear-gradient(25deg, #ffff8a, #ba5733 40%, #fafab1);
-  background-clip: text;
+  -webkit-background-clip: text;
+          background-clip: text;
   color: transparent;
 }
 .referShow .intBox {
@@ -2935,7 +3077,8 @@ body {
   padding-bottom: 2px;
   font-size: 14px;
 }
-.referShow .intBox input, .referShow .intBox select {
+.referShow .intBox input,
+.referShow .intBox select {
   background: transparent;
   outline: none;
   border: none;
@@ -2947,7 +3090,8 @@ body {
   opacity: 0.5;
   transition: 0.5s;
 }
-.referShow .intBox input:focus, .referShow .intBox select:focus {
+.referShow .intBox input:focus,
+.referShow .intBox select:focus {
   opacity: 1;
 }
 .referShow .intBox .btn {
@@ -3016,7 +3160,7 @@ body {
 }
 .referShow .bankOptions th {
   padding: 15px 5px;
-  background-color: #4839F7;
+  background-color: #4839f7;
   background: linear-gradient(0deg, #09006b, #5f53eb);
   font-weight: bold;
 }
@@ -3038,10 +3182,17 @@ body {
     justify-content: space-between;
     padding: 0 5px 0 0;
     text-align: right;
-    border-bottom: 1px solid #aaa;
+    position: relative;
   }
-  .referShow .bankOptions td + td {
-    border-top: 1px solid #aaa;
+  .referShow .bankOptions td + td::before {
+    content: "";
+    width: 100%;
+    height: 1px;
+    background-color: #999;
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    transform: scaleY(0.5);
   }
 }
 .referShow .bankOptions td span {
@@ -3063,7 +3214,7 @@ body {
 }
 @media screen and (max-width: 550px) {
   .referShow .bankOptions .noData {
-    height: 40px;
+    padding: 10px 0;
   }
 }
 .referShow .bankOptions .noData td {
@@ -3075,9 +3226,19 @@ body {
   padding-bottom: 30px;
 }
 .referShow .referral .title {
-  padding-bottom: 8px;
-  font-size: 16px;
+  margin-bottom: 10px;
+  font-size: 14px;
   font-weight: bold;
+}
+@media screen and (max-width: 600px) {
+  .referShow .referral .title {
+    padding: 10px;
+    margin-bottom: 0;
+    border-radius: 5px 5px 0 0;
+    background: linear-gradient(0deg, #09006b, #5f53eb);
+    text-align: center;
+    font-size: 13px;
+  }
 }
 .referShow .referral .tip {
   font-size: 14px;
@@ -3089,7 +3250,7 @@ body {
   margin-top: 4px;
 }
 .referShow .referral .tip span {
-  color: #FFC123;
+  color: #ffc123;
 }
 .referShow .referral .iptShare {
   margin: 20px 0;
@@ -3150,9 +3311,31 @@ body {
 }
 .referShow .referral .friendList table {
   width: 100%;
-  font-size: 12px;
-  border-radius: 3px;
+  border-radius: 5px;
   overflow: hidden;
+  font-size: 12px;
+}
+@media screen and (max-width: 600px) {
+  .referShow .referral .friendList table {
+    border-radius: 0 0 5px 5px;
+  }
+}
+.referShow .referral .friendList span {
+  display: none;
+}
+@media screen and (max-width: 600px) {
+  .referShow .referral .friendList span {
+    width: 140px;
+    height: 100%;
+    padding: 10px 5px;
+    margin-right: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(0deg, #000, #5f53eb);
+    color: #fff;
+    flex-shrink: 0;
+  }
 }
 .referShow .referral .friendList tr:nth-child(even) {
   background-color: #fff;
@@ -3160,20 +3343,58 @@ body {
 .referShow .referral .friendList tr:nth-child(odd) {
   background-color: #ddd;
 }
+@media screen and (max-width: 600px) {
+  .referShow .referral .friendList tr {
+    display: block;
+    margin-bottom: 4px;
+  }
+  .referShow .referral .friendList tr.noData td {
+    padding: 10px 0;
+    display: block;
+    text-align: center;
+  }
+}
 .referShow .referral .friendList th {
   padding: 10px 5px;
   background: linear-gradient(0deg, #09006b, #5f53eb);
   font-weight: bold;
+}
+@media screen and (max-width: 600px) {
+  .referShow .referral .friendList th {
+    display: none;
+  }
 }
 .referShow .referral .friendList td {
   padding: 8px 5px;
   text-align: center;
   color: #333;
 }
+@media screen and (max-width: 600px) {
+  .referShow .referral .friendList td {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5px 0 0;
+    text-align: right;
+    position: relative;
+  }
+  .referShow .referral .friendList td + td::before {
+    content: "";
+    width: 100%;
+    height: 1px;
+    background-color: #999;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transform: scaleY(0.5);
+  }
+  .referShow .referral .friendList td:nth-child(1) {
+    display: none;
+  }
+}
 .referShow .referral .friendList .num {
-  width: 25px;
-  display: inline-block;
-  flex-shrink: 0;
+  min-width: 30px;
 }
 .referShow .referral .friendList .btn {
   height: 45px;
@@ -3200,6 +3421,11 @@ body {
 .referShow .referral .friendList .btn:active {
   transform: translateY(2px);
 }
+@media screen and (max-width: 600px) {
+  .referShow .referral .friendList .btn {
+    margin: 8px auto;
+  }
+}
 .referShow .referral .rewardList {
   margin: 20px 0;
 }
@@ -3209,9 +3435,12 @@ body {
   border-radius: 3px;
   overflow: hidden;
 }
-.referShow .referral .rewardList th, .referShow .referral .rewardList td {
+.referShow .referral .rewardList th,
+.referShow .referral .rewardList td {
   padding: 10px 5px;
   text-align: center;
+  font-size: 12px;
+  line-height: 15px;
 }
 .referShow .referral .rewardList th {
   background: linear-gradient(0deg, #5b0808, #b54a4a);

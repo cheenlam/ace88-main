@@ -89,7 +89,7 @@
                         <div class="pic">
                             <img src="images/user/photo.webp" v-if="getlogin()">
                             <img src="images/user/default.webp" v-if="!getlogin()">
-                        </div>  
+                        </div>
                     </div>
                 </div>
                 <div class="info">
@@ -207,19 +207,34 @@
         <div class="title">
             <img src="images/other/txn.webp">
         </div>
-        <div class="list">
-            <table>
-                <tr>
-                    <th width="25px">#</th>
-                    <th>MUMBER</th>
-                    <th width="30%" class="rm">RM</th>
-                </tr>
-                <tr v-for="(item,index) in 10">
-                    <td>{{index +1}}</td>
-                    <td>60*****932</td>
-                    <td class="rm">RN15000.00</td>
-                </tr>
-            </table>
+
+        <div class="txnDiv">
+            <div class="arrow left" @click="txnTomove(1)" :class="{'on' : txnmove > 0 && txnmove < txnList.length}"></div>
+            <div class="txnlist">
+                <ul :style="{'--length':txnList.length}">
+                    <li v-for="(item,idx) in txnList">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <div class="frame">
+                            <table>
+                                <tr>
+                                    <th width="25px">#</th>
+                                    <th>MUMBER</th>
+                                    <th class="rm">RM</th>
+                                </tr>
+                                <tr v-for="(k,index) in 10">
+                                    <td>{{index +1}}</td>
+                                    <td>{{item.munber}}</td>
+                                    <td class="rm">RM {{item.num}}</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </li>
+                </ul>              
+            </div>
+            <div class="arrow" @click="txnTomove(2)" :class="{'on' : txnmove >= 0 && txnmove < txnList.length-1}"></div>
         </div>
     </div>
 
@@ -238,8 +253,13 @@
             <p>Gambling Can Be Addictive, Please Play Responsibly Trusted Online Casiono Malaysia 2023</p>
         </div>
         <div class="second">
-            <p>If you're new to online gambling and online casinos in general, you need yo know a trusted online casino Malaysia 2023. This way, you'll be able to differentiate between real, top-quality casinos and fake casinos that just want to scam you.</p>
-            <p>The online casino Malaysia you choose should have very good security measures in place to keep you and your money safe. It should also have lots of games too, so you're never bored. Ace88 is a trusted online casino in Malaysia with lots of great games you'll enjoy. Our players are constantly cashing out. Register for Ace88 today to get the most out of our online casino!</p>
+            <p>If you're new to online gambling and online casinos in general, you need yo know a trusted online casino
+                Malaysia 2023. This way, you'll be able to differentiate between real, top-quality casinos and fake
+                casinos that just want to scam you.</p>
+            <p>The online casino Malaysia you choose should have very good security measures in place to keep you and
+                your money safe. It should also have lots of games too, so you're never bored. Ace88 is a trusted online
+                casino in Malaysia with lots of great games you'll enjoy. Our players are constantly cashing out.
+                Register for Ace88 today to get the most out of our online casino!</p>
             <p>Gambling Can Be Addictive. Please Play Responsibly.</p>
         </div>
 
@@ -249,6 +269,7 @@
             <div class="icon gamcare"></div>
         </div>
     </div>
+
 </div>
 
 <script>
@@ -288,7 +309,7 @@
                         img: 'images/carousel/promo_07.webp'
                     }, {
                         img: 'images/carousel/promo_08.webp'
-                    }, ]
+                    },]
                 },
                 marquee: [{
                     txt: 'Here is the first set of copywriting to test the marquee text.'
@@ -296,18 +317,24 @@
                     txt: 'Welcome to ACE88.'
                 }, {
                     txt: 'Test whether the marquee function is functioning properly.'
-                }],  
-                selBtn:[
-                    {icon:'casino'},
-                    {icon:'sport'},
-                    {icon:'slot'},
-                    {icon:'game4d'}
-                ],    
-                gameList:[
-                    {bg:'images/game/bg.webp',role:'images/game/girl.webp',num:10},
-                    {bg:'images/game/bg02.webp',role:'images/game/player.webp',num:5},
-                    {bg:'images/game/bg03.webp',role:'images/game/bear.webp',num:20},
-                    {bg:'images/game/bg.webp',role:'images/game/girl.webp',num:8}
+                }],
+                selBtn: [
+                    { icon: 'casino' },
+                    { icon: 'sport' },
+                    { icon: 'slot' },
+                    { icon: 'game4d' }
+                ],
+                gameList: [
+                    { bg: 'images/game/bg.webp', role: 'images/game/girl.webp', num: 10 },
+                    { bg: 'images/game/bg02.webp', role: 'images/game/player.webp', num: 5 },
+                    { bg: 'images/game/bg03.webp', role: 'images/game/bear.webp', num: 20 },
+                    { bg: 'images/game/bg.webp', role: 'images/game/girl.webp', num: 8 }
+                ],
+                txnmove : 0,
+                txnList:[
+                    {munber:'60*****932',num:'15000.00'},
+                    {munber:'77*****123',num:'999.99'},
+                    {munber:'88*****999',num:'1234.10'}
                 ]
             };
         },
@@ -335,14 +362,27 @@
                 return indexVue.islogin;
             },
             reGamesHigh() {
-                if((location.href).includes('home')){
+                if ((location.href).includes('home')) {
                     let boxH = document.querySelector('#carouselHigh').offsetHeight;
                     let winW = document.body.clientWidth;
                     document.querySelector('#gameList').style.paddingTop = winW <= 750 ? '' : `${boxH + 5}px`;
-                }  
+                }
             },
-            rebgi(img){
+            rebgi(img) {
                 return `background-image: url(${img})`;
+            },
+            txnTomove(type){
+                let max = this.txnList.length-1;
+                if(type == 1){
+                    this.txnmove = this.txnmove > 0 ? this.txnmove-1 : 0;
+                }else if(type == 2){
+                    this.txnmove = this.txnmove < max ? this.txnmove+1 : max;
+                }
+
+                document.querySelectorAll('.txnDiv li').forEach(item =>{
+                    item.style.transform = `translateX(-${this.txnmove * 100}%)`
+                })
+                console.log(this.txnmove)
             }
         },
         mounted() {
