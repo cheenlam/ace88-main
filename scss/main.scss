@@ -904,17 +904,21 @@ body {
     }
     // 浮動按鈕
     @at-root .floatBtn {
-        width: 50px;
+        width: 55px;
         margin: auto;
         position: fixed;
-        @include pos(br,100px,22px);
+        display: flex;
+        flex-direction: column;
         z-index: 20;
+        @include pos(br,100px,24px); 
         @include phone{
             right: 5px;
         }
-        .service {
-            position: relative;
-            display: flex;
+        .item {
+            cursor: pointer;
+            &+.item{
+                margin-top: 8px;
+            }
         }
     }
 }

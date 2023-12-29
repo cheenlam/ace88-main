@@ -1362,21 +1362,25 @@ body {
 }
 
 .floatBtn {
-  width: 50px;
+  width: 55px;
   margin: auto;
   position: fixed;
-  bottom: 100px;
-  right: 22px;
+  display: flex;
+  flex-direction: column;
   z-index: 20;
+  bottom: 100px;
+  right: 24px;
 }
 @media (pointer: coarse), (-moz-touch-enabled: 1), screen and (pointer: fine) and (-webkit-min-device-pixel-ratio: 2) and (max-width: 1023px), screen and (pointer: fine) and (min-resolution: 2dppx) and (max-width: 1023px) {
   .floatBtn {
     right: 5px;
   }
 }
-.floatBtn .service {
-  position: relative;
-  display: flex;
+.floatBtn .item {
+  cursor: pointer;
+}
+.floatBtn .item + .item {
+  margin-top: 8px;
 }
 
 .homePage {

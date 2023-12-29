@@ -9,7 +9,7 @@ Router.prototype.route = function(path, callback) {
 };
 Router.prototype.refresh = function() {
     // 路由清單
-    let routerList = ['home','promotion','refer','vip','chats','withdraw'];
+    let routerList = ['home','promotion','refer','vip','chats','luckyWheel'];
 
     let urlString = window.location.hash.slice(1);
     let url = new URL(urlString, window.location.origin);
@@ -71,15 +71,15 @@ Router.route('/vip', function() {
 });
 
 Router.route('/chats', function() {
-    mainInclude('/page/luckyWheel.html');
+    mainInclude('/page/chats.html');
     menuList_on(4,5);
     document.title = "ACE88｜Chats";
 });
 
-Router.route('/withdraw', function() {
-    mainInclude('/page/withdraw.html');
-    menuList_on(99);
-    document.title = "ACE88｜Withdraw";
+Router.route('/luckyWheel', function() {
+    mainInclude('/page/luckyWheel.html');
+    menuList_on(99,99);
+    document.title = "ACE88｜luckyWheel";
 });
 
 
