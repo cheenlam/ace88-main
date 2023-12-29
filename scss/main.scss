@@ -3058,6 +3058,11 @@ body {
                 flex-direction: column-reverse;
                 align-items: flex-end;
                 .main{
+                    flex-direction: row-reverse;
+                }  
+            } 
+            @include rwd(470) {
+                .main{
                     flex-direction: column;
                 }  
             } 
@@ -3073,7 +3078,13 @@ body {
             }
             @include rwd(550) {
                 .main{
+                    flex-direction: row;
                     align-items: start;
+                }  
+            } 
+            @include rwd(470) {
+                .main{
+                    flex-direction: column;
                 }  
             } 
         }

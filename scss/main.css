@@ -4094,6 +4094,12 @@ body {
   }
   .vipPage .progress .level_02 .main,
   .vipPage .progress .level_03 .main {
+    flex-direction: row-reverse;
+  }
+}
+@media screen and (max-width: 470px) {
+  .vipPage .progress .level_02 .main,
+  .vipPage .progress .level_03 .main {
     flex-direction: column;
   }
 }
@@ -4108,7 +4114,15 @@ body {
   .vipPage .progress .level_04 .main,
   .vipPage .progress .level_05 .main,
   .vipPage .progress .level_06 .main {
+    flex-direction: row;
     align-items: start;
+  }
+}
+@media screen and (max-width: 470px) {
+  .vipPage .progress .level_04 .main,
+  .vipPage .progress .level_05 .main,
+  .vipPage .progress .level_06 .main {
+    flex-direction: column;
   }
 }
 .vipPage .progress .main {
