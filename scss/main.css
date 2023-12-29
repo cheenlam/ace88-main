@@ -1362,12 +1362,17 @@ body {
 }
 
 .floatBtn {
-  width: 60px;
+  width: 50px;
   margin: auto;
   position: fixed;
-  right: 10px;
-  bottom: 80px;
+  bottom: 100px;
+  right: 22px;
   z-index: 20;
+}
+@media (pointer: coarse), (-moz-touch-enabled: 1), screen and (pointer: fine) and (-webkit-min-device-pixel-ratio: 2) and (max-width: 1023px), screen and (pointer: fine) and (min-resolution: 2dppx) and (max-width: 1023px) {
+  .floatBtn {
+    right: 5px;
+  }
 }
 .floatBtn .service {
   position: relative;
@@ -2525,6 +2530,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
 }
 .h_txn .arrow {
   width: 35px;
@@ -2541,6 +2547,25 @@ body {
 .h_txn .arrow.left {
   transform: scale(-1);
 }
+@media screen and (max-width: 450px) {
+  .h_txn .arrow {
+    width: 40px;
+    height: 40px;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 5px;
+    background-color: rgba(255, 255, 255, 0.3);
+    background-size: 35%;
+    border-radius: 50%;
+    z-index: 1;
+  }
+  .h_txn .arrow.left {
+    right: unset;
+    left: 8px;
+  }
+}
 .h_txn .txnlist {
   width: 100%;
   max-width: 400px;
@@ -2549,6 +2574,11 @@ body {
 @media screen and (max-width: 490px) {
   .h_txn .txnlist {
     max-width: calc(100vw - 70px);
+  }
+}
+@media screen and (max-width: 450px) {
+  .h_txn .txnlist {
+    max-width: calc(100vw - 30px);
   }
 }
 .h_txn ul {
@@ -2708,13 +2738,13 @@ body {
 }
 @media screen and (max-width: 550px) {
   .h_season .arrow {
-    width: 45px;
-    height: 45px;
+    width: 40px;
+    height: 40px;
     margin: auto;
     position: absolute;
     top: 0;
     bottom: 0;
-    right: 8px;
+    right: 5px;
     background-color: rgba(255, 255, 255, 0.3);
     background-size: 35%;
     border-radius: 50%;

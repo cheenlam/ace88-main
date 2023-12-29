@@ -902,15 +902,16 @@ body {
             }
         }
     }
-
     // 浮動按鈕
     @at-root .floatBtn {
-        width: 60px;
+        width: 50px;
         margin: auto;
         position: fixed;
-        right: 10px;
-        bottom: 80px;
+        @include pos(br,100px,22px);
         z-index: 20;
+        @include phone{
+            right: 5px;
+        }
         .service {
             position: relative;
             display: flex;
@@ -1677,6 +1678,7 @@ body {
             display: flex;
             align-items: center;
             justify-content: center;
+            position: relative;
         }
 
         .arrow {
@@ -1693,6 +1695,21 @@ body {
             &.left {
                 transform: scale(-1);
             }
+            @include rwd(450){
+                width: 40px;
+                height: 40px;
+                margin: auto;
+                position: absolute;
+                @include pos(tbr,0,0,5px);
+                background-color: rgba(255, 255, 255, 0.3);
+                background-size: 35%;
+                border-radius: 50%;
+                z-index: 1;
+                &.left{
+                    right: unset;
+                    left: 8px;
+                }
+            }
         }
 
         .txnlist {
@@ -1701,6 +1718,9 @@ body {
             overflow: hidden;
             @include rwd(490) {
                 max-width: calc(100vw - 70px);
+            }
+            @include rwd(450){
+                max-width: calc(100vw - 30px);
             }
         }
         ul {
@@ -1866,11 +1886,11 @@ body {
                 transform: scale(-1);
             }
             @include rwd(550){
-                width: 45px;
-                height: 45px;
+                width: 40px;
+                height: 40px;
                 margin: auto;
                 position: absolute;
-                @include pos(tbr,0,0,8px);
+                @include pos(tbr,0,0,5px);
                 background-color: rgba(255, 255, 255, 0.3);
                 background-size: 35%;
                 border-radius: 50%;
