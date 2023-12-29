@@ -1950,9 +1950,15 @@ body {
                         url(../images/other/betFrame_R.webp) no-repeat right center / 80px 100%;
             @include rwd(550){
                 padding: 35px 0 25px;
-                background: url(../images/other/betFrame_T.webp) no-repeat center top/ 100% 70px,
+                background: url(../images/other/betFrame_T.webp) no-repeat center top / 100% 70px,
                             url(../images/other/betFrame_Tauto.webp) no-repeat center / 100% calc(100% - 139px),
-                            url(../images/other/betFrame_B.webp) no-repeat center bottom/ 100% 70px;
+                            url(../images/other/betFrame_B.webp) no-repeat center bottom / 100% 70px;
+            }
+            @include rwd(350){
+                padding: 35px 0 15px;
+                background: url(../images/other/betFrame_T.webp) no-repeat center top / 100% 18vw, 
+                            url(../images/other/betFrame_Tauto.webp) no-repeat center / 100% calc(100% - 29.7vw), 
+                            url(../images/other/betFrame_B.webp) no-repeat center bottom / 100% 15vw;
             }
         }
         .name{
