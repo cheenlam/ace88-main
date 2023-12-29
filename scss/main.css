@@ -29,7 +29,6 @@ a, a:hover {
 
 * {
   font-family: Open, Tahoma, Arial, Helvetica, sans-serif;
-  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   -webkit-touch-callout: none;
   -webkit-text-size-adjust: none;
@@ -59,7 +58,6 @@ textarea {
   font-family: "Helvetica", sans-serif;
   -webkit-appearance: none;
   -moz-appearance: none;
-  -ms-appearance: none;
   appearance: none;
 }
 
@@ -156,7 +154,6 @@ img {
   display: block;
   -webkit-user-select: none;
   -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
 }
 .swipslider.min {
@@ -175,7 +172,6 @@ img {
   height: 100%;
   white-space: nowrap;
   font-size: 0;
-  -webkit-transform: translateX(0);
   transform: translateX(0);
   position: absolute;
   bottom: 0;
@@ -200,7 +196,6 @@ img {
   position: absolute;
   top: 50%;
   left: 50%;
-  -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   max-height: 100%;
   max-width: 100%;
@@ -208,7 +203,6 @@ img {
   margin-right: auto;
   -webkit-user-select: none;
   -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
 }
 
@@ -224,7 +218,6 @@ img {
   font-weight: bolder;
   color: rgba(160, 160, 160, 0.53);
   top: 50%;
-  -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
   background-color: rgba(255, 255, 255, 0);
   border-radius: 50%;
@@ -233,7 +226,6 @@ img {
   cursor: pointer;
   -webkit-user-select: none;
   -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   display: none;
 }
@@ -305,7 +297,6 @@ img {
   display: block;
   -webkit-user-select: none;
   -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
 }
 @media screen and (max-width: 1050px) {
@@ -357,7 +348,9 @@ img {
 }
 
 body {
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
   background: linear-gradient(90deg, #000, #1b062e, #000, #000 75%, #1c0c34, #000);
   color: #fff;
 }
@@ -614,7 +607,7 @@ body {
   opacity: 0.4;
   transition: 0.5s;
 }
-@media (pointer: coarse), (-moz-touch-enabled: 1), screen and (pointer: fine) and (min-resolution: 2dppx) and (max-width: 1023px) {
+@media (pointer: coarse), (-moz-touch-enabled: 1), screen and (pointer: fine) and (-webkit-min-device-pixel-ratio: 2) and (max-width: 1023px), screen and (pointer: fine) and (min-resolution: 2dppx) and (max-width: 1023px) {
   .header .hd_tool .langList li {
     opacity: 1;
   }
@@ -1759,10 +1752,10 @@ body {
   border-color: #8c12cc transparent transparent transparent;
 }
 .h_gameList .squareList .item:nth-child(even) .sheet {
-  background: linear-gradient(90deg, #461967, #6225a8);
+  background: linear-gradient(90deg, #461967, #9a5ae3);
 }
 .h_gameList .squareList .item:nth-child(even) .sheet th {
-  background-color: #9d1dd8;
+  background: linear-gradient(0deg, #590a7d, #c08bd7);
 }
 @media screen and (max-width: 1250px) {
   .h_gameList .squareList .item {
@@ -1816,7 +1809,6 @@ body {
   background-color: var(--bgc);
   border-radius: 0 5px 0 0;
   position: relative;
-  border-bottom: 1px solid var(--bc);
   flex-shrink: 0;
 }
 .h_gameList .squareList .typeLogo::after {
@@ -1828,18 +1820,18 @@ body {
   left: -10px;
   background-color: var(--bgc);
   transform: skew(-5deg);
-  border-bottom: 1px solid var(--bc);
 }
 .h_gameList .squareList .typeLogo::before {
   content: "";
-  width: 0;
-  height: 0;
-  border-style: solid;
-  border-width: 0 12px 12px 0;
-  border-color: transparent var(--bgc) transparent transparent;
+  width: 22px;
+  height: 22px;
+  -webkit-clip-path: polygon(50% 0%, 100% 59%, 100% 0);
+          clip-path: polygon(50% 0%, 100% 59%, 100% 0);
+  background-color: var(--bgc);
   position: absolute;
-  bottom: -12px;
-  left: -12px;
+  bottom: -22px;
+  left: -22px;
+  box-shadow: 0 2px 5px #333 inset;
 }
 .h_gameList .squareList .txt {
   width: 100%;
@@ -1865,6 +1857,7 @@ body {
   padding: 5px;
   text-align: center;
   background-color: #491381;
+  background: linear-gradient(0deg, #491381, #9554d7);
 }
 .h_gameList .squareList .sheet td {
   padding: 8px 5px;
@@ -2055,14 +2048,16 @@ body {
   font-size: 12px;
   font-weight: bold;
   background: linear-gradient(25deg, #6954bf, #c5b7ff, #6954bf);
-  background-clip: text;
+  -webkit-background-clip: text;
+          background-clip: text;
   color: transparent;
 }
 .h_assets .userMsg .balance {
   font-size: 24px;
   font-weight: bold;
   background: linear-gradient(25deg, #ffff8a, #ba5733 40%, #fafab1);
-  background-clip: text;
+  -webkit-background-clip: text;
+          background-clip: text;
   color: transparent;
 }
 .h_assets .userMsg .balance span {
@@ -2120,7 +2115,8 @@ body {
   position: relative;
   overflow: hidden;
   cursor: pointer;
-  clip-path: polygon(20% 0%, 100% 0%, 100% 100%, 20% 100%, 8% 50%);
+  -webkit-clip-path: polygon(20% 0%, 100% 0%, 100% 100%, 20% 100%, 8% 50%);
+          clip-path: polygon(20% 0%, 100% 0%, 100% 100%, 20% 100%, 8% 50%);
   background-image: linear-gradient(90deg, #eee, #8d671d, #bd9a3b, transparent 80%);
 }
 .h_assets .operate .arrowBtn:nth-child(odd) .inner {
@@ -2144,7 +2140,8 @@ body {
 .h_assets .operate .arrowBtn:nth-child(odd) .inner {
   padding: 8px 5px 8px 22%;
   justify-content: left;
-  clip-path: polygon(20% 0%, 100% 0%, 100% 100%, 20% 100%, 9% 50%);
+  -webkit-clip-path: polygon(20% 0%, 100% 0%, 100% 100%, 20% 100%, 9% 50%);
+          clip-path: polygon(20% 0%, 100% 0%, 100% 100%, 20% 100%, 9% 50%);
   background: linear-gradient(90deg, #5544bd, #221554 80%, transparent);
 }
 .h_assets .operate .arrowBtn:nth-child(odd) .icon {
@@ -2157,7 +2154,8 @@ body {
   position: relative;
   overflow: hidden;
   cursor: pointer;
-  clip-path: polygon(0% 0%, 88% 0%, 100% 50%, 88% 100%, 0% 100%);
+  -webkit-clip-path: polygon(0% 0%, 88% 0%, 100% 50%, 88% 100%, 0% 100%);
+          clip-path: polygon(0% 0%, 88% 0%, 100% 50%, 88% 100%, 0% 100%);
   background-image: linear-gradient(-90deg, #eee, #8d671d, #bd9a3b, transparent 80%);
 }
 .h_assets .operate .arrowBtn:nth-child(even) .inner {
@@ -2181,7 +2179,8 @@ body {
 .h_assets .operate .arrowBtn:nth-child(even) .inner {
   padding: 8px 14% 8px 5px;
   justify-content: right;
-  clip-path: polygon(0% 0%, 88% 0%, 99% 50%, 88% 100%, 0% 100%);
+  -webkit-clip-path: polygon(0% 0%, 88% 0%, 99% 50%, 88% 100%, 0% 100%);
+          clip-path: polygon(0% 0%, 88% 0%, 99% 50%, 88% 100%, 0% 100%);
   background: linear-gradient(-90deg, #5544bd, #221554 80%, transparent);
 }
 .h_assets .operate .arrowBtn:nth-child(even) .icon {
@@ -2681,27 +2680,277 @@ body {
     max-width: 400px;
   }
 }
+@media screen and (max-width: 550px) {
+  .h_season {
+    padding: 0px 0 10px;
+  }
+}
 .h_season .title {
   width: 100%;
   max-width: 500px;
   margin: 0 auto 10px;
 }
+.h_season .seasonShow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.h_season .arrow {
+  width: 35px;
+  height: 35px;
+  background: url(../images/icons/arrow_w.svg) no-repeat center/45%;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+.h_season .arrow.left {
+  transform: scale(-1);
+}
+@media screen and (max-width: 550px) {
+  .h_season .arrow {
+    width: 45px;
+    height: 45px;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 8px;
+    background-color: rgba(255, 255, 255, 0.3);
+    background-size: 35%;
+    border-radius: 50%;
+    z-index: 1;
+  }
+  .h_season .arrow.left {
+    right: unset;
+    left: 8px;
+  }
+}
 .h_season .list {
+  max-width: 1000px;
+  overflow: hidden;
+}
+@media screen and (max-width: 1000px) {
+  .h_season .list {
+    width: calc(100% - 70px);
+    max-width: 500px;
+  }
+}
+@media screen and (max-width: 550px) {
+  .h_season .list {
+    width: calc(100% - 30px);
+  }
+}
+.h_season .list ul {
+  width: calc(var(--num) * 50%);
   display: flex;
   justify-content: center;
 }
-.h_season .item {
+.h_season .list ul.only {
+  width: 100%;
+}
+@media screen and (max-width: 1000px) {
+  .h_season .list ul {
+    width: calc(var(--num) * 100%);
+  }
+}
+.h_season .list li {
   width: 50%;
-  padding-top: 24px;
-  background: url(../images/other/betFrame_left.webp) no-repeat left center/calc(50% - 89px) 100%, url(../images/other/betFrame_center.webp) no-repeat center/180px 100%, url(../images/other/betFrame_right.webp) no-repeat right center/calc(50% - 89px) 100%;
+  padding: 0 5px;
+  transition: transform 0.5s;
+}
+.h_season .list li.only {
+  width: 100%;
+}
+@media screen and (max-width: 1000px) {
+  .h_season .list li {
+    width: 100%;
+  }
+}
+.h_season .card {
+  padding: 20px 40px;
+  background: url(../images/other/betFrame_L.webp) no-repeat left center/80px 100%, url(../images/other/betFrame_Lauto.webp) no-repeat left center/calc(50% - 89px) 100%, url(../images/other/betFrame_C.webp) no-repeat center/180px 100%, url(../images/other/betFrame_Rauto.webp) no-repeat calc(50% - 80px) center/100% 100%, url(../images/other/betFrame_R.webp) no-repeat right center/80px 100%;
+}
+@media screen and (max-width: 550px) {
+  .h_season .card {
+    padding: 35px 0 25px;
+    background: url(../images/other/betFrame_T.webp) no-repeat center top/100% 70px, url(../images/other/betFrame_Tauto.webp) no-repeat center/100% calc(100% - 139px), url(../images/other/betFrame_B.webp) no-repeat center bottom/100% 70px;
+  }
 }
 .h_season .name {
+  padding-top: 2px;
   text-align: center;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: bold;
 }
 .h_season .team {
-  height: 300px;
+  padding: 40px 0;
+}
+@media screen and (max-width: 550px) {
+  .h_season .team {
+    padding: 20px 0;
+  }
+}
+.h_season table {
+  max-width: calc(100% - 160px);
+  margin: auto;
+}
+@media screen and (max-width: 550px) {
+  .h_season table {
+    max-width: calc(100% - 60px);
+    display: flex;
+    justify-content: center;
+  }
+}
+@media screen and (max-width: 550px) {
+  .h_season tr {
+    display: flex;
+    align-items: center;
+  }
+}
+.h_season td {
+  padding: 0 5px;
+}
+@media screen and (max-width: 550px) {
+  .h_season td {
+    width: auto;
+  }
+}
+.h_season .teamLogo {
+  width: 80px;
+  margin: auto;
+}
+@media screen and (max-width: 550px) {
+  .h_season .teamLogo {
+    width: 55px;
+  }
+}
+.h_season .teamName {
+  padding: 0 5px;
+  font-size: 13px;
+  text-align: center;
+}
+.h_season .vs {
+  font-size: 18px;
+  letter-spacing: 1px;
+  font-weight: bold;
+  color: #FF27F5;
+  text-align: center;
+  display: none;
+}
+@media screen and (max-width: 550px) {
+  .h_season .vs {
+    display: block;
+  }
+}
+.h_season .scoreNum {
+  font-size: 30px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  color: #FF27F5;
+  text-align: center;
+}
+@media screen and (max-width: 550px) {
+  .h_season .scoreNum {
+    display: none;
+  }
+}
+.h_season .scoreTime {
+  font-size: 12px;
+  color: #FF27F5;
+  text-align: center;
+  letter-spacing: 1px;
+  transform: scale(0.9);
+}
+@media screen and (max-width: 550px) {
+  .h_season .scoreTime {
+    display: none;
+  }
+}
+.h_season .betBtn {
+  margin-top: 5px;
+  height: 35px;
+  line-height: 35px;
+  padding: 0 10px;
+  border-radius: 5px;
+  white-space: nowrap;
+  font-size: 12px;
+  text-align: center;
+  background: linear-gradient(0deg, #650534, #ab4e7c);
+  box-shadow: 0 -2px 2px #cf7da6 inset;
+}
+.h_season .odds {
+  margin-top: 20px;
+  padding: 5px;
+  border-radius: 5px;
+  background: linear-gradient(0deg, #421A81, #7540db);
+  box-shadow: 0 -2px 2px #a181d3 inset;
+  font-size: 12px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+.h_season .odds:active {
+  transform: translateY(2px);
+}
+.h_season .odds p {
+  transform: scale(0.9);
+  color: #aaa;
+}
+.h_season .oddsNum {
+  font-size: 14px;
+  font-weight: bold;
+}
+.h_season .minName {
+  padding: 2px 5px 0;
+  font-size: 12px;
+  text-align: center;
+  display: none;
+}
+@media screen and (max-width: 550px) {
+  .h_season .minName {
+    display: block;
+  }
+}
+.h_season .layoutShow {
+  width: 100%;
+  padding: 5px;
+  display: none;
+}
+.h_season .layoutShow td {
+  width: 100%;
+  padding: 0;
+}
+.h_season .layoutShow .time {
+  width: 100%;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  color: #bd9dff;
+}
+@media screen and (max-width: 550px) {
+  .h_season .layoutShow {
+    display: flex;
+  }
+}
+@media screen and (max-width: 550px) {
+  .h_season .chglayout {
+    display: flex;
+  }
+  .h_season .chglayout td {
+    width: 33.3333333333%;
+    padding: 2px;
+  }
+  .h_season .chglayout .odds {
+    margin-top: 8px;
+  }
+  .h_season .chglayout .oddsNum {
+    font-size: 12px;
+  }
+}
+@media screen and (max-width: 550px) {
+  .h_season .layoutHidden {
+    display: none;
+  }
 }
 
 .h_declaration {
@@ -2818,7 +3067,7 @@ body {
     animation: rotateReverse 2s linear infinite;
   }
 }
-@media (pointer: coarse), (-moz-touch-enabled: 1), screen and (pointer: fine) and (min-resolution: 2dppx) and (max-width: 1023px) {
+@media (pointer: coarse), (-moz-touch-enabled: 1), screen and (pointer: fine) and (-webkit-min-device-pixel-ratio: 2) and (max-width: 1023px), screen and (pointer: fine) and (min-resolution: 2dppx) and (max-width: 1023px) {
   .promoPage .promoList li {
     filter: grayscale(0%);
     opacity: 1;
@@ -3134,7 +3383,7 @@ body {
     margin-right: 0;
   }
 }
-@media screen and (max-width: 750px) and (pointer: coarse), screen and (max-width: 750px) and (-moz-touch-enabled: 1), screen and (max-width: 750px) and (pointer: fine) and (min-resolution: 2dppx) and (max-width: 1023px) {
+@media screen and (max-width: 750px) and (pointer: coarse), screen and (max-width: 750px) and (-moz-touch-enabled: 1), screen and (max-width: 750px) and (pointer: fine) and (-webkit-min-device-pixel-ratio: 2) and (max-width: 1023px), screen and (max-width: 750px) and (pointer: fine) and (min-resolution: 2dppx) and (max-width: 1023px) {
   .referMenu {
     width: calc(100vw - 20px);
     overflow: scroll;
@@ -3150,7 +3399,7 @@ body {
     gap: 8px;
   }
 }
-@media screen and (max-width: 750px) and (pointer: coarse), screen and (max-width: 750px) and (-moz-touch-enabled: 1), screen and (max-width: 750px) and (pointer: fine) and (min-resolution: 2dppx) and (max-width: 1023px) {
+@media screen and (max-width: 750px) and (pointer: coarse), screen and (max-width: 750px) and (-moz-touch-enabled: 1), screen and (max-width: 750px) and (pointer: fine) and (-webkit-min-device-pixel-ratio: 2) and (max-width: 1023px), screen and (max-width: 750px) and (pointer: fine) and (min-resolution: 2dppx) and (max-width: 1023px) {
   .referMenu ul {
     flex-wrap: nowrap;
   }
@@ -3184,7 +3433,7 @@ body {
     box-shadow: 0 -2px 2px #a05ae6 inset;
   }
 }
-@media screen and (max-width: 750px) and (pointer: coarse), screen and (max-width: 750px) and (-moz-touch-enabled: 1), screen and (max-width: 750px) and (pointer: fine) and (min-resolution: 2dppx) and (max-width: 1023px) {
+@media screen and (max-width: 750px) and (pointer: coarse), screen and (max-width: 750px) and (-moz-touch-enabled: 1), screen and (max-width: 750px) and (pointer: fine) and (-webkit-min-device-pixel-ratio: 2) and (max-width: 1023px), screen and (max-width: 750px) and (pointer: fine) and (min-resolution: 2dppx) and (max-width: 1023px) {
   .referMenu li {
     padding: 0 25px;
     white-space: nowrap;
@@ -3258,7 +3507,8 @@ body {
 .referShow .userMsg .grade {
   font-size: 12px;
   background: linear-gradient(25deg, #ffff8a, #ba5733 40%, #fafab1);
-  background-clip: text;
+  -webkit-background-clip: text;
+          background-clip: text;
   color: transparent;
 }
 .referShow .intBox {

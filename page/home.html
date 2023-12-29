@@ -76,7 +76,7 @@
             <template v-for="(list,i) in 5">
                 <div class="item" v-for="(item,index) in sheetList" :id="index">
                     <div class="top">
-                        <div class="typeLogo" :style="{'--bgc':item.bgc,'--bc':item.bc}">
+                        <div class="typeLogo" :style="{'--bgc':item.bgc}">
                             <img :src="item.img">
                         </div>
                         <div class="txt">
@@ -248,7 +248,8 @@
         </div>
 
         <div class="txnDiv">
-            <div class="arrow left" @click="txnTomove(1)" :class="{'on' : txnmove > 0 && txnmove < txnList.length}"></div>
+            <div class="arrow left" @click="txnTomove(1)" :class="{'on' : txnmove > 0 && txnmove < txnList.length}">
+            </div>
             <div class="txnlist">
                 <ul :style="{'--length':txnList.length}">
                     <li v-for="(item,idx) in txnList">
@@ -271,7 +272,7 @@
                             </table>
                         </div>
                     </li>
-                </ul>              
+                </ul>
             </div>
             <div class="arrow" @click="txnTomove(2)" :class="{'on' : txnmove >= 0 && txnmove < txnList.length-1}"></div>
         </div>
@@ -282,11 +283,85 @@
         <div class="title">
             <img src="images/other/season.webp">
         </div>
-        <div class="list">
-            <div class="item">
-                <div class="name">Live Matches</div>
-                <div class="team"></div>
+        <div class="seasonShow">
+            <div class="arrow left" @click="seasonTomove(1)"></div>
+            <div class="list">
+                <ul :style="{'--num':seasonList.length}" :class="{'only': seasonList.length == 1}">
+                    <li v-for="(item,index) in seasonList" :id="index" :class="{'only': seasonList.length == 1}">
+                        <div class="card">
+                            <div class="team">
+                                <table>
+                                    <tr class="layoutShow">
+                                        <td colspan="3">
+                                            <div class="time">{{item.time}}</div>
+                                        </td>
+                                    </tr>
+                                    
+                                    <tr class="chglayout">
+                                        <td width="30%">
+                                            <div class="teamLogo">
+                                                <img :src="item.team_home.logo">
+                                            </div>
+                                            <div class="minName">{{item.team_home.name}}</div>
+                                        </td>
+                                        <td width="30%">
+                                            <div class="vs">VS</div>
+                                            <div class="scoreNum">
+                                                {{item.team_home.score}}:{{item.team_away.score}}
+                                            </div>
+                                            <div class="scoreTime">{{item.time}}</div>
+                                        </td>
+                                        <td width="30%">
+                                            <div class="teamLogo">
+                                                <img :src="item.team_away.logo">
+                                            </div>
+                                            <div class="minName">{{item.team_away.name}}</div>
+                                        </td>
+                                    </tr>
+                                    <tr class="layoutHidden">
+                                        <td>
+                                            <div class="teamName">{{item.team_home.name}}</div>
+                                        </td>
+                                        <td>
+                                            <div class="betBtn">Bet Now</div>
+                                        </td>
+                                        <td>
+                                            <div class="teamName">{{item.team_away.name}}</div>
+                                        </td>
+                                    </tr>
+                                    <tr class="chglayout">
+                                        <td>
+                                            <div class="odds">
+                                                <div class="oddsNum">{{item.team_home.odds}}</div>
+                                                <p>Home</p>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="odds">
+                                                <div class="oddsNum">{{item.hdp}}</div>
+                                                <p>HDP</p>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="odds">
+                                                <div class="oddsNum">{{item.team_away.odds}}</div>
+                                                <p>Away</p>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    
+                                    <tr class="layoutShow">
+                                        <td colspan="3">
+                                            <div class="betBtn">Bet Now</div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
             </div>
+            <div class="arrow" @click="seasonTomove(2)"></div>
         </div>
     </div>
 
@@ -374,113 +449,159 @@
                     { bg: 'images/game/bg03.webp', role: 'images/game/bear.webp', num: 20 },
                     { bg: 'images/game/bg.webp', role: 'images/game/girl.webp', num: 8 }
                 ],
-                txnmove : 0,
-                txnList:[
-                    {munber:'60*****932',num:'15000.00'},
-                    {munber:'77*****123',num:'999.99'},
-                    {munber:'88*****999',num:'1234.10'}
+                txnmove: 0,
+                txnList: [
+                    { munber: '60*****932', num: '15000.00' },
+                    { munber: '77*****123', num: '999.99' },
+                    { munber: '88*****999', num: '1234.10' }
                 ],
-                sheetList:[
+                sheetList: [
                     {
-                        bgc:'#6C2AD9',
-                        bc:'#333',
-                        img:'images/game/Singapore-4d.png',
-                        name:'SINGAOIRW 4D',
-                        time:'2023-03-29(wed)',
-                        win:['3887','9410','5785'],
-                        special:[
-                            ['7843','1221','9307'],
-                            ['9031','7036','9641'],
-                            ['5553','2998','9915'],
-                            ['','3810','']
+                        bgc: '#6C2AD9',
+                        img: 'images/game/Singapore-4d.png',
+                        name: 'SINGAOIRW 4D',
+                        time: '2023-03-29(wed)',
+                        win: ['3887', '9410', '5785'],
+                        special: [
+                            ['7843', '1221', '9307'],
+                            ['9031', '7036', '9641'],
+                            ['5553', '2998', '9915'],
+                            ['', '3810', '']
                         ],
-                        consolation:[
-                            ['7190','1660','8871'],
-                            ['8653','1355','5396'],
-                            ['3552','6604','5640'],
-                            ['','6065','']
+                        consolation: [
+                            ['7190', '1660', '8871'],
+                            ['8653', '1355', '5396'],
+                            ['3552', '6604', '5640'],
+                            ['', '6065', '']
                         ]
                     },
                     {
-                        bgc:'#531795',
-                        bc:'#333',
-                        img:'images/game/Sabah-4d.png',
-                        name:'SABAH 4D',
-                        time:'2023-03-29(wed)',
-                        win:['3887','9410','5785'],
-                        special:[
-                            ['7843','1221','9307'],
-                            ['9031','7036','9641'],
-                            ['5553','2998','9915'],
-                            ['','3810','']
+                        bgc: '#531795',
+                        img: 'images/game/Sabah-4d.png',
+                        name: 'SABAH 4D',
+                        time: '2023-03-29(wed)',
+                        win: ['3887', '9410', '5785'],
+                        special: [
+                            ['7843', '1221', '9307'],
+                            ['9031', '7036', '9641'],
+                            ['5553', '2998', '9915'],
+                            ['', '3810', '']
                         ],
-                        consolation:[
-                            ['7190','1660','8871'],
-                            ['8653','1355','5396'],
-                            ['3552','6604','5640'],
-                            ['','6065','']
+                        consolation: [
+                            ['7190', '1660', '8871'],
+                            ['8653', '1355', '5396'],
+                            ['3552', '6604', '5640'],
+                            ['', '6065', '']
                         ]
                     },
                     {
-                        bgc:'#FAA7C8',
-                        bc:'#333',
-                        img:'images/game/Sandakan-4d.png',
-                        name:'SANDAKAN 4D',
-                        time:'2023-03-29(wed)',
-                        win:['3887','9410','5785'],
-                        special:[
-                            ['7843','1221','9307'],
-                            ['9031','7036','9641'],
-                            ['5553','2998','9915'],
-                            ['','3810','']
+                        bgc: '#FAA7C8',
+                        img: 'images/game/Sandakan-4d.png',
+                        name: 'SANDAKAN 4D',
+                        time: '2023-03-29(wed)',
+                        win: ['3887', '9410', '5785'],
+                        special: [
+                            ['7843', '1221', '9307'],
+                            ['9031', '7036', '9641'],
+                            ['5553', '2998', '9915'],
+                            ['', '3810', '']
                         ],
-                        consolation:[
-                            ['7190','1660','8871'],
-                            ['8653','1355','5396'],
-                            ['3552','6604','5640'],
-                            ['','6065','']
+                        consolation: [
+                            ['7190', '1660', '8871'],
+                            ['8653', '1355', '5396'],
+                            ['3552', '6604', '5640'],
+                            ['', '6065', '']
                         ]
                     },
                     {
-                        bgc:'#521795',
-                        bc:'#333',
-                        img:'images/game/Sarawak-4d.png',
-                        name:'SARAWAK 4D',
-                        time:'2023-03-29(wed)',
-                        win:['3887','9410','5785'],
-                        special:[
-                            ['7843','1221','9307'],
-                            ['9031','7036','9641'],
-                            ['5553','2998','9915'],
-                            ['','3810','']
+                        bgc: '#521795',
+                        img: 'images/game/Sarawak-4d.png',
+                        name: 'SARAWAK 4D',
+                        time: '2023-03-29(wed)',
+                        win: ['3887', '9410', '5785'],
+                        special: [
+                            ['7843', '1221', '9307'],
+                            ['9031', '7036', '9641'],
+                            ['5553', '2998', '9915'],
+                            ['', '3810', '']
                         ],
-                        consolation:[
-                            ['7190','1660','8871'],
-                            ['8653','1355','5396'],
-                            ['3552','6604','5640'],
-                            ['','6065','']
+                        consolation: [
+                            ['7190', '1660', '8871'],
+                            ['8653', '1355', '5396'],
+                            ['3552', '6604', '5640'],
+                            ['', '6065', '']
                         ]
                     },
                     {
-                        bgc:'#A031E5',
-                        bc:'#333',
-                        img:'images/game/Grand-Dragon.png',
-                        name:'GRAND DRAGON',
-                        time:'2023-03-29(wed)',
-                        win:['3887','9410','5785'],
-                        special:[
-                            ['7843','1221','9307'],
-                            ['9031','7036','9641'],
-                            ['5553','2998','9915'],
-                            ['','3810','']
+                        bgc: '#793c9f',
+                        img: 'images/game/Grand-Dragon.png',
+                        name: 'GRAND DRAGON',
+                        time: '2023-03-29(wed)',
+                        win: ['3887', '9410', '5785'],
+                        special: [
+                            ['7843', '1221', '9307'],
+                            ['9031', '7036', '9641'],
+                            ['5553', '2998', '9915'],
+                            ['', '3810', '']
                         ],
-                        consolation:[
-                            ['7190','1660','8871'],
-                            ['8653','1355','5396'],
-                            ['3552','6604','5640'],
-                            ['','6065','']
+                        consolation: [
+                            ['7190', '1660', '8871'],
+                            ['8653', '1355', '5396'],
+                            ['3552', '6604', '5640'],
+                            ['', '6065', '']
                         ]
                     },
+                ],
+                seasonMove:0,
+                seasonList:[
+                    {
+                        time:'15/11/2023',
+                        team_home:{
+                            logo:'../images/logo/Yokohama_F_Marinos.webp',
+                            name:'Yokohama F Mari',
+                            score:2,
+                            odds:0.92
+                        },
+                        team_away:{
+                            logo:'../images/logo/Consadole_Sapporo.webp',
+                            name:'Consadole Sapporo',
+                            score:0,
+                            odds:0.88
+                        },
+                        hdp:0.7
+                    },
+                    {
+                        time:'16/11/2023',
+                        team_home:{
+                            logo:'../images/logo/Sanfrecce_Hiroshima.webp',
+                            name:'Sanfrecce Hiroshima',
+                            score:1,
+                            odds:0.58
+                        },
+                        team_away:{
+                            logo:'../images/logo/Consadole_Sapporo.webp',
+                            name:'Consadole Sapporo',
+                            score:1,
+                            odds:0.54
+                        },
+                        hdp:0.4
+                    },
+                    {
+                        time:'17/11/2023',
+                        team_home:{
+                            logo:'../images/logo/Sanfrecce_Hiroshima.webp',
+                            name:'Yokohama F Mari',
+                            score:0,
+                            odds:0.78
+                        },
+                        team_away:{
+                            logo:'../images/logo/Yokohama_F_Marinos.webp',
+                            name:'Consadole Sapporo',
+                            score:1,
+                            odds:0.9
+                        },
+                        hdp:0.81
+                    }
                 ]
             };
         },
@@ -517,18 +638,29 @@
             rebgi(img) {
                 return `background-image: url(${img})`;
             },
-            txnTomove(type){
-                let max = this.txnList.length-1;
-                if(type == 1){
-                    this.txnmove = this.txnmove > 0 ? this.txnmove-1 : 0;
-                }else if(type == 2){
-                    this.txnmove = this.txnmove < max ? this.txnmove+1 : max;
+            txnTomove(type) {
+                let max = this.txnList.length - 1;
+                if (type == 1) {
+                    this.txnmove = this.txnmove > 0 ? this.txnmove - 1 : 0;
+                } else if (type == 2) {
+                    this.txnmove = this.txnmove < max ? this.txnmove + 1 : max;
                 }
 
-                document.querySelectorAll('.txnDiv li').forEach(item =>{
+                document.querySelectorAll('.txnDiv li').forEach(item => {
                     item.style.transform = `translateX(-${this.txnmove * 100}%)`
                 })
-                console.log(this.txnmove)
+            },
+            seasonTomove(type){
+                let winW = document.body.clientWidth;
+                let max = winW <= 1000 ? this.seasonList.length - 1 : this.seasonList.length - 2;
+                if (type == 1) {
+                    this.seasonMove = this.seasonMove > 0 ? this.seasonMove - 1 : 0;
+                } else if (type == 2) {
+                    this.seasonMove = this.seasonMove < max ? this.seasonMove + 1 : max;
+                }
+                document.querySelectorAll('.seasonShow li').forEach(item => {
+                    item.style.transform = `translateX(-${this.seasonMove * 100}%)`
+                })
             }
         },
         mounted() {

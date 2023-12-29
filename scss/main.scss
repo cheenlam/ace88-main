@@ -1236,9 +1236,9 @@ body {
                         }
                     }
                     .sheet {
-                        background: linear-gradient(90deg, #461967, #6225a8);
+                        background: linear-gradient(90deg, #461967, #9a5ae3);
                         th {
-                            background-color: #9d1dd8;
+                            background: linear-gradient(0deg, #590a7d, #c08bd7);
                         }
                     }
                 }
@@ -1285,7 +1285,6 @@ body {
                 background-color: var(--bgc);
                 border-radius: 0 5px 0 0;
                 position: relative;
-                border-bottom: 1px solid var(--bc);
                 flex-shrink: 0;
                 &::after {
                     content: "";
@@ -1295,17 +1294,16 @@ body {
                     @include pos(tl, 0, -10px);
                     background-color: var(--bgc);
                     transform: skew(-5deg);
-                    border-bottom: 1px solid var(--bc);
                 }
                 &::before {
                     content: "";
-                    width: 0;
-                    height: 0;
-                    border-style: solid;
-                    border-width: 0 12px 12px 0;
-                    border-color: transparent var(--bgc) transparent transparent;
+                    width: 22px;
+                    height: 22px;
+                    clip-path: polygon(50% 0%, 100% 59%, 100% 0);
+                    background-color: var(--bgc);
                     position: absolute;
-                    @include pos(bl, -12px);
+                    @include pos(bl, -22px);
+                    box-shadow: 0 2px 5px #333 inset;
                 }
             }
             .txt {
@@ -1331,6 +1329,7 @@ body {
                     padding: 5px;
                     text-align: center;
                     background-color: #491381;
+                    background: linear-gradient(0deg, #491381, #9554d7);
                 }
                 td {
                     padding: 8px 5px;
@@ -1843,29 +1842,256 @@ body {
                 max-width: 400px;
             }
         }
+        @include rwd(550){
+            padding: 0px 0 10px;
+        }
         .title {
             width: 100%;
             max-width: 500px;
             margin: 0 auto 10px;
         }
-        .list {
+        .seasonShow{
             display: flex;
+            align-items: center;
             justify-content: center;
+            position: relative;
         }
-        .item{
-            width: calc(100% / 2);
-            padding-top: 24px;
-            background: url(../images/other/betFrame_left.webp) no-repeat left center / calc(50% - 89px) 100%,
-                        url(../images/other/betFrame_center.webp) no-repeat center / 180px 100%,
-                        url(../images/other/betFrame_right.webp) no-repeat right center / calc(50% - 89px) 100%;
+        .arrow {
+            width: 35px;
+            height: 35px;
+            background: url(../images/icons/arrow_w.svg) no-repeat center / 45%;
+            flex-shrink: 0;
+            cursor: pointer;
+            &.left {
+                transform: scale(-1);
+            }
+            @include rwd(550){
+                width: 45px;
+                height: 45px;
+                margin: auto;
+                position: absolute;
+                @include pos(tbr,0,0,8px);
+                background-color: rgba(255, 255, 255, 0.3);
+                background-size: 35%;
+                border-radius: 50%;
+                z-index: 1;
+                &.left{
+                    right: unset;
+                    left: 8px;
+                }
+            }
+        }
+        
+        .list {     
+            max-width: 1000px;  
+            overflow: hidden;    
+            @include rwd(1000){
+                width: calc(100% - 70px);
+                max-width: 500px;
+            }
+
+            @include rwd(550){
+                width: calc(100% - 30px);
+            }
+
+            ul{
+                width: calc(var(--num) * 50%);        
+                display: flex;
+                justify-content: center;
+                &.only{
+                    width: 100%;
+                }
+                @include rwd(1000){
+                    width: calc(var(--num) * 100%); 
+                }
+            }
+            li{
+                width: calc(100% / 2);
+                padding: 0 5px;
+                transition: transform .5s;
+                &.only{
+                    width: 100%;
+                }
+                @include rwd(1000){
+                    width: 100%;
+                }
+            }   
+        }
+        .card{ 
+            padding: 20px 40px;
+            background: url(../images/other/betFrame_L.webp) no-repeat left center / 80px 100%,
+                        url(../images/other/betFrame_Lauto.webp) no-repeat left center / calc(50% - 89px) 100%,
+                        url(../images/other/betFrame_C.webp) no-repeat center / 180px 100%,
+                        url(../images/other/betFrame_Rauto.webp) no-repeat calc(50% - 80px) center / 100% 100%,
+                        url(../images/other/betFrame_R.webp) no-repeat right center / 80px 100%;
+            @include rwd(550){
+                padding: 35px 0 25px;
+                background: url(../images/other/betFrame_T.webp) no-repeat center top/ 100% 70px,
+                            url(../images/other/betFrame_Tauto.webp) no-repeat center / 100% calc(100% - 139px),
+                            url(../images/other/betFrame_B.webp) no-repeat center bottom/ 100% 70px;
+            }
         }
         .name{
+            padding-top: 2px;
             text-align: center;
-            font-size: 16px;
+            font-size: 15px;
             font-weight: bold;
         }
         .team{
-            height: 300px;
+            padding: 40px 0;
+            @include rwd(550){
+                padding: 20px 0;
+            }
+        }
+        table{
+            max-width: calc(100% - 160px);
+            margin: auto;
+            @include rwd(550){
+                max-width: calc(100% - 60px);
+                display: flex;
+                justify-content: center;
+            }
+        }
+
+        tr{
+            @include rwd(550){
+                display: flex;
+                align-items: center;
+            }
+        }
+        td{
+            padding: 0 5px;
+            @include rwd(550){
+                width: auto;
+            }
+        }
+
+        .teamLogo{
+            width: 80px;
+            margin: auto;
+            @include rwd(550){
+                width: 55px;
+            }
+        }
+        .teamName{
+            padding: 0 5px;
+            font-size: 13px;
+            text-align: center;
+        }
+        .vs{
+            font-size: 18px;
+            letter-spacing: 1px;
+            font-weight: bold;
+            color: #FF27F5;
+            text-align: center;
+            display: none;
+            @include rwd(550){
+                display: block;
+            }
+        }
+        .scoreNum{
+            font-size: 30px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            color: #FF27F5;
+            text-align: center;
+            @include rwd(550){
+                display: none
+            }
+            
+        }
+        .scoreTime{
+            font-size: 12px;
+            color: #FF27F5;
+            text-align: center;
+            letter-spacing: 1px;
+            transform: scale(.9);
+            @include rwd(550){
+                display: none
+            }
+        }
+        .betBtn{
+            margin-top: 5px;
+            height: 35px;
+            line-height: 35px;
+            padding: 0 10px;
+            border-radius: 5px;
+            white-space:nowrap;
+            font-size: 12px;
+            text-align: center;
+            background: linear-gradient(0deg, #650534, #ab4e7c);
+            box-shadow: 0 -2px 2px #cf7da6 inset;
+        }
+        .odds{
+            margin-top: 20px;
+            padding: 5px;
+            border-radius: 5px;
+            background: linear-gradient(0deg,#421A81,#7540db);
+            box-shadow: 0 -2px 2px #a181d3 inset;
+            font-size: 12px;
+            text-align: center;
+            cursor: pointer;
+            transition: transform .3s;
+            &:active{
+                transform: translateY(2px);
+            }
+            p{
+                transform: scale(.9);
+                color: #aaa;
+            }
+        }
+        .oddsNum{
+            font-size: 14px;
+            font-weight: bold;
+        }  
+
+        .minName{
+            padding: 2px 5px 0;
+            font-size: 12px;
+            text-align: center;
+            display: none;
+            @include rwd(550){
+                display: block;
+            }
+        }
+        .layoutShow{
+            width: 100%;
+            padding: 5px;
+            display: none;     
+            td{
+                width: 100%;
+                padding: 0;
+            }
+            .time{
+                width: 100%;
+                font-size: 14px;
+                font-weight: bold;
+                text-align: center;
+                color: #bd9dff;
+            }
+            @include rwd(550){
+                display: flex;
+            }
+        }
+        .chglayout{
+            @include rwd(550){
+               display: flex;
+               td{
+                    width: calc(100% / 3);
+                    padding: 2px;
+                }
+                .odds{
+                    margin-top: 8px;
+                }
+                .oddsNum{
+                    font-size: 12px;
+                }
+            }
+        }
+        .layoutHidden{
+            @include rwd(550){
+                display: none;
+            }
         }
     }
     // 宣言
