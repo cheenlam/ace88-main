@@ -12,135 +12,6 @@
             </ul>
         </div>
     </div>
-    <div class="progress" v-if="false">
-        <div class="type">
-            <ul>
-                <li>
-                    <div class="medal">
-                        <img src="images/medal/diamonds.webp">
-                        <div class="name">
-                            <div class="radio"></div>
-                            <p>Diamonds</p>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="main">
-                        <div class="medal">
-                            <img src="images/medal/clubs.webp">
-                        </div>
-                        <div class="condition">
-                            <div class="deposit">
-                                <p class="need">Deposit(Moon)</p>
-                                <p>(MYR)：5,000</p>
-                            </div>
-                            <div class="turnover">
-                                <p class="need">Turnover(Moon)</p>
-                                <p>(MYR)：25,000</p>
-                            </div>
-                        </div> 
-                    </div>
-                    <div class="name">
-                        <div class="radio"></div>
-                        <p>Clubs</p>
-                    </div>
-                </li>
-                <li>
-                    <div class="main">
-                        <div class="medal">
-                            <img src="images/medal/loves.webp">
-                        </div>
-                        <div class="condition">
-                            <div class="deposit">
-                                <p class="need">Deposit(Moon)</p>
-                                <p>(MYR)：20,000</p>
-                            </div>
-                            <div class="turnover">
-                                <p class="need">Turnover(Moon)</p>
-                                <p>(MYR)：120,000</p>
-                            </div>
-                        </div>  
-                    </div>  
-                    <div class="name">
-                        <div class="radio"></div>
-                        <p>Loves</p>
-                    </div>
-                </li>
-            </ul>
-        </div>
-        <div class="center">
-            <div class="bar">
-                <span></span>
-            </div>
-        </div>
-        <div class="type reverse">
-            <ul>
-                <li>
-                    <div class="name">
-                        <div class="radio"></div>
-                        <p>Spades</p>
-                    </div>
-                    <div class="main">
-                        <div class="medal">
-                            <img src="images/medal/spades.webp">
-                        </div>
-                        <div class="condition">
-                            <div class="deposit">
-                                <p class="need">Deposit(Moon)</p>
-                                <p>(MYR)：80,000</p>
-                            </div>
-                            <div class="turnover">
-                                <p class="need">Turnover(Moon)</p>
-                                <p>(MYR)：600,000</p>
-                            </div>
-                        </div>  
-                    </div>
-                </li>
-                <li>
-                    <div class="name">
-                        <div class="radio"></div>
-                        <p>Silver Spades</p>
-                    </div>
-                    <div class="main">
-                        <div class="medal"> 
-                            <img src="images/medal/silver_spades.webp">
-                        </div>
-                        <div class="condition">
-                            <div class="deposit">
-                                <p class="need">Deposit(Moon)</p>
-                                <p>(MYR)：200,000</p>
-                            </div>
-                            <div class="turnover">
-                                <p class="need">Turnover(Moon)</p>
-                                <p>(MYR)：1,500,000</p>
-                            </div>
-                        </div>  
-                    </div> 
-                </li>
-                <li>
-                    <div class="name">
-                        <div class="radio"></div>
-                        <p>Golden Spades</p>
-                    </div>
-                    <div class="main">
-                        <div class="medal">            
-                            <img src="images/medal/golden_spades.webp">
-                        </div>
-                        <div class="condition">
-                            <div class="deposit">
-                                <p class="need">Deposit(Moon)</p>
-                                <p>(MYR)：1,000,000</p>
-                            </div>
-                            <div class="turnover">
-                                <p class="need">Turnover(Moon)</p>
-                                <p>(MYR)：8,000,000</p>
-                            </div>
-                        </div>
-                    </div>    
-                </li>
-            </ul>
-        </div>
-    </div>
 
     <div class="progress">
         <div class="item level_01">
@@ -260,21 +131,307 @@
                 </div>
             </div>    
         </div> 
-        <div class="bar">
+        <div class="bar" :style="{'--num': progress + '%' }">
             <span></span>
         </div>
     </div>
+
+    <div class="sheet">
+        <div class="layout">
+            <table>
+                <!-- group_type -->
+                <tr>
+                    <th>
+                        <div class="mainTitle">VIP PRIVILEGES</div>
+                    </th>
+                    <th width="10%" v-for="(item,index) in privData">
+                        <div class="cap"></div>
+                        <div class="badge">
+                            <div class="pic">
+                                <img :src="item.img">
+                            </div>
+                            <p>{{item.name}}</p>
+                        </div>
+                    </th>
+                </tr>
+
+                <!-- group_1 -->
+                <tr>
+                    <td colspan="7">
+                        <div class="typeTitle">
+                            <span>EXCLUSICE BONUS</span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Upgrade (MYR)</td>
+                    <td  v-for="(item,index) in privData">
+                        <div class="val">{{item.bonus[0]}}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Birthday (MYR)</td>
+                    <td  v-for="(item,index) in privData">
+                        <div class="val">{{item.bonus[1]}}</div>
+                    </td>
+                </tr>
+
+                <!-- group_2 -->
+                <tr class="pushout">
+                    <td colspan="7">
+                        <div class="typeTitle">
+                            <span>SERVICE SUPPORT</span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Withdrawal Per Day</td>
+                    <td  v-for="(item,index) in privData">
+                        <div class="val">{{item.serve[0]}}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Daily Withdrawal Amount</td>
+                    <td  v-for="(item,index) in privData">
+                        <div class="val">{{item.serve[1]}}</div>
+                    </td>
+                </tr>
+
+                <!-- group_3 -->
+                <tr class="pushout">
+                    <td colspan="7">
+                        <div class="typeTitle">
+                            <span>SPECIAL REBATE</span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Live Dealer Rebate</td>
+                    <td  v-for="(item,index) in privData">
+                        <div class="val">{{item.rebate[0]}}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Sportsbook Rebate</td>
+                    <td  v-for="(item,index) in privData">
+                        <div class="val">{{item.rebate[1]}}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Slots Rebate</td>
+                    <td  v-for="(item,index) in privData">
+                        <div class="val">{{item.rebate[2]}}</div>
+                    </td>
+                </tr>
+
+                <!-- group_4 -->
+                <tr class="pushout">
+                    <td colspan="7">
+                        <div class="typeTitle">
+                            <span>MAINTAIN MEMBERSHIP</span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Past 3 months Accum Deposit (MYR)</td>
+                    <td  v-for="(item,index) in privData">
+                        <div class="val">{{item.maintain[0]}}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Past 3 months Accum Winlose (MYR)</td>
+                    <td  v-for="(item,index) in privData">
+                        <div class="val">{{item.maintain[1]}}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Past 3 months Accum Turnover (MYR)</td>
+                    <td  v-for="(item,index) in privData">
+                        <div class="val">{{item.maintain[2]}}</div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="minSheet">
+        <div class="layout">
+            <div class="privTitle">VIP PROGRAM</div>
+            <div class="privSel">
+                <div class="arrow left" @click="movepriv(1)"></div>
+                <div class="list">
+                    <ul>
+                        <li v-for="(item,index) in privData">
+                            <img :src="item.img">
+                            <p>{{item.name}}</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="arrow" @click="movepriv(2)"></div>
+            </div>
+            <div class="privList">
+                <ul>
+                    <li v-for="(item,index) in privData">
+                        <table>
+                            <!-- 1 -->
+                            <tr>
+                                <td colspan="2">
+                                    <div class="typeTitle">
+                                        <span>EXCLUSICE BONUS</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Upgrade Bonus (MYR)</td>
+                                <td class="val">{{item.bonus[0]}}</td>
+                            </tr>
+                            <tr>
+                                <td>Birthday Bonus (MYR)</td>
+                                <td class="val">{{item.bonus[1]}}</td>
+                            </tr>
+                            
+                            <!-- 2 -->
+                            <tr class="pushout">
+                                <td colspan="2">
+                                    <div class="typeTitle">
+                                        <span>SERVICE SUPPORT</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Withdrawal Per Day</td>
+                                <td class="val">{{item.serve[0]}}</td>
+                            </tr>
+                            <tr>
+                                <td>Daily Withdrawal Amount</td>
+                                <td class="val">{{item.serve[1]}}</td>
+                            </tr>
+        
+                            <!-- 3 -->
+                            <tr class="pushout">
+                                <td colspan="2">
+                                    <div class="typeTitle">
+                                        <span>SPECIAL REBATE</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Live Dealer Rebate</td>
+                                <td class="val">{{item.rebate[0]}}</td>
+                            </tr>
+                            <tr>
+                                <td>Sportsbook Rebate</td>
+                                <td class="val">{{item.rebate[1]}}</td>
+                            </tr>
+                            <tr>
+                                <td>Slots Rebate</td>
+                                <td class="val">{{item.rebate[2]}}</td>
+                            </tr>
+        
+        
+                            <!-- 4 -->
+                            <tr class="pushout">
+                                <td colspan="2">
+                                    <div class="typeTitle">
+                                        <span>MAINTAIN MEMBERSHIP</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Past 3 months Accum Deposit (MYR)</td>
+                                <td class="val">{{item.maintain[0]}}</td>
+                            </tr>
+                            <tr>
+                                <td>Past 3 months Accum Winlose (MYR)</td>
+                                <td class="val">{{item.maintain[1]}}</td>
+                            </tr>
+                            <tr>
+                                <td>Past 3 months Accum Turnover (MYR)</td>
+                                <td class="val">{{item.maintain[2]}}</td>
+                            </tr>
+                        </table>
+                    </li>
+                </ul>        
+            </div>
+        </div>
+    </div>
+
 </div>
 
 <script>
     Vue.createApp({
         data() {
             return {
-                
+                progress : 40,
+                privSel: 0,
+                privData:[
+                    {
+                        img:'images/medal/diamonds.webp',
+                        name:'Diamonds',
+                        bonus:['38','88'],
+                        serve:['3 Times','30,000'],
+                        rebate:['0.30%','0.20%','0.40%'],
+                        maintain:['-','-','-']
+                    },
+                    {
+                        img:'images/medal/clubs.webp',
+                        name:'Clubs',
+                        bonus:['38','88'],
+                        serve:['3 Times','30,000'],
+                        rebate:['0.30%','0.20%','0.40%'],
+                        maintain:['10,000','50,000','50,000']
+                    },
+                    {
+                        img:'images/medal/loves.webp',
+                        name:'Loves',
+                        bonus:['38','88'],
+                        serve:['3 Times','30,000'],
+                        rebate:['0.30%','0.20%','0.40%'],
+                        maintain:['50,000','300,000','300,000']
+                    },
+                    {
+                        img:'images/medal/spades.webp',
+                        name:'Spades',
+                        bonus:['38','88'],
+                        serve:['3 Times','30,000'],
+                        rebate:['0.30%','0.20%','0.40%'],
+                        maintain:['200,000','1,500,000','1,500,000']
+                    },
+                    {
+                        img:'images/medal/silver_spades.webp',
+                        name:'Silver Spades',
+                        bonus:['38','88'],
+                        serve:['3 Times','30,000'],
+                        rebate:['0.30%','0.20%','0.40%'],
+                        maintain:['500,000','3,500,000','3,500,000']
+                    },
+                    {
+                        img:'images/medal/golden_spades.webp',
+                        name:'Golden Spades',
+                        bonus:['38','88'],
+                        serve:['3 Times','30,000'],
+                        rebate:['0.30%','0.20%','0.40%'],
+                        maintain:['2,000,000','16,000,000','16,000,000']
+                    }
+                ]
             };
         },
         methods: {
+            movepriv(type){
+                let max = this.privData.length - 1;
+                if (type == 1) {
+                    this.privSel = this.privSel > 0 ? this.privSel - 1 : 0;
+                } else if (type == 2) {
+                    this.privSel = this.privSel < max ? this.privSel + 1 : max;
+                }
 
+                document.querySelectorAll('.privSel li').forEach(item => {
+                    item.style.transform = `translateX(-${this.privSel * 100}%)`;
+                })
+                document.querySelectorAll('.privList li').forEach(item => {
+                    item.style.transform = `translateX(-${this.privSel * 100}%)`;
+                })
+            }
         },
         mounted() {
             

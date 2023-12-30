@@ -6,6 +6,7 @@ body {
     user-select: none;
     background: linear-gradient(90deg, #000, #1b062e, #000, #000 75%, #1c0c34, #000);
     color: #fff;
+    position: relative;
 }
 
 // logo 模組
@@ -83,7 +84,7 @@ body {
 // 施工中
 .onConstr {
     width: 100%;
-    height: 100%;
+    height: calc(100vh - 130px);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -98,16 +99,16 @@ body {
     height: 100vh;
     overflow: auto;
     position: relative;
-    display: grid;
-    grid-template-rows: 1fr auto;
+    // display: grid;
+    // grid-template-rows: 1fr auto;
     overflow-y: scroll;
     // header start
     @at-root .header {
         background: linear-gradient(90deg, #000, #1b062e, #000, #000 75%, #1c0c34, #000);
         position: sticky;
         top: 0;
-        grid-row-start: 0;
-        grid-row-end: 1;
+        // grid-row-start: 0;
+        // grid-row-end: 1;
         z-index: 10;
         .inner {
             max-width: 1440px;
@@ -278,10 +279,6 @@ body {
         width: 100%;
         max-width: 1440px;
         margin: auto;
-        height: 100%;
-        padding: 0 0 50px;
-        grid-row-start: 1;
-        grid-row-end: 2;
     }
     // footer start
     @at-root .footer {
@@ -289,10 +286,10 @@ body {
         max-width: 1440px;
         padding-top: 5px;
         margin: auto;
-        grid-row-start: 2;
-        grid-row-end: 3;
-        position: sticky;
-        bottom: 0;
+        // grid-row-start: 2;
+        // grid-row-end: 3;
+        position: fixed;
+        @include pos(blr,0);
         background: linear-gradient(-90deg, #ac5bea, #8e22ea, #e67ceb, #ca64eb, #ac4aea, #8f33ea, #a85cea);
         z-index: 10;
         ul {
@@ -423,6 +420,7 @@ body {
         width: 100%;
         height: 100vh;
         position: fixed;
+        @include pos(tl,0);
         z-index: 30;
         transform: translateX(-100%) rotate(0);
         &.on {
@@ -666,6 +664,7 @@ body {
         height: 100vh;
         padding: 25px;
         position: fixed;
+        @include pos(tl,0);
         z-index: 30;
         display: flex;
         align-items: center;
@@ -674,7 +673,7 @@ body {
             width: 100%;
             height: 100%;
             position: absolute;
-            @include pos(tl, 0);
+            @include pos(tl,0);
             background-color: #000;
             opacity: 0.3;
         }
@@ -926,6 +925,7 @@ body {
 
 // homePage(首頁)
 .homePage {
+    padding-bottom: 120px;
     display: grid;
     grid-template-columns: 1.3fr 1fr;
     position: relative;
@@ -2182,6 +2182,7 @@ body {
 
 // promoPage(推廣頁)
 .promoPage {
+    padding-bottom: 120px;
     .promoList {
         max-width: 800px;
         padding: 400px 5px 0;
@@ -2324,6 +2325,7 @@ body {
 // luckyWheel(幸運輪盤頁)
 .luckyWheel {
     height: 100%;
+    height: calc(100vh - 130px);
     position: relative;
     .fullBg {
         width: 100%;
@@ -2447,13 +2449,17 @@ body {
 
 // referEarn(推荐赚取頁)
 .referEarn {
-    padding: 10px;
+    padding-bottom: 120px;
+    position: relative;
     .topMenu {
         margin-bottom: 20px;
         border-radius: 5px;
         background: linear-gradient(45deg, #505050, #1f1f1f);
         box-shadow: -2px -2px 2px #535353 inset;
         overflow: hidden;
+        position: sticky;
+        @include pos(tl,67px,0);
+        z-index: 2;
         @include rwd(750) {
             margin-bottom: 10px;
         }
@@ -2954,6 +2960,7 @@ body {
 
 // vipPage(vip頁)
 .vipPage {
+    padding-bottom: 150px;
     .outlined {
         margin-bottom: 30px;
         display: flex;
@@ -2996,7 +3003,7 @@ body {
     .progress {
         max-width: 1200px;
         padding: 0 20px;
-        margin: auto;
+        margin: 0 auto 60px;
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         grid-template-rows: 1fr auto 1fr;
@@ -3044,6 +3051,10 @@ body {
             @include rwd(550) {
                 flex-direction: column-reverse;
                 align-items: flex-end;
+                .radio{
+                    order: 1;
+                    margin: 0 0 0 10px;
+                }
             } 
         }
         .level_02,
@@ -3060,6 +3071,10 @@ body {
                 .main{
                     flex-direction: row-reverse;
                 }  
+                .radio{
+                    order: 1;
+                    margin: 0 0 0 10px;
+                }
             } 
             @include rwd(470) {
                 .main{
@@ -3152,7 +3167,7 @@ body {
                 grid-row-end: 4;
             }
             span {
-                width: 50%;
+                width: var(--num);
                 height: 100%;
                 display: inline-block;
                 background: linear-gradient(90deg, #da00ff, #ffaf00);
@@ -3160,10 +3175,216 @@ body {
                 border-radius: 20px;
                 @include rwd(550) {
                     width: 100%;
-                    height: 50%;
+                    height: var(--num);
                     background: linear-gradient(180deg, #da00ff, #ffaf00);
                     box-shadow: 3px 0 3px #ca00ff inset;
                 }
+            }
+        }
+    }
+
+    .sheet{
+        max-width: 1200px;
+        padding: 0 20px;
+        margin: 0 auto;
+        @include rwd(700){
+            display: none;
+        }
+        .layout{
+            padding: 40px 20px;
+            border: 4px solid #923DFF;
+            box-shadow: 0 0 10px #C5AAFF;
+            border-radius: 5px;
+            background-color: #18001B;
+        }
+        .mainTitle{
+            font-size: 18px;
+            font-weight: bold;
+            color: #FF5FAC;
+            text-align: left;
+        }
+        table{
+            width: 100%;
+            font-size: 12px;
+        }
+        th{
+            padding: 0 5px;
+            &:nth-child(odd){
+                .cap{
+                    background-color: #FF5FAC;
+                }
+            }
+        }
+        td{
+            padding: 3px;
+            line-height: 16px;
+        }
+        .cap{
+            height: 8px;
+            margin-bottom: 5px;
+            background-color: #B517FF;
+            border-radius: 5px 5px 0 0; 
+        }
+        .badge{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            .pic{
+                width: 60px;
+                margin-bottom: 5px;
+            }
+            p{
+                height: 35px;
+                color: #FF5FAC;
+                font-size: 13px;
+                line-height: 15px;
+            }
+        }
+        .pushout{
+            td{
+                padding-top: 20px;
+            }
+        }
+
+        .typeTitle{
+            position: relative;
+            span{
+                color: #FFC123;
+                font-weight: bold;
+                font-size: 14px;
+                padding-right: 15px;
+                background-color: #18001B;
+                position: relative;
+                z-index: 1;
+            }
+            &::before{
+                content: '';
+                width: 100%;
+                height: 1px;
+                margin: auto;
+                border-bottom: 1px dashed #aaa;
+                position: absolute;
+                @include pos(tbl,0);
+            }
+        }
+        .val{
+            padding: 5px;
+            text-align: center;
+        }
+    }
+
+    .minSheet{
+        max-width: 1200px;
+        padding: 0 20px;
+        margin: 0 auto;
+        display: none;
+        @include rwd(700){
+            display: block;
+        }
+        .layout{
+            padding: 20px 15px;
+            border: 4px solid #923DFF;
+            box-shadow: 0 0 10px #C5AAFF;
+            border-radius: 5px;
+            background-color: #18001B;
+        }
+        .privTitle{
+            padding-bottom: 10px;
+            font-size: 14px;
+            font-weight: bold;
+            color: #FF5FAC;
+            text-align: center;
+        }
+        .privSel{
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            .list{
+                width: 100%;
+                overflow: hidden;
+            } 
+            ul{
+                width: 600%;
+                display: flex;
+            }
+            li{
+                width: 100%;
+                padding: 0 15px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            } 
+            img{
+                max-width: 40px;
+            }
+            p{
+                padding-left: 5px;
+                text-align: center;
+                font-weight: bold;
+                font-size: 14px;
+            }
+        }
+        .arrow {
+            width: 35px;
+            height: 35px;
+            background: url(../images/icons/arrow_w.svg) no-repeat center / 45%;
+            flex-shrink: 0;
+            cursor: pointer;
+            &.left {
+                transform: scale(-1);
+            }
+        }
+        .privList{
+            overflow: hidden;
+            ul{
+                width: 600%;
+                display: flex;
+            }
+            li{
+                width: 100%;
+                transition: .3s;
+            }
+            table{
+                width: 100%;
+                font-size: 12px;
+            }
+            span{
+                text-align: right;
+            }
+            .val{
+                text-align: right;
+                padding-left: 20px;
+            }
+            td{
+                padding: 2px 0;
+                line-height: 17px;
+            }
+            .pushout{
+                td{
+                    padding-top: 10px;
+                }
+            }
+        }
+        .typeTitle{
+            position: relative;
+            span{
+                color: #FFC123;
+                font-weight: bold;
+                font-size: 14px;
+                padding-right: 15px;
+                background-color: #18001B;
+                position: relative;
+                z-index: 1;
+            }
+            &::before{
+                content: '';
+                width: 100%;
+                height: 1px;
+                margin: auto;
+                border-bottom: 1px dashed #aaa;
+                position: absolute;
+                @include pos(tbl,0);
             }
         }
     }
