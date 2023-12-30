@@ -1381,10 +1381,28 @@ body {
 }
 
 .homePage {
-  padding-bottom: 120px;
+  padding-bottom: 350px;
   display: grid;
   grid-template-columns: 1.3fr 1fr;
   position: relative;
+}
+.homePage::before {
+  content: "";
+  width: 100%;
+  height: 1000px;
+  background: url(../images/other/roundBg.webp) no-repeat bottom right/contain;
+  position: absolute;
+  bottom: 80px;
+  left: 0;
+  opacity: 0.5;
+}
+@media screen and (max-width: 1450px) {
+  .homePage {
+    padding-bottom: 24vw;
+  }
+  .homePage::before {
+    height: 100vw;
+  }
 }
 @media screen and (max-width: 750px) {
   .homePage {
