@@ -60,13 +60,13 @@ Router.route('/promotion', function() {
 
 Router.route('/refer', function() {
     mainInclude('/page/refer.html');
-    menuList_on(2,99);
+    menuList_on(2,4);
     document.title = "ACE88｜Refer";
 });
 
 Router.route('/vip', function() {
     mainInclude('/page/vip.html');
-    menuList_on(3,3);
+    menuList_on(3,2);
     document.title = "ACE88｜Vip";
 });
 
