@@ -1646,6 +1646,7 @@ body {
   background-color: #542b89;
   background-image: conic-gradient(transparent, #fff, #999, transparent 30%);
   animation: rotate 2s linear infinite;
+  z-index: -1;
 }
 .h_gameList .roundList .exhibit .frame span {
   width: 100%;
@@ -3158,6 +3159,7 @@ body {
   background-color: #cf4cf6;
   background-image: conic-gradient(transparent, #faeaff, #9525b7, transparent 15%);
   pointer-events: none;
+  z-index: -1;
 }
 .promoPage .card {
   width: 100%;
@@ -3411,6 +3413,7 @@ body {
   }
 }
 .referEarn .topMenu ul {
+  height: 45px;
   display: flex;
   background: linear-gradient(90deg, #63066b, #a007ae 80%, transparent) no-repeat center left/calc(var(--type) * 25%);
   transition: 0.5s;
