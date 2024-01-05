@@ -1401,6 +1401,7 @@ body {
   bottom: 80px;
   left: 0;
   opacity: 0.5;
+  z-index: -1;
 }
 @media screen and (max-width: 1450px) {
   .homePage {
